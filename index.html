@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiki Gap Audit</title>
+<meta name="description" content="What did not make it onto the frozen GEMS Taiwan wiki — an honest audit ahead of the 15-minute presentation video.">
+<style>
+:root{
+  --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7;
+  --soft:#f5f5f7; --accent:#0071e3;
+  --red:#c7372a; --amber:#9a6400; --green:#1d7a46;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang TC","Noto Sans TC",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:17px;line-height:1.6;letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:48px}
+.brand{font-size:15px;font-weight:600;letter-spacing:-.02em}
+.toggle{display:flex;gap:2px;background:var(--soft);border-radius:980px;padding:2px}
+.toggle button{border:0;background:transparent;font-family:inherit;font-size:13px;
+  padding:5px 14px;border-radius:980px;cursor:pointer;color:var(--muted);transition:.2s}
+.toggle button[aria-pressed="true"]{background:#fff;color:var(--fg);font-weight:600;
+  box-shadow:0 1px 3px rgba(0,0,0,.1)}
+
+/* hero */
+header{padding:92px 0 56px;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(34px,5.4vw,56px);line-height:1.07;letter-spacing:-.025em;
+  font-weight:700;margin:0 0 20px}
+.lede{font-size:clamp(19px,2.2vw,22px);line-height:1.47;color:var(--muted);
+  margin:0;max-width:40em}
+.stamp{font-size:13px;color:var(--muted);margin-top:28px}
+
+/* sections */
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-size:clamp(25px,3.2vw,34px);line-height:1.15;letter-spacing:-.022em;
+  font-weight:700;margin:0 0 8px}
+h3{font-size:20px;letter-spacing:-.018em;font-weight:600;margin:38px 0 10px}
+.sub{color:var(--muted);margin:0 0 28px;font-size:16px}
+p{margin:0 0 16px}
+
+/* verdict band */
+.verdict{background:var(--soft);border-radius:18px;padding:28px 30px;margin:0 0 8px}
+.verdict p:last-child{margin-bottom:0}
+
+/* finding cards */
+.card{border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin:0 0 16px}
+.card h4{margin:0 0 4px;font-size:19px;font-weight:600;letter-spacing:-.018em}
+.card .where{font-size:13px;color:var(--muted);margin:0 0 14px}
+.card p{margin:0 0 12px}
+.card p:last-child{margin-bottom:0}
+.rank{display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;background:var(--fg);color:#fff;
+  font-size:13px;font-weight:600;margin-right:10px;flex:0 0 auto}
+.cardhead{display:flex;align-items:flex-start}
+
+/* tags */
+.tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.02em;
+  padding:3px 10px;border-radius:980px;margin:0 6px 6px 0;text-transform:uppercase}
+.t-strong{background:#e3f4ea;color:var(--green)}
+.t-mod{background:#fdf1dc;color:var(--amber)}
+.t-weak{background:#fbe6e3;color:var(--red)}
+.t-gone{background:#ececed;color:#44444a}
+
+/* evidence note */
+.note{border-left:3px solid var(--line);padding:2px 0 2px 16px;color:var(--muted);
+  font-size:15.5px;margin:14px 0 0}
+.note strong{color:var(--fg)}
+
+/* table */
+.tblwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:560px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);
+  vertical-align:top}
+th{font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.03em;
+  color:var(--muted);border-bottom:1px solid var(--fg)}
+td code{font-size:14px;background:var(--soft);padding:1px 5px;border-radius:4px}
+
+/* list */
+ul{margin:0 0 16px;padding-left:22px}
+li{margin:0 0 9px}
+
+/* correction box */
+.correct{border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:0 14px 14px 0;padding:22px 26px;margin:24px 0;background:#fbfbfd}
+.correct h4{margin:0 0 8px;font-size:17px;font-weight:600}
+
+footer{padding:48px 0 72px;color:var(--muted);font-size:14px}
+footer a{color:var(--accent);text-decoration:none}
+
+[data-lang] .zh{display:none}
+[data-lang="zh"] .en{display:none}
+[data-lang="zh"] .zh{display:initial}
+[data-lang="zh"] li.zh,[data-lang="zh"] p.zh,[data-lang="zh"] div.zh{display:block}
+[data-lang="zh"] td.zh,[data-lang="zh"] th.zh{display:table-cell}
+[data-lang="zh"] body{line-height:1.75}
+
+@media(max-width:600px){
+  header{padding:60px 0 40px} section{padding:44px 0}
+  .card,.verdict{padding:22px 20px}
+}
+</style>
+</head>
+<body data-lang="en">
+
+<nav>
+  <div class="wrap">
+    <span class="brand">GEMS Taiwan · Releaf</span>
+    <div class="toggle" role="group" aria-label="Language">
+      <button id="b-en" aria-pressed="true">English</button>
+      <button id="b-zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <h1><span class="en">What didn't make<br>the wiki</span><span class="zh">沒有進到 wiki 的東西</span></h1>
+    <p class="lede">
+      <span class="en">An honest audit of four local source folders against the four frozen wiki pages — Results, Engineering, Plant, Measurement — carried out to decide what the 15-minute presentation video must carry.</span>
+      <span class="zh">在 wiki 凍結之後，把本地的四個資料夾逐項對回線上的四個頁面——Results、Engineering、Plant、Measurement——目的只有一個：決定 15 分鐘簡報影片一定要講什麼。</span>
+    </p>
+    <p class="stamp">23 October 2026 · 194,000 words of local drafts vs 91,000 words of live wiki · 198 local files</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2><span class="en">The verdict</span><span class="zh">總結論</span></h2>
+    <div class="verdict">
+      <p>
+        <span class="en"><strong>The wiki is in better shape than expected.</strong> On Results and Engineering the live pages are a <em>superset</em> of the local drafts — they carry extra timepoints, p-values, reconciled contradictions and caveats the drafts never had. On Plant, every agar set, all six hydroponic runs and all three soil runs are published with their figures. Measurement transferred nearly completely.</span>
+        <span class="zh"><strong>Wiki 的狀況比預期好。</strong> Results 和 Engineering 兩頁其實是本地草稿的<em>超集</em>——線上多了額外的時間點、p 值、把草稿裡自相矛盾的數字並列處理，以及草稿沒有的但書。Plant 頁把每一組 agar、六次水耕、三次土耕全部連圖發表了。Measurement 幾乎完整轉移。</span>
+      </p>
+      <p>
+        <span class="en">What is genuinely absent is narrower than feared, but one loss is serious: <strong>an entire chapter of original assay-chemistry work was deleted on 21 October</strong> and survives only as a dangling citation. That chapter, not any plant result, is the strongest unpublished material the team has.</span>
+        <span class="zh">真正缺的比擔心的少，但有一項損失很嚴重：<strong>10 月 21 日整章原創的分析化學工作被刪除</strong>，線上只剩一條孤立的參考文獻。那一章，而不是任何植物結果，才是這個隊伍最強的未發表素材。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="en">Five things worth the video</span><span class="zh">值得放進影片的五件事</span></h2>
+    <p class="sub"><span class="en">Ranked by what they add to the judged story, after checking each claim against the live page text.</span><span class="zh">依照對評審故事的貢獻排序；每一項都已逐條回查線上頁面文字確認。</span></p>
+
+    <div class="card">
+      <div class="cardhead"><span class="rank">1</span><div>
+        <h4><span class="en">ACC is itself chromogenic — the Berthelot chapter</span><span class="zh">ACC 本身就會顯色——被刪掉的 Berthelot 一章</span></h4>
+        <p class="where">Measurement · deleted 21 Oct, commit 9f0c7bc5 · <span class="t-gone tag">cut on purpose</span><span class="tag t-mod">moderate evidence</span></p>
+      </div></div>
+      <p>
+        <span class="en">Standard curves run with and without 2 mM ACC: the intercept rises 0.068 → 0.418. That 0.350 corresponds to 669 µM of apparent NH₄⁺, i.e. <strong>ACC reads as roughly 30% as chromogenic as ammonium</strong>, and the slope is suppressed 9.4%. The consequence is blunt: <strong>a plain NH₄Cl calibration underestimates ACC-deaminase product by about 34%.</strong></span>
+        <span class="zh">在有無 2 mM ACC 兩種條件下做標準曲線：截距從 0.068 升到 0.418。這 0.350 相當於 669 µM 的表觀 NH₄⁺，也就是說 <strong>ACC 的顯色能力大約是銨離子的 30%</strong>，同時斜率被壓低 9.4%。結論很直接：<strong>用普通 NH₄Cl 標準曲線，會把 ACC 去胺酶的產物低估約 34%。</strong></span>
+      </p>
+      <p>
+        <span class="en">The chapter also contains a substrate-compensated standard — Solution A (ACC) titrated against Solution B (NH₄Cl) at 0/10/20/40/60/100%, giving 0 → 41.0 mM — a curve that moves the way the reaction moves. And it predicts the medium's nitrogen background from the recipe: TB and LB supernatants converge on 0.082 AU, with an A×dilution constant of 22.3 vs 9.8, a ratio of 2.27 against an expected N-source ratio of ≈2.4.</span>
+        <span class="zh">這一章還有一條基質補償標準曲線——A 液（ACC）對 B 液（NH₄Cl）以 0/10/20/40/60/100% 滴定，得到 0 → 41.0 mM——這是一條會隨著反應進程移動的曲線。它還能從培養基配方預測氮背景：TB 與 LB 上清液收斂到同一個 0.082 AU，A×稀釋倍數常數為 22.3 對 9.8，比值 2.27，而預期的氮源比值約為 2.4。</span>
+      </p>
+      <p class="note">
+        <span class="en"><strong>Why it matters.</strong> This is the most transferable thing the team produced: any team measuring ACC deaminase by Berthelot is systematically wrong, and this says by how much. It is a Measurement-prize argument that needs no plant to cooperate. <strong>Caveat to state aloud:</strong> two usable ACC levels, one plate, n not recorded — but the two independent estimates (33.5% and 28.1%) agree.</span>
+        <span class="zh"><strong>為什麼重要。</strong>這是全隊產出中最可被其他人沿用的東西：任何用 Berthelot 法量 ACC 去胺酶的隊伍都系統性地量錯了，而這份資料說出了錯多少。這是一個不需要植物配合就能成立的 Measurement 獎論述。<strong>必須口頭講清楚的但書：</strong>只有兩個可用的 ACC 濃度、單一盤、n 未記錄——但兩個獨立估計值（33.5% 與 28.1%）互相吻合。</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="cardhead"><span class="rank">2</span><div>
+        <h4><span class="en">The codon rule from the literature failed</span><span class="zh">文獻上的密碼子規則失敗了</span></h4>
+        <p class="where">Engineering · doc Tables 6–7, in silico · <span class="tag t-strong">strong (computational)</span></p>
+      </div></div>
+      <p>
+        <span class="en">The greedy low-GC control was run against four genes. Minimum free energy moved WT → greedy: BoPep4 −43.20 → −48.80, ACCD −42.10 → −48.70, AmilCP −54.20 → −45.32 — and <strong>LEA14 went the wrong way, −52.60 → −48.60, with its start-region unpaired probability falling 0.512 → 0.505.</strong> The published heuristic made one of four genes worse. That failure is why the team folded ~50,000 variants instead, reaching unpaired probabilities of 0.911–0.995 at the cost of CAI dropping to 0.56–0.78.</span>
+        <span class="zh">用貪婪式低 GC 作為對照，跑了四個基因。最小自由能從野生型到貪婪版：BoPep4 −43.20 → −48.80、ACCD −42.10 → −48.70、AmilCP −54.20 → −45.32——而 <strong>LEA14 走錯了方向，−52.60 → −48.60，起始區未配對機率從 0.512 掉到 0.505。</strong>這條已發表的經驗法則在四個基因裡有一個變得更糟。正是這個失敗，讓團隊改為摺疊約 50,000 個變體，把未配對機率推到 0.911–0.995，代價是 CAI 掉到 0.56–0.78。</span>
+      </p>
+      <p class="note">
+        <span class="en"><strong>Why it matters.</strong> This is the cleanest "we tested a published rule, it failed, so we built our own" moment in the whole project — exactly the shape of reasoning Engineering judges reward. One slide. The wiki keeps the resulting tables but not the control that justifies them.</span>
+        <span class="zh"><strong>為什麼重要。</strong>這是整個專案中最乾淨的一個「我們測試了已發表的規則，它失敗了，所以我們自己做了一套」的時刻——這正是 Engineering 評審會獎勵的推理形狀。一張投影片就夠。Wiki 保留了最後的表格，卻沒有保留那個證成它們的對照組。</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="cardhead"><span class="rank">3</span><div>
+        <h4><span class="en">How WB800 was actually transformed</span><span class="zh">WB800 究竟是怎麼轉形成功的</span></h4>
+        <p class="where">Measurement · electroporation chapter deleted 21 Oct · <span class="tag t-strong">strong protocol</span><span class="tag t-weak">weak dose-response</span></p>
+      </div></div>
+      <p>
+        <span class="en">Two strain-specific protocols were written down and then cut from Measurement: <em>B. subtilis</em> 168 harvested at OD₆₀₀ 0.85–0.95, two washes, 300 Ω / 25 µF; <strong>WB800 harvested at OD₆₀₀ 2.2 with four washes in EP buffer plus 1.5 M trehalose, 1/40 resuspension, 250 Ω / 25 µF.</strong></span>
+        <span class="zh">兩套株別專屬的流程被寫下來，然後從 Measurement 刪掉了：<em>B. subtilis</em> 168 在 OD₆₀₀ 0.85–0.95 收菌、洗兩次、300 Ω / 25 µF；<strong>WB800 在 OD₆₀₀ 2.2 收菌，在 EP buffer 加 1.5 M 海藻糖中洗四次，1/40 重懸，250 Ω / 25 µF。</strong></span>
+      </p>
+      <p class="note">
+        <span class="en"><strong>Partly recoverable.</strong> The 300 Ω / 25 µF figures and the OD 2.2 / four-wash description <em>do</em> survive on the Engineering page, so the protocol is not entirely lost — but Measurement, where a reader would look for it, now says nothing about how any strain was transformed. The voltage-vs-yield series (434 colonies at 2.1 kV, 403 at 2.3, 15 at 2.5) is on the wiki as a result; as a <em>measurement</em> it should be narrated as single plates with unmatched dilutions.</span>
+        <span class="zh"><strong>部分可救。</strong>300 Ω / 25 µF 這組數字與 OD 2.2／洗四次的敘述<em>確實</em>存活在 Engineering 頁，所以流程並未完全消失——但讀者會去找它的 Measurement 頁，現在對任何菌株如何轉形都隻字未提。電壓對產率的序列（2.1 kV 434 個菌落、2.3 kV 403 個、2.5 kV 15 個）以「結果」的身分留在 wiki 上；但作為一項<em>測量</em>，講述時必須說明那是單一盤、稀釋倍數並未對齊。</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="cardhead"><span class="rank">4</span><div>
+        <h4><span class="en">There is no plasmid map anywhere</span><span class="zh">整個 wiki 沒有任何一張質體圖</span></h4>
+        <p class="where">Engineering · doc Figs 1, 6, 12 · <span class="tag t-gone tag">never published</span></p>
+      </div></div>
+      <p>
+        <span class="en">Across 103 images on the Engineering page and 94 on Results, not one is a plasmid map. The drafts describe three — pNW33N-L2(sfGFP) at 5,193 bp with BsaI at 4190/5033; pSTK-EXP1-P<em>veg</em>-Csn:AcdS; and the full P<em>veg</em>-EEBD-RBS0-SamyQ:AcdS 2.1-Histag-B0015.</span>
+        <span class="zh">Engineering 頁 103 張圖、Results 頁 94 張圖，沒有一張是質體圖。草稿裡描述了三張——pNW33N-L2(sfGFP)，5,193 bp，BsaI 切在 4190/5033；pSTK-EXP1-P<em>veg</em>-Csn:AcdS；以及完整的 P<em>veg</em>-EEBD-RBS0-SamyQ:AcdS 2.1-Histag-B0015。</span>
+      </p>
+      <p class="note">
+        <span class="en"><strong>Why it matters for video specifically.</strong> A viewer has 15 minutes and cannot read a gel. One construct diagram does more orientation work than any three gels — and it is the cheapest gap on this page to close, because it needs drawing, not data.</span>
+        <span class="zh"><strong>為什麼這對影片特別重要。</strong>觀眾只有 15 分鐘，而且看不懂膠圖。一張構築示意圖所提供的定位作用，勝過任何三張膠圖——而且這是本頁最便宜的缺口，因為它需要的是繪圖，不是數據。</span>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="cardhead"><span class="rank">5</span><div>
+        <h4><span class="en">The soil result that argues for the whole forecast</span><span class="zh">支撐整個預報概念的土耕結果</span></h4>
+        <p class="where">Plant page — <strong>published</strong> · Results page — missing · <span class="tag t-mod">moderate: 2 trials, 1 pot per condition</span></p>
+      </div></div>
+      <p>
+        <span class="en">Post-treatment ACC deaminase came in <strong>below the heat-stressed control on both fresh weight (0.103 g and 0.052 g) and chlorophyll, in both trials</strong>, and that group bolted most with the tallest stems. Pre-treatment held the most chlorophyll of the three timings in both trials. Applying the protectant too late was worse than not applying it at all — which is the argument for forecasting stress rather than reacting to it.</span>
+        <span class="zh">後處理組的 ACC 去胺酶<strong>在兩次試驗中，鮮重（0.103 g 與 0.052 g）與葉綠素都低於熱逆境對照組</strong>，而且該組抽苔最嚴重、花莖最高。前處理組在兩次試驗中都是三種時機裡葉綠素保留最多的。太晚施用保護劑，比完全不施用更糟——這正是「要預報逆境、而不是事後反應」的論據。</span>
+      </p>
+      <div class="correct">
+        <h4><span class="en">Correction to an earlier finding</span><span class="zh">對先前一項判讀的更正</span></h4>
+        <p>
+          <span class="en">An initial pass reported this section as entirely missing from the wiki. That is true only of the <strong>Results</strong> page, which states the soil heat method and then stops. The <strong>Plant</strong> page publishes it in full, with numbers more complete than the local draft — including the honest observation that heat-stressed fresh weight <em>rose</em> rather than fell (0.195 g, 0.225 g), read as a developmental-stage difference rather than a benefit of heat. The evidence exists and is published; it is simply not where a judge reading Results would look.</span>
+          <span class="zh">第一輪判讀認為這整段在 wiki 上完全不見。這只對 <strong>Results</strong> 頁成立——該頁寫完土耕熱逆境的方法就停住了。<strong>Plant</strong> 頁其實完整刊出，而且數字比本地草稿更完整——包括一個誠實的觀察：熱逆境組的鮮重不降反<em>升</em>（0.195 g、0.225 g），並判讀為各盆發育階段的差異，而非熱逆境帶來的好處。證據是存在且已發表的，只是不在評審讀 Results 時會看的位置。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="en">Three things to say out loud</span><span class="zh">三件必須在影片裡說出口的事</span></h2>
+    <p class="sub"><span class="en">Honesty risks. In each case the wiki is already careful; the video must not be less careful than the wiki.</span><span class="zh">誠實風險。這三項 wiki 本身都已謹慎處理；影片的謹慎程度不可以低於 wiki。</span></p>
+
+    <h3><span class="en">The light switch was not shown to discriminate</span><span class="zh">光開關並未被證明能區分紅綠光</span></h3>
+    <p>
+      <span class="en">At 13 h and 16 h the Level 2 induction blots show a single band between the 75 and 100 kDa markers in all four lanes, green and red alike. The wiki says so plainly: the green lanes "looked somewhat stronger… but the difference is small and has not been quantified." Earlier, red light at 100% gave expression comparable to the brightest green, which the team attributes to spectral leakage. The DNPH time course does show green above red, and that is the better evidence to lead with.</span>
+      <span class="zh">在 13 h 與 16 h，Level 2 誘導的西方墨點在四條泳道（綠光與紅光）都只顯示一條介於 75 與 100 kDa 標記之間的帶。Wiki 已經老實寫出：綠光泳道「看起來稍強……但差異很小，且未經定量」。更早之前，100% 紅光給出的表現量與最亮的綠光相當，團隊歸因於光譜洩漏。DNPH 的時間序列確實顯示綠光高於紅光，那才是比較好的主打證據。</span>
+    </p>
+    <p class="note">
+      <span class="en">If the video claims a working optogenetic switch on the basis of a Western blot, a judge who opens the wiki will find the team's own caveat. Lead with DNPH activity; describe the blots as supporting, not demonstrating.</span>
+      <span class="zh">如果影片以西方墨點為依據宣稱光遺傳開關「有效」，打開 wiki 的評審會讀到團隊自己寫的但書。請以 DNPH 活性為主論據，把墨點描述為旁證，而非證明。</span>
+    </p>
+
+    <h3><span class="en">Asterisks that are not biological replicates</span><span class="zh">不是生物重複的星號</span></h3>
+    <p>
+      <span class="en">On the agar sets, each bar is three reads of one pooled extract from one plate per condition. The significance marks are therefore technical, not biological. Separately, agar sets 9–11 compare against TB medium rather than supernatant from the strain without the protectant; only the hydroponic runs carried that WB800 control — which makes <strong>hydroponic BoPep4 at 1/40 the strongest proof-of-concept the project has</strong>, still from a single run.</span>
+      <span class="zh">在 agar 各組中，每一根長條是同一盤、同一管混合萃取液的三次讀值。因此那些顯著性標記是技術重複，不是生物重複。另外，agar 第 9–11 組是對照 TB 培養基，而不是對照「沒有保護劑的同一菌株」的上清液；只有水耕組帶了 WB800 這個對照——這使得<strong>水耕 1/40 BoPep4 成為全專案最強的概念驗證</strong>，儘管仍然只有單次試驗。</span>
+    </p>
+
+    <h3><span class="en">The sprayed batch has no activity assay behind it</span><span class="zh">噴灑用的那批蛋白沒有活性佐證</span></h3>
+    <p>
+      <span class="en">The 24 August Western blot lane for the 8/23 production batch is blank in the notebook. That batch went into the set-8 pretest and the early soil pretest, yet the wiki describes set 8 as using "bioreactor-produced ACC deaminase." No plant run in the corpus is tied to an activity measurement of the material actually applied.</span>
+      <span class="zh">實驗記錄本中，8 月 24 日針對 8/23 生產批次的西方墨點泳道是空白的。那一批進了第 8 組預試與早期土耕預試，但 wiki 將第 8 組描述為使用「生物反應器生產的 ACC 去胺酶」。在整份資料裡，沒有任何一次植物試驗能連結到「實際施用的那批material」的活性測定。</span>
+    </p>
+    <p class="note">
+      <span class="en">This is the single weakest joint in the end-to-end story — bioreactor to plant. If the video narrates an unbroken chain, that joint is where a judge's question will land. Saying it first is cheaper than being asked.</span>
+      <span class="zh">這是「生物反應器到植物」這條端到端故事中最弱的一個接點。如果影片敘述一條不間斷的鏈條，評審的問題就會落在這個接點上。自己先講出來，比被問到便宜得多。</span>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="en">Numbers that disagree</span><span class="zh">互相矛盾的數字</span></h2>
+    <p class="sub"><span class="en">Where a local draft and the live page give different values. In most cases the wiki is the correct one — use it.</span><span class="zh">本地草稿與線上頁面數值不一致之處。多數情況下 wiki 才是對的——請以 wiki 為準。</span></p>
+    <div class="tblwrap">
+    <table>
+      <thead><tr>
+        <th><span class="en">Item</span><span class="zh">項目</span></th>
+        <th><span class="en">Local draft</span><span class="zh">本地草稿</span></th>
+        <th><span class="en">Live wiki</span><span class="zh">線上 wiki</span></th>
+        <th><span class="en">Use</span><span class="zh">採用</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>LPA 24 h OD₆₀₀</td>
+          <td>0.056 / 0.083 / 0.081 → "no significant growth"</td>
+          <td>1.056 / 1.083 / 1.081, all tubes 0.97–1.08</td>
+          <td><strong><span class="en">Wiki.</span><span class="zh">Wiki。</span></strong> <span class="en">The draft dropped a leading 1 on six readings. <em>Do not tell a "green light stopped growth" story.</em></span><span class="zh">草稿在六個讀值上掉了開頭的 1。<em>不要講「綠光抑制生長」的故事。</em></span></td>
+        </tr>
+        <tr>
+          <td><span class="en">Set 6 root length</span><span class="zh">第 6 組根長</span></td>
+          <td>11.00 → 14.71 mm (= 3.7 mm)</td>
+          <td><span class="en">stated as "3 cm" more root</span><span class="zh">寫成多「3 公分」</span></td>
+          <td><strong><span class="en">Data.</span><span class="zh">原始數據。</span></strong> <span class="en">The real effect is 3.7 mm, an order of magnitude smaller than the page claims.</span><span class="zh">真實效果是 3.7 mm，比頁面宣稱的小一個數量級。</span></td>
+        </tr>
+        <tr>
+          <td><span class="en">TMP (membrane)</span><span class="zh">跨膜壓差</span></td>
+          <td><span class="en">"positive at every Aug 14 setting, 0.01–0.26 bar"</span><span class="zh">「8/14 每個設定都是正值，0.01–0.26 bar」</span></td>
+          <td><span class="en">permeate channel unlogged, so no TMP exists for this rig</span><span class="zh">透過液通道未記錄，因此此裝置並無 TMP</span></td>
+          <td><strong><span class="en">Wiki.</span><span class="zh">Wiki。</span></strong> <span class="en">Every August figure is lumen pressure drop.</span><span class="zh">八月的每個數字都是管腔壓降。</span></td>
+        </tr>
+        <tr>
+          <td><span class="en">Bioreactor ELISA</span><span class="zh">生物反應器 ELISA</span></td>
+          <td><span class="en">contradicts itself: "4–8 µg/mL" vs "10.7 / 10.5"</span><span class="zh">自相矛盾：「4–8 µg/mL」對「10.7 / 10.5」</span></td>
+          <td><span class="en">carries both, adopts neither</span><span class="zh">兩者並列，皆不採信</span></td>
+          <td><strong><span class="en">Quote the lumen/shell agreement,</span><span class="zh">引用管腔／殼側的一致性，</span></strong> <span class="en">not an absolute concentration.</span><span class="zh">而不是絕對濃度。</span></td>
+        </tr>
+        <tr>
+          <td><span class="en">Heat trial 2 chlorophyll</span><span class="zh">熱逆境第二試葉綠素</span></td>
+          <td>—</td>
+          <td><span class="en">"14% higher" (figure reads ≈33%, no test)</span><span class="zh">「高 14%」（圖上約 33%，且無統計檢定）</span></td>
+          <td><span class="en">Neither on screen. Also note unstressed ACCD groups read <em>lower</em> than unstressed control.</span><span class="zh">兩者都不要上畫面。另請注意：未逆境的 ACCD 組讀值<em>低於</em>未逆境對照組。</span></td>
+        </tr>
+        <tr>
+          <td><span class="en">DNPH well volume</span><span class="zh">DNPH 反應終體積</span></td>
+          <td>216 µL <span class="en">(newest copy)</span><span class="zh">（最新版）</span></td>
+          <td>205 µL</td>
+          <td><strong><span class="en">Wiki.</span><span class="zh">Wiki。</span></strong> <span class="en">205 is the arithmetic sum.</span><span class="zh">205 才是各項相加的結果。</span></td>
+        </tr>
+        <tr>
+          <td><span class="en">Seed sterilization</span><span class="zh">種子滅菌</span></td>
+          <td><span class="en">75% ethanol 2 min, then 95%, air-dry</span><span class="zh">75% 酒精 2 分鐘，再 95%，風乾</span></td>
+          <td><span class="en">"not recorded"</span><span class="zh">「未記錄」</span></td>
+          <td><strong><span class="en">Draft.</span><span class="zh">草稿。</span></strong> <span class="en">The wiki understates its own reproducibility here.</span><span class="zh">Wiki 在這裡低估了自己的可重現性。</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="en">What to put on screen</span><span class="zh">該放上畫面的素材</span></h2>
+    <p class="sub"><span class="en">Local files that are legible at video resolution and carry a claim in one frame.</span><span class="zh">在影片解析度下看得清楚、且單一畫面就能承載一個論點的本地檔案。</span></p>
+    <ul>
+      <li><span class="en"><strong>23 of 23 WB800 colony-PCR lanes carry the band</strong> — <code>Engineering Photo/10-21/Group 4/</code>. The strongest single "it worked" image in the corpus. Already on the wiki; worth a full frame anyway.</span><span class="zh"><strong>23 條 WB800 菌落 PCR 泳道全部有帶</strong> — <code>Engineering Photo/10-21/Group 4/</code>。整份資料裡最強的單張「成功了」影像。Wiki 上已有，仍值得給它一個完整畫面。</span></li>
+      <li><span class="en"><strong>The 10 kb CcaSR circuit recovered in WB800</strong>, 370 colonies at 2.3 kV — <code>Engineering Photo/10-21/Group 3/</code>. Large constructs in a hard-to-transform strain.</span><span class="zh"><strong>10 kb 的 CcaSR 線路在 WB800 中回收成功</strong>，2.3 kV 下 370 個菌落 — <code>Engineering Photo/10-21/Group 3/</code>。在難轉形的菌株中拿到大型構築。</span></li>
+      <li><span class="en"><strong>BoPep4 mRNA fold, before and after</strong> — <code>Expression_Fig5A</code> with <code>Expression_Fig4A</code>. Start+15 unpaired 0.396 → 0.732, SD core 0.067 → 0.641. Two pictures, one design decision.</span><span class="zh"><strong>BoPep4 mRNA 摺疊的前後對照</strong> — <code>Expression_Fig5A</code> 配 <code>Expression_Fig4A</code>。起始+15 未配對 0.396 → 0.732，SD 核心 0.067 → 0.641。兩張圖，一個設計決策。</span></li>
+      <li><span class="en"><strong>pH falling 6.9 → 6.4 as OD₆₀₀ climbs to 1.24</strong> — <code>results membrane/result_VII_fig7.png</code>. The clearest picture of the problem that drove automated KOH dosing in bioreactor cycle 4 — a real DBTL redesign driven by data.</span><span class="zh"><strong>OD₆₀₀ 爬升到 1.24 的同時 pH 由 6.9 降到 6.4</strong> — <code>results membrane/result_VII_fig7.png</code>。最清楚呈現那個促成第 4 輪生物反應器自動加鹼的問題——一次由數據驅動的真實 DBTL 重新設計。</span></li>
+      <li><span class="en"><strong>DNPH ±PLP bars</strong> — <code>10-21/Group 6/Figure 7.png</code>. 20.7 / 39.3 / 47.8 against a WB800 control at 31.9 nmol α-KB mL⁻¹ h⁻¹. <em>Narrate the control bar</em>, and add the key: Csn+PLP is wild type, SamyQ+PLP is AcdS 2.1 — the wiki caption drops that key.</span><span class="zh"><strong>DNPH ±PLP 長條圖</strong> — <code>10-21/Group 6/Figure 7.png</code>。20.7 / 39.3 / 47.8，對照 WB800 的 31.9 nmol α-KB mL⁻¹ h⁻¹。<em>旁白要提到對照組那一根</em>，並補上圖例：Csn+PLP 是野生型、SamyQ+PLP 是 AcdS 2.1——wiki 的圖說把這個對照關係刪掉了。</span></li>
+      <li><span class="en"><strong>Per-seedling root lengths, 10 plants × 8 groups</strong> — <code>Measurement Photos/1. Plant assay/Figure. 7…png</code>. The wiki prints only group means; this shows the spread. A Welch t on these groups gives pre- vs untreated t ≈ 2.2, so narrate as "longer, not demonstrated significant."</span><span class="zh"><strong>逐株根長，10 株 × 8 組</strong> — <code>Measurement Photos/1. Plant assay/Figure. 7…png</code>。Wiki 只印出各組平均值；這張圖看得到離散程度。對這些組做 Welch t 檢定，前處理對未處理 t ≈ 2.2，所以旁白應說「較長，但未證實顯著」。</span></li>
+      <li><span class="en"><strong>Hydroponic BoPep4 salinity rack</strong> (already on the wiki) — the only plant comparison with a proper WB800 negative control. If one plant image goes in the video, this is it.</span><span class="zh"><strong>水耕 BoPep4 鹽逆境架</strong>（wiki 上已有）——唯一帶了正規 WB800 陰性對照的植物比較。如果影片只能放一張植物照片，就放這張。</span></li>
+    </ul>
+    <p class="note">
+      <span class="en"><strong>Not usable:</strong> the Measurement figure folders for Overview, Protectant, Bioreactor and Optogenetic are empty. The Berthelot and electroporation chapters have no local images at all — if the video shows them, the figures must be rebuilt from the images embedded in the .docx. The 17 Oct plant clip (<code>20261017_190336.mp4</code>, 36 s) is blurry; B-roll only.</span>
+      <span class="zh"><strong>不可用：</strong>Measurement 的 Overview、Protectant、Bioreactor、Optogenetic 四個圖片資料夾是空的。Berthelot 與電穿孔兩章完全沒有本地圖檔——如果影片要呈現，必須從 .docx 內嵌的圖重建。10 月 17 日的植物短片（<code>20261017_190336.mp4</code>，36 秒）畫面模糊，只能當空鏡。</span>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="en">One open question</span><span class="zh">一個未解的問題</span></h2>
+    <p>
+      <span class="en">The plant notebook records October work that appears in no results file anywhere: gene expression measurements, MDA, total protein, plus repeat runs — BoPep4 drench trials, an ACCD salinity repeat, LEA14 heat, hydroponics at 33 °C, and buffer vs ACCD. Protocols are written; results are not. Either those runs produced data that never reached a draft, or they were planned and not completed.</span>
+      <span class="zh">植物實驗記錄本記載了十月的工作，但在任何結果檔案中都找不到：基因表現測定、MDA、總蛋白，以及重複試驗——BoPep4 灌注試驗、ACCD 鹽逆境重複、LEA14 熱逆境、33 °C 水耕，以及緩衝液對 ACCD。流程寫好了，結果沒有。要嘛這些試驗產出的數據從未進入任何草稿，要嘛它們只是計畫而未執行。</span>
+    </p>
+    <p>
+      <span class="en"><strong>Ask the plant team before filming.</strong> If any of those repeats exist, they are the replicates the whole plant argument currently lacks — the wiki itself admits only two runs were ever repeated, and each of those has two trials rather than three.</span>
+      <span class="zh"><strong>開拍前先問植物組。</strong>如果這些重複試驗當中有任何一個真的存在，那就是整個植物論述目前最缺的重複樣本——wiki 自己也承認只有兩次實驗曾被重複，而且那兩次各只有兩個試驗，不是三個。</span>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>
+      <span class="en">Prepared 23 October 2026 for the GEMS Taiwan presentation video. Sources: four local folders (198 files) against the frozen wiki at <a href="https://2026.igem.wiki/gems-taiwan/">2026.igem.wiki/gems-taiwan</a>. Every claim of absence was checked by searching the live page text and HTML before being reported.</span>
+      <span class="zh">2026 年 10 月 23 日為 GEMS Taiwan 簡報影片製作。資料來源：四個本地資料夾（198 個檔案）對照已凍結的 wiki：<a href="https://2026.igem.wiki/gems-taiwan/">2026.igem.wiki/gems-taiwan</a>。每一項「缺漏」的判定，都已先搜尋線上頁面的文字與 HTML 查證後才列出。</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.body,en=document.getElementById('b-en'),zh=document.getElementById('b-zh');
+  function set(l){
+    b.setAttribute('data-lang',l);
+    document.documentElement.lang = (l==='zh'?'zh-Hant':'en');
+    en.setAttribute('aria-pressed',l==='en');
+    zh.setAttribute('aria-pressed',l==='zh');
+    try{localStorage.setItem('releaf-gaps-lang',l)}catch(e){}
+  }
+  en.onclick=function(){set('en')}; zh.onclick=function(){set('zh')};
+  try{var s=localStorage.getItem('releaf-gaps-lang'); if(s) set(s);}catch(e){}
+})();
+</script>
+</body>
+</html>
