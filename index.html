@@ -22,8 +22,12 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
 /* nav */
 nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
   backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:48px}
-.brand{font-size:15px;font-weight:600;letter-spacing:-.02em}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:48px;gap:16px}
+.brand{font-size:15px;font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+.navlinks{display:flex;gap:18px;font-size:14px;margin-left:auto;margin-right:4px}
+.navlinks a{color:var(--muted);text-decoration:none}
+.navlinks a.on{color:var(--fg);font-weight:600}
+@media(max-width:600px){.navlinks{display:none}}
 .toggle{display:flex;gap:2px;background:var(--soft);border-radius:980px;padding:2px}
 .toggle button{border:0;background:transparent;font-family:inherit;font-size:13px;
   padding:5px 14px;border-radius:980px;cursor:pointer;color:var(--muted);transition:.2s}
@@ -114,6 +118,10 @@ footer a{color:var(--accent);text-decoration:none}
 <nav>
   <div class="wrap">
     <span class="brand">GEMS Taiwan · Releaf</span>
+    <div class="navlinks">
+      <a href="index.html" class="on"><span class="en">Gap audit</span><span class="zh">缺口盤點</span></a>
+      <a href="evidence.html"><span class="en">Evidence pack</span><span class="zh">素材包</span></a>
+    </div>
     <div class="toggle" role="group" aria-label="Language">
       <button id="b-en" aria-pressed="true">English</button>
       <button id="b-zh" aria-pressed="false">中文</button>

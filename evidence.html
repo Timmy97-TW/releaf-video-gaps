@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Evidence Pack</title>
+<meta name="description" content="Every figure worth putting in the 15-minute presentation video, in running order, with legends, numbers and the line the narrator should say.">
+<style>
+:root{
+  --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7;
+  --soft:#f5f5f7; --accent:#0071e3;
+  --red:#c7372a; --amber:#9a6400; --green:#1d7a46;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang TC","Noto Sans TC",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:17px;line-height:1.6;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:48px;gap:16px}
+.brand{font-size:15px;font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+.navlinks{display:flex;gap:18px;font-size:14px;margin-left:auto;margin-right:4px}
+.navlinks a{color:var(--muted);text-decoration:none}
+.navlinks a.on{color:var(--fg);font-weight:600}
+.toggle{display:flex;gap:2px;background:var(--soft);border-radius:980px;padding:2px}
+.toggle button{border:0;background:transparent;font-family:inherit;font-size:13px;
+  padding:5px 14px;border-radius:980px;cursor:pointer;color:var(--muted);transition:.2s}
+.toggle button[aria-pressed="true"]{background:#fff;color:var(--fg);font-weight:600;
+  box-shadow:0 1px 3px rgba(0,0,0,.1)}
+
+header{padding:88px 0 52px;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(34px,5.2vw,54px);line-height:1.07;letter-spacing:-.025em;font-weight:700;margin:0 0 20px}
+.lede{font-size:clamp(19px,2.1vw,21px);line-height:1.47;color:var(--muted);margin:0;max-width:40em}
+.stamp{font-size:13px;color:var(--muted);margin-top:26px}
+
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(25px,3.1vw,33px);line-height:1.15;letter-spacing:-.022em;font-weight:700;margin:0 0 6px}
+h3{font-size:19px;letter-spacing:-.018em;font-weight:600;margin:34px 0 10px}
+.sub{color:var(--muted);margin:0 0 26px;font-size:16px}
+p{margin:0 0 16px}
+
+/* banner */
+.banner{background:#fff8f7;border:1px solid #f0cdc7;border-radius:18px;padding:26px 28px;margin:0 0 20px}
+.banner h3{margin:0 0 10px;font-size:19px;color:var(--red)}
+.banner p:last-child{margin-bottom:0}
+.ok{background:#f4faf6;border-color:#c9e6d5}
+.ok h3{color:var(--green)}
+
+/* timeline */
+.clock{display:flex;align-items:baseline;gap:14px;margin:0 0 4px}
+.time{font-variant-numeric:tabular-nums;font-size:13px;font-weight:600;letter-spacing:.02em;
+  color:#fff;background:var(--fg);border-radius:980px;padding:4px 12px;white-space:nowrap}
+.dur{font-size:13px;color:var(--muted)}
+
+/* shot */
+.shot{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:0 0 18px;background:#fff}
+.shot figure{margin:0;background:var(--soft);display:flex;align-items:center;justify-content:center;
+  padding:18px;border-bottom:1px solid var(--line)}
+.shot figure img{max-width:100%;height:auto;display:block;border-radius:6px}
+.shot .body{padding:22px 26px}
+.shot h4{margin:0 0 4px;font-size:18px;font-weight:600;letter-spacing:-.018em}
+.shot .src{font-size:12.5px;color:var(--muted);margin:0 0 14px;word-break:break-all}
+.shot .src a{color:var(--accent);text-decoration:none}
+.legend{font-size:15px;color:var(--muted);border-left:3px solid var(--line);
+  padding:2px 0 2px 15px;margin:0 0 14px}
+.legend b{color:var(--fg);font-weight:600}
+.say{background:var(--soft);border-radius:12px;padding:14px 18px;margin:0 0 12px;font-size:15.5px}
+.say::before{content:"SAY";display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  color:var(--muted);margin-bottom:5px}
+.flag{font-size:15px;color:var(--red);margin:0}
+.flag::before{content:"⚠ ";}
+.num{font-variant-numeric:tabular-nums;font-weight:600}
+
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;
+  padding:3px 9px;border-radius:980px;margin:0 6px 8px 0;text-transform:uppercase}
+.t-strong{background:#e3f4ea;color:var(--green)}
+.t-mod{background:#fdf1dc;color:var(--amber)}
+.t-weak{background:#fbe6e3;color:var(--red)}
+.t-local{background:#e8eefb;color:#2a4d9b}
+
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.pair{grid-template-columns:1fr}}
+
+.cut{border:1px solid var(--line);border-radius:18px;padding:24px 26px;background:#fcfcfd}
+.cut ul{margin:0;padding-left:20px}
+.cut li{margin:0 0 10px}
+
+footer{padding:46px 0 70px;color:var(--muted);font-size:14px}
+footer a{color:var(--accent);text-decoration:none}
+
+[data-lang] .zh{display:none}
+[data-lang="zh"] .en{display:none}
+[data-lang="zh"] .zh{display:initial}
+[data-lang="zh"] li.zh,[data-lang="zh"] p.zh,[data-lang="zh"] div.zh{display:block}
+
+@media(max-width:600px){
+  header{padding:58px 0 38px} section{padding:42px 0}
+  .shot .body{padding:20px} .banner{padding:22px 20px}
+  .navlinks{display:none}
+}
+</style>
+</head>
+<body data-lang="en">
+
+<nav>
+  <div class="wrap">
+    <span class="brand">GEMS Taiwan · Releaf</span>
+    <div class="navlinks">
+      <a href="index.html"><span class="en">Gap audit</span><span class="zh">缺口盤點</span></a>
+      <a href="evidence.html" class="on"><span class="en">Evidence pack</span><span class="zh">素材包</span></a>
+    </div>
+    <div class="toggle" role="group" aria-label="Language">
+      <button id="b-en" aria-pressed="true">English</button>
+      <button id="b-zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <h1><span class="en">The evidence pack</span><span class="zh">影片素材包</span></h1>
+    <p class="lede">
+      <span class="en">Every figure worth putting in the 15-minute video, in running order, with its published legend, the number that carries it, and the sentence the narrator should say so the claim stays inside the data.</span>
+      <span class="zh">15 分鐘影片值得放的每一張圖，依播放順序排列，附上已發表的 figure legend、撐起它的那個數字，以及旁白該講的那句話——讓每個主張都留在資料能支撐的範圍內。</span>
+    </p>
+    <p class="stamp">23 October 2026 · five claims · 27 live wiki figures verified · Gabriel's DNPH/ELISA deck (16 figures) cross-mapped</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2><span class="en">Read this before you script anything</span><span class="zh">寫腳本之前請先讀這段</span></h2>
+
+    <div class="banner">
+      <h3><span class="en">Claim 2 cannot be proved with the plate assays</span><span class="zh">主張 2 無法用微量盤試驗證明</span></h3>
+      <p>
+        <span class="en">The ELISA and DNPH plate data do <strong>not</strong> show ACC deaminase above a negative control, and the wiki says so itself, twice. On the ELISA variants table the untransformed WB800 control reads <span class="num">5.452</span> and <span class="num">4.562 µg/mL</span> — "the same range as four of the six constructs… <strong>the assay is reading something other than recombinant protein in these preparations, so no difference here can be attributed to expression.</strong>" ACCD also "fell below the lower end of the standard curve in all four measurements, so those concentrations are extrapolations and not quantities." On the DNPH variants plot the plasmid-free WB800 bar (<span class="num">~32</span>) sits <em>above</em> csn (<span class="num">~21</span>); only the +PLP bars clear it, so the figure demonstrates a <strong>PLP requirement</strong>, not ACCD activity.</span>
+        <span class="zh">ELISA 與 DNPH 的微量盤資料<strong>並沒有</strong>顯示 ACC 去胺酶高於陰性對照，而且 wiki 自己說了兩次。在 ELISA 變體表中，未轉形的 WB800 對照讀到 <span class="num">5.452</span> 與 <span class="num">4.562 µg/mL</span>——「與六個構築中的四個落在同一範圍……<strong>陰性對照給出與樣品相當的訊號，表示這個試驗在這些製備中讀到的不是重組蛋白，因此這裡的任何差異都不能歸因於表現。</strong>」ACCD 還「在四次測定中都低於標準曲線的下限，所以那些濃度是外推值，不是定量」。在 DNPH 變體圖中，無質體的 WB800 長條（<span class="num">約 32</span>）<em>高於</em> csn（<span class="num">約 21</span>）；只有加了 PLP 的長條超過它，所以這張圖證明的是<strong>對 PLP 的需求</strong>，不是 ACCD 活性。</span>
+      </p>
+      <p>
+        <span class="en"><strong>Do not build the video on those two figures.</strong> They are the ones Gabriel's deck leads with, which is exactly why this needed checking before filming.</span>
+        <span class="zh"><strong>不要把影片建立在這兩張圖上。</strong>它們正是 Gabriel 簡報的開場圖——這也正是開拍前必須先查清楚的原因。</span>
+      </p>
+    </div>
+
+    <div class="banner ok">
+      <h3><span class="en">What does survive — and it is enough</span><span class="zh">真正站得住的證據——而且夠用</span></h3>
+      <p>
+        <span class="en">The bioreactor permeate is the honest proof that you made working enzyme. It is <em>activity normalised to concentration</em>, measured in a cell-free compartment on the far side of the membrane: specific activity below 1 U/mg at 6–12 h, rising to <strong><span class="num">6.3 U/mg at 18 h</span></strong> and holding <span class="num">5–8.4 U/mg</span> through 72 h. Cell-free, so it cannot be host background. That is a stronger statement than any plate bar chart, and it ties claims 2 and 4 together into one result.</span>
+        <span class="zh">生物反應器的透過液才是「你們做出有功能的酵素」的誠實證據。它是<em>以濃度正規化後的活性</em>，而且量在膜另一側的無細胞區間：比活性在 6–12 h 低於 1 U/mg，升到 <strong><span class="num">18 h 的 6.3 U/mg</span></strong>，並在 72 h 之前維持 <span class="num">5–8.4 U/mg</span>。無細胞，所以不可能是宿主背景。這個敘述比任何微量盤長條圖都強，而且把主張 2 和主張 4 綁成同一個結果。</span>
+      </p>
+    </div>
+
+    <div class="banner">
+      <h3><span class="en">Claim 3 must be stated as a split result</span><span class="zh">主張 3 必須講成「分裂的結果」</span></h3>
+      <p>
+        <span class="en">Under green light the <strong>concentration does not change</strong> (2.6–3.2 µg/mL short-term, 12–13 µg/mL long-term, comparable green vs red) while the <strong>activity does</strong>. The cleanest point is 13 h: green <span class="num">0.1249 mM</span> vs red <span class="num">0.0089 mM</span>, a 14× gap. But it <em>inverts</em> by 16 h (red <span class="num">0.0923</span>, green <span class="num">0.0130</span>), and the wiki's own verdict is that the switch "has not been demonstrated to work." Present the 13 h result <em>with</em> the inversion in the same breath, or a judge who reads the wiki will do it for you.</span>
+        <span class="zh">在綠光下，<strong>濃度沒有改變</strong>（短期 2.6–3.2 µg/mL，長期 12–13 µg/mL，綠紅相當），但<strong>活性有改變</strong>。最乾淨的點是 13 h：綠光 <span class="num">0.1249 mM</span> 對紅光 <span class="num">0.0089 mM</span>，相差 14 倍。但到 16 h 就<em>反轉</em>了（紅 <span class="num">0.0923</span>、綠 <span class="num">0.0130</span>），而 wiki 自己的結論是這個開關「尚未被證明可運作」。請把 13 h 的結果與這個反轉放在同一口氣裡講，否則讀了 wiki 的評審會替你講。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="en">00:00 – 02:15 · Setting up</span><span class="zh">00:00 – 02:15 · 鋪陳</span></h2>
+    <p class="sub"><span class="en">Problem, then the device in one diagram. No data yet — earn the right to show numbers.</span><span class="zh">先講問題，再用一張圖說清楚裝置。這段不要放數據——先取得展示數字的資格。</span></p>
+
+    <div class="shot">
+      <div class="body">
+        <h4><span class="en">What to build here</span><span class="zh">這段要補的東西</span></h4>
+        <p class="src"><span class="en">Not in the corpus — must be drawn</span><span class="zh">資料庫中沒有——必須繪製</span></p>
+        <p>
+          <span class="en">There is <strong>no plasmid map and no system schematic anywhere</strong> across 103 Engineering figures and 94 Results figures. A viewer with 15 minutes cannot read a gel without first knowing what was built. One construct diagram plus one rig schematic does more orientation work than any three gels, and both need drawing, not data.</span>
+          <span class="zh">在 Engineering 的 103 張圖與 Results 的 94 張圖裡，<strong>沒有任何質體圖，也沒有任何系統示意圖</strong>。觀眾只有 15 分鐘，在不知道你們造了什麼之前，根本看不懂膠圖。一張構築示意圖加一張裝置示意圖，定位作用勝過任何三張膠圖——而且兩者需要的是繪圖，不是數據。</span>
+        </p>
+        <div class="say"><span class="en">"Bacillus subtilis, engineered to secrete three plant stress protectants, grown in a hollow-fibre bioreactor that keeps the cells in and lets the protein out."</span><span class="zh">「我們改造枯草桿菌，讓它分泌三種植物逆境保護劑，並在一個中空纖維生物反應器中培養——細胞留在裡面，蛋白送出來。」</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="clock"><span class="time">02:15 – 04:00</span><span class="dur"><span class="en">1 min 45 s</span><span class="zh">1 分 45 秒</span></span></div>
+    <h2><span class="en">Claim 1 · The cloning worked</span><span class="zh">主張 1 · Cloning 成功了</span></h2>
+    <p class="sub"><span class="en">Build a ladder: a clean entry part, then reproducibility, then the Level 2 device.</span><span class="zh">搭一道階梯：乾淨的入門零件 → 可重現性 → Level 2 裝置。</span></p>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="assets/colonypcr-23lanes.png" alt="Colony PCR gel, 23 lanes, every lane positive"></figure>
+      <div class="body">
+        <span class="tag t-strong">strongest image</span><span class="tag t-local">local file</span>
+        <h4><span class="en">23 of 23 transformants carry the band</span><span class="zh">23 個轉形株全部帶有正確片段</span></h4>
+        <p class="src">assets/colonypcr-23lanes.png · <a href="https://static.igem.wiki/teams/6072/wiki/engineering/gel-wb800-bopep4-23-engineering.webp">wiki copy</a> · <span class="en">local original:</span><span class="zh">本地原檔：</span> Engineering Photo/10-21/Group 4/Screenshot 2026-10-18 214722.png</p>
+        <p class="legend"><b>Legend.</b> <span class="en">Colony PCR of twenty-three WB800 transformants carrying Pveg-EEBD-RBS0-SamyQ:BoPep4-2.1-B0015. Every lane shows the band, which is what a count of recovered colonies cannot show on its own.</span><span class="zh">攜帶 Pveg-EEBD-RBS0-SamyQ:BoPep4-2.1-B0015 的 23 個 WB800 轉形株菌落 PCR。每一條泳道都有帶——這是單純計算菌落數無法呈現的資訊。</span></p>
+        <div class="say"><span class="en">"Twenty-three transformants picked, twenty-three carrying the insert."</span><span class="zh">「挑了 23 個轉形株，23 個都帶有插入片段。」</span></div>
+        <p class="flag"><span class="en">No expected band size is stated anywhere for this gel, and the build table gives BoPep4 2.1 as 678 bp, which does not match a band sitting above the 1 kb marker. <strong>Resolve the expected size before putting a number on screen</strong> — or show the gel and say only "every lane positive."</span><span class="zh">任何地方都沒有標示這張膠的預期片段大小，而構築表記載 BoPep4 2.1 為 678 bp，與落在 1 kb 標記之上的帶不符。<strong>在畫面上放數字之前先確認預期大小</strong>——或者只放膠圖，旁白只說「每一條都是陽性」。</span></p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="shot">
+        <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/engineering/gel-260919-level2-acdi-three-clones-engineering.webp" alt="Level 2 junction PCR across three clones"></figure>
+        <div class="body">
+          <span class="tag t-strong">strong</span>
+          <h4><span class="en">9 of 9 Level 2 junctions correct</span><span class="zh">Level 2 的 9 個接點全部正確</span></h4>
+          <p class="src">engineering/gel-260919-level2-acdi-three-clones</p>
+          <p class="legend"><b>Legend.</b> <span class="en">19 September 2026. Three ACDI clones — X1, X3, X9 — across three junctions: junction B, CcaSm3 F with CcaR R, 632 bp; junction C, CcaR F with Csn R, 661 bp.</span><span class="zh">2026 年 9 月 19 日。三個 ACDI 選殖株 X1、X3、X9，橫跨三個接點：接點 B，CcaSm3 F 配 CcaR R，632 bp；接點 C，CcaR F 配 Csn R，661 bp。</span></p>
+          <div class="say"><span class="en">"Three independent clones, three junctions each, all nine correct."</span><span class="zh">「三個獨立選殖株，各三個接點，九個全部正確。」</span></div>
+          <p class="flag"><span class="en">Junctions prove module order, not the 10 kb between them.</span><span class="zh">接點證明的是模組順序，不是中間那 10 kb。</span></p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/engineering/gel-level2-ecori-btsi-engineering.webp" alt="Level 2 double digest, EcoRI and BtsI"></figure>
+        <div class="body">
+          <span class="tag t-strong">strong</span>
+          <h4><span class="en">The device is the right size</span><span class="zh">裝置大小正確</span></h4>
+          <p class="src">engineering/gel-level2-ecori-btsi</p>
+          <p class="legend"><b>Legend.</b> <span class="en">Restriction digest of the Level 2 construct from two independent clones. EcoRI alone linearises the plasmid at the expected 10,293 bp; EcoRI with BtsI cuts to 7,543 bp.</span><span class="zh">兩個獨立選殖株的 Level 2 構築限制酶切。單用 EcoRI 將質體線性化於預期的 10,293 bp；EcoRI 併用 BtsI 切成 7,543 bp。</span></p>
+          <div class="say"><span class="en">"Ten thousand two hundred and ninety-three base pairs, exactly as designed."</span><span class="zh">「10,293 個鹼基對，與設計完全相符。」</span></div>
+          <p class="flag"><span class="en">Visibly a spliced composite of two gel crops with hand-drawn braces — a judge may notice.</span><span class="zh">明顯是兩張膠圖裁切拼接、加上手繪括號的合成圖——評審可能會注意到。</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cut">
+      <h3 style="margin-top:0"><span class="en">Two corrections before you script this</span><span class="zh">寫這段腳本前的兩項更正</span></h3>
+      <ul>
+        <li><span class="en"><strong>Do not say "434 colonies."</strong> The 434 and 403 counts for AcdS 2.1, and the 370/268/233 counts for the CcaSR circuit, were plated on <strong>plain LB with no antibiotic</strong> — they are not transformation results. Only the erythromycin plates select, and those give 15, 16, 16, and 337 (AcdS 2.2 at 2.5 kV). Lead with the gels instead. <em>This also corrects the gap audit on the other page.</em></span><span class="zh"><strong>不要說「434 個菌落」。</strong>AcdS 2.1 的 434 與 403，以及 CcaSR 線路的 370/268/233，都是塗在<strong>沒有抗生素的普通 LB</strong> 上——那不是轉形結果。只有紅黴素盤具篩選性，其數字為 15、16、16 與 337（AcdS 2.2，2.5 kV）。請改以膠圖為主。<em>這同時更正了另一頁缺口盤點中的說法。</em></span></li>
+        <li><span class="en"><strong>Sequencing exists, but not where it matters most.</strong> Level 0 entry parts and module rebuilds were Sanger-verified, and sequencing caught false positives that gels had passed. But the wiki states plainly: "No Level 2 construct has been sequenced end to end… the build record's Level 2 sequencing cell is empty for both devices." If asked, say that.</span><span class="zh"><strong>定序是有的，但不在最關鍵的地方。</strong>Level 0 入門零件與模組重建都做了 Sanger 定序，而且定序抓到了膠圖放行的偽陽性。但 wiki 明白寫著：「沒有任何 Level 2 構築做過端到端定序……建構記錄中兩個裝置的 Level 2 定序欄位都是空的。」被問到就這樣回答。</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="clock"><span class="time">04:00 – 06:30</span><span class="dur"><span class="en">2 min 30 s</span><span class="zh">2 分 30 秒</span></span></div>
+    <h2><span class="en">Claim 2 · We produced working ACC deaminase</span><span class="zh">主張 2 · 我們產出有功能的 ACC 去胺酶</span></h2>
+    <p class="sub"><span class="en">Lead with yield, then go straight to the bioreactor specific activity. Skip the variants bar chart.</span><span class="zh">先講產量，然後直接跳到生物反應器的比活性。跳過變體長條圖。</span></p>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="assets/elisa-three.png" alt="ELISA of ACCD, LEA and BoPep4 concentrations" style="max-height:330px"></figure>
+      <div class="body">
+        <span class="tag t-mod">moderate</span><span class="tag t-local">local file</span>
+        <h4><span class="en">All three protectants are secreted; ACCD about 3× the others</span><span class="zh">三種保護劑都有分泌；ACCD 約為其他兩者的 3 倍</span></h4>
+        <p class="src">assets/elisa-three.png · <a href="https://static.igem.wiki/teams/6072/wiki/results/pp-elisa-three-results.webp">wiki Figure 13</a> · <span class="en">Gabriel's deck Fig 11</span><span class="zh">Gabriel 簡報 Fig 11</span></p>
+        <p class="legend"><b>Legend.</b> <span class="en">ELISA showed the concentration of ACCD (AcdS 2.1), LEA and BoPep4 2.1 secreted by B. subtilis WB800. ACCD reached about 16 µg/mL, while LEA and BoPep4 were each about 6 µg/mL.</span><span class="zh">ELISA 顯示 B. subtilis WB800 分泌的 ACCD（AcdS 2.1）、LEA 與 BoPep4 2.1 濃度。ACCD 達到約 16 µg/mL，LEA 與 BoPep4 各約 6 µg/mL。</span></p>
+        <div class="say"><span class="en">"All three protectants are secreted into the medium, with ACC deaminase at roughly three times the level of the other two."</span><span class="zh">「三種保護劑都分泌到培養基中，其中 ACC 去胺酶的量約為另外兩者的三倍。」</span></div>
+        <p class="flag"><span class="en">Say "about 16" and "about 6" — the wiki never prints decimals, and the underlying ACCD readings sat below the standard curve, making them extrapolations. Single wells.</span><span class="zh">只說「約 16」與「約 6」——wiki 從未印出小數，且 ACCD 的原始讀值低於標準曲線，屬於外推值。單孔測定。</span></p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/br-shell-permeate-72h-results.webp" alt="Shell permeate ELISA, DNPH activity and specific activity over 72 hours"></figure>
+      <div class="body">
+        <span class="tag t-strong">the one to lead with</span>
+        <h4><span class="en">Cell-free permeate contains catalytically active enzyme</span><span class="zh">無細胞透過液中含有具催化活性的酵素</span></h4>
+        <p class="src">results/br-shell-permeate-72h · <span class="en">wiki Figure 67</span><span class="zh">wiki 圖 67</span></p>
+        <p class="legend"><b>Legend.</b> <span class="en">Shell permeate from the continuously operating bioreactor contains recombinant secretory ACC deaminase. (A) ELISA concentration. (B) DNPH volumetric activity. (C) Specific activity.</span><span class="zh">連續運轉生物反應器的殼側透過液含有重組分泌型 ACC 去胺酶。(A) ELISA 濃度。(B) DNPH 體積活性。(C) 比活性。</span></p>
+        <div class="say"><span class="en">"On the far side of the membrane, in a compartment with no cells in it, the protein we collected is catalytically active — six point three units per milligram at eighteen hours, holding between five and eight through seventy-two hours."</span><span class="zh">「在膜的另一側、一個沒有細胞的區間裡，我們收集到的蛋白具有催化活性——18 小時為每毫克 6.3 單位，並在 72 小時內維持在 5 到 8 之間。」</span></div>
+        <p class="flag"><span class="en">Each time point is a single sample. Say "a single run" once and move on.</span><span class="zh">每個時間點都是單一樣品。說一次「單次運轉」然後往下走。</span></p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="shot">
+        <figure><img loading="lazy" src="assets/elisa-reactor.png" alt="ELISA concentration in the bioreactor over 72 hours"></figure>
+        <div class="body">
+          <h4><span class="en">Protein peaks at 12 h</span><span class="zh">蛋白在 12 h 達峰</span></h4>
+          <p class="src">assets/elisa-reactor.png · <a href="https://static.igem.wiki/teams/6072/wiki/results/pp-elisa-reactor-time-results.webp">wiki Figure 15</a> · <span class="en">deck Fig 13</span><span class="zh">簡報 Fig 13</span></p>
+          <p class="legend"><b>Legend.</b> <span class="en">ELISA concentration of ACCD secreted by WB800 (AcdS 2.1) into the shell side over time. Secreted ACCD reached a maximum at 12 h.</span><span class="zh">WB800（AcdS 2.1）隨時間分泌至殼側的 ACCD 之 ELISA 濃度。分泌的 ACCD 在 12 h 達到最高。</span></p>
+          <p>1 h <span class="num">4.794</span> → 12 h <span class="num">6.522</span> → <span class="num">2.5–3 µg/mL</span> <span class="en">from 36 h on</span><span class="zh">36 h 之後</span></p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <figure><img loading="lazy" src="assets/dnph-reactor.png" alt="DNPH activity in the bioreactor over 72 hours"></figure>
+        <div class="body">
+          <h4><span class="en">Activity peaks at 18 h</span><span class="zh">活性在 18 h 達峰</span></h4>
+          <p class="src">assets/dnph-reactor.png · <a href="https://static.igem.wiki/teams/6072/wiki/results/pp-dnph-reactor-time-results.webp">wiki Figure 16</a> · <span class="en">deck Fig 8</span><span class="zh">簡報 Fig 8</span></p>
+          <p class="legend"><b>Legend.</b> <span class="en">DNPH assay of ACCD activity secreted into the shell side over time. Activity reached a maximum at 18 h.</span><span class="zh">隨時間分泌至殼側的 ACCD 活性 DNPH 分析。活性在 18 h 達到最高。</span></p>
+          <p>18 h <span class="num">30.907</span> nmol α-KB mL⁻¹ h⁻¹</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="body">
+        <h4><span class="en">Show these two side by side — the six-hour offset is the story</span><span class="zh">把這兩張並排 — 六小時的落差就是故事</span></h4>
+        <div class="say"><span class="en">"The protein appears first and the activity follows six hours later. ACC deaminase only works as a multimer and needs a cofactor, so what we are watching is the enzyme maturing after it has been secreted."</span><span class="zh">「蛋白先出現，活性在六小時後才跟上。ACC 去胺酶必須形成多聚體才有功能，而且需要輔因子，所以我們看到的是酵素在分泌之後才逐步成熟。」</span></div>
+        <p class="flag"><span class="en">The maturation account is the wiki's own hypothesis and is <em>not</em> directly tested — say "we think." Also: a second trial of this experiment peaked at 24 h, not 12 h, so do not call the peak reproducible.</span><span class="zh">成熟假說是 wiki 自己的推測，<em>並未</em>直接驗證——請說「我們認為」。另外：這個實驗的第二次試驗峰值落在 24 h 而非 12 h，所以不要說峰值可重現。</span></p>
+      </div>
+    </div>
+
+    <div class="cut">
+      <h3 style="margin-top:0"><span class="en">Cut from this section</span><span class="zh">這一段要砍掉的</span></h3>
+      <ul>
+        <li><span class="en"><strong>The DNPH variants bar chart</strong> (deck Fig 2, wiki Figures 12 and 34). The plasmid-free WB800 control at ~32 sits above csn at ~21. If you show it at all, show it as a <em>method</em> result: "this is how we learned the enzyme needs PLP." Never as proof of activity.</span><span class="zh"><strong>DNPH 變體長條圖</strong>（簡報 Fig 2、wiki 圖 12 與 34）。無質體的 WB800 對照約 32，高於 csn 的約 21。如果真要放，就當成<em>方法</em>結果呈現：「我們因此知道這個酵素需要 PLP。」絕對不要當成活性的證明。</span></li>
+        <li><span class="en"><strong>The ELISA variants table</strong> (deck Fig 15, wiki Figure 14). The negative control reads in the same range as four of six constructs. Also, codon-optimised ACCD came in <em>below</em> wild type (8.197 vs 13.446 µg/mL at 12 h) — which is honest and interesting, but not a "we made it work" slide.</span><span class="zh"><strong>ELISA 變體表</strong>（簡報 Fig 15、wiki 圖 14）。陰性對照與六個構築中的四個落在同一範圍。另外，密碼子最佳化的 ACCD <em>低於</em>野生型（12 h 時 8.197 對 13.446 µg/mL）——這很誠實也很有意思，但不是一張「我們做成功了」的投影片。</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="clock"><span class="time">06:30 – 08:30</span><span class="dur"><span class="en">2 min</span><span class="zh">2 分鐘</span></span></div>
+    <h2><span class="en">Claim 3 · Green light changes what the cells make</span><span class="zh">主張 3 · 綠光改變細胞產出</span></h2>
+    <p class="sub"><span class="en">The honest framing: concentration flat, activity moves. Show both, in that order.</span><span class="zh">誠實的講法：濃度不變、活性會動。兩者都放，照這個順序。</span></p>
+
+    <div class="pair">
+      <div class="shot">
+        <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/og-elisa-short-results.webp" alt="ELISA under green and red light"></figure>
+        <div class="body">
+          <span class="tag t-mod">moderate</span>
+          <h4><span class="en">Concentration: no change</span><span class="zh">濃度：沒有變化</span></h4>
+          <p class="src">results/og-elisa-short · <span class="en">wiki Fig 22 · deck Fig 14</span><span class="zh">wiki 圖 22 · 簡報 Fig 14</span></p>
+          <p class="legend"><b>Legend.</b> <span class="en">ELISA of ACCD under green or red light following a 12 h dark culture, sampled at 3, 6 and 8 h. Secreted ACCD levels remained comparable over time and between light conditions. WB refers to the plasmid-free negative control.</span><span class="zh">經 12 h 暗培養後、於綠光或紅光下的 ACCD ELISA，在 3、6、8 h 取樣。分泌的 ACCD 濃度隨時間與不同光照條件下皆相當。WB 為無質體陰性對照。</span></p>
+          <p><span class="num">2.6–3.2 µg/mL</span> <span class="en">at every point, both colours, vs plasmid-free control ~<span class="num">1.3</span></span><span class="zh">每個時間點、兩種光色皆然；無質體對照約 <span class="num">1.3</span></span></p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/og-dnph-short-results.webp" alt="DNPH activity under green and red light"></figure>
+        <div class="body">
+          <span class="tag t-weak">contested</span>
+          <h4><span class="en">Activity: rises over time</span><span class="zh">活性：隨時間上升</span></h4>
+          <p class="src">results/og-dnph-short · <span class="en">wiki Fig 23 · deck Fig 7</span><span class="zh">wiki 圖 23 · 簡報 Fig 7</span></p>
+          <p class="legend"><b>Legend.</b> <span class="en">DNPH assay of ACCD activity under green or red light following a 12 h dark culture. Activity increased over time, and the green-light group showed higher activity than the red-light group.</span><span class="zh">經 12 h 暗培養後、綠光或紅光下的 ACCD 活性 DNPH 分析。活性隨時間上升，綠光組的活性高於紅光組。</span></p>
+          <p class="flag"><span class="en"><strong>Do not quote a green-vs-red number from this plate.</strong> The Results page puts green above red at 3, 6 and 8 h; the Measurement page's numbers for the same plate put <em>red</em> above green at 3 and 8 h. The wiki names the conflict itself. Use the time trend only.</span><span class="zh"><strong>不要引用這張盤的綠紅比較數字。</strong>Results 頁在 3、6、8 h 都把綠光排在紅光之上；Measurement 頁對同一張盤的數字卻在 3 h 與 8 h 把<em>紅光</em>排在綠光之上。Wiki 自己指出了這個矛盾。只用時間趨勢即可。</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/og-dnph-long-results.webp" alt="DNPH activity at 13 and 16 hours under green and red light"></figure>
+      <div class="body">
+        <span class="tag t-mod">the cleanest light result</span>
+        <h4><span class="en">13 h: green 14× red — and it inverts by 16 h</span><span class="zh">13 h：綠光為紅光的 14 倍——但到 16 h 就反轉</span></h4>
+        <p class="src">results/og-dnph-long · <span class="en">wiki Fig 25 · deck Fig 6 (paired with ELISA deck Fig 16)</span><span class="zh">wiki 圖 25 · 簡報 Fig 6（與 ELISA 簡報 Fig 16 配對）</span></p>
+        <p class="legend"><b>Legend.</b> <span class="en">DNPH assay of ACCD activity after 13 and 16 h of culture under green or red light. The highest activity was observed at 13 h under green light, indicating responsiveness to green light. However, it decreased dramatically over the following 3 h.</span><span class="zh">綠光或紅光下培養 13 與 16 h 後的 ACCD 活性 DNPH 分析。最高活性出現在 13 h 的綠光組，顯示對綠光有反應。然而活性在接下來的 3 小時內急劇下降。</span></p>
+        <div class="say"><span class="en">"At thirteen hours the green-light culture is fourteen times more active than the red. Three hours later that has reversed. The switch moves the enzyme — we have not yet found the conditions under which it moves it predictably."</span><span class="zh">「在 13 小時，綠光培養的活性是紅光的 14 倍。三小時後卻反轉了。這個開關確實會推動酵素——但我們還沒找到讓它<em>穩定地</em>推動的條件。」</span></div>
+        <p class="flag"><span class="en">13 h green <span class="num">0.1249 mM</span> vs red <span class="num">0.0089</span>; 16 h red <span class="num">0.0923</span> vs green <span class="num">0.0130</span>. Single plate, technical-replicate error bars, no test. The wiki's own verdict: the switch "has not been demonstrated to work."</span><span class="zh">13 h 綠 <span class="num">0.1249 mM</span> 對紅 <span class="num">0.0089</span>；16 h 紅 <span class="num">0.0923</span> 對綠 <span class="num">0.0130</span>。單一盤、技術重複誤差棒、無統計檢定。Wiki 自己的結論：這個開關「尚未被證明可運作」。</span></p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/pf-dnph-light-induced-results.webp" alt="DNPH activity after 16 hour dark culture under green light" style="max-height:330px"></figure>
+      <div class="body">
+        <span class="tag t-mod">optional — honesty beat</span>
+        <h4><span class="en">The signal is spent within hours</span><span class="zh">訊號在數小時內耗盡</span></h4>
+        <p class="src">results/pf-dnph-light-induced · <span class="en">wiki Fig 36 · deck Fig 4</span><span class="zh">wiki 圖 36 · 簡報 Fig 4</span></p>
+        <p class="legend"><b>Legend.</b> <span class="en">DNPH assay of ACCD activity under green light following a 16 h dark culture, sampled at 3 and 6 h after illumination. Activity decreased dramatically over the following 3 h.</span><span class="zh">經 16 h 暗培養後、綠光下的 ACCD 活性 DNPH 分析，於照光後 3 與 6 h 取樣。活性在接下來 3 小時內急劇下降。</span></p>
+        <p><span class="en">~<span class="num">19.7</span> → ~<span class="num">5</span> µg/mL α-ketobutyrate in three hours.</span><span class="zh">三小時內由約 <span class="num">19.7</span> 降到約 <span class="num">5</span> µg/mL α-酮丁酸。</span></p>
+        <div class="say"><span class="en">"Whatever the switch releases is spent, degraded or outrun by the culture within a few hours — which is a different problem from never switching at all, and a more tractable one."</span><span class="zh">「這個開關釋放出來的東西，在幾小時內就被耗盡、降解，或被培養物的生長稀釋掉——這和『完全沒有開關作用』是不同的問題，而且是比較好解決的那一種。」</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="clock"><span class="time">08:30 – 11:00</span><span class="dur"><span class="en">2 min 30 s</span><span class="zh">2 分 30 秒</span></span></div>
+    <h2><span class="en">Claim 4 · The bioreactor runs, senses and contains</span><span class="zh">主張 4 · 生物反應器能運轉、感測與圍阻</span></h2>
+    <p class="sub"><span class="en">Your strongest engineering section. Machine, then growth, then a real fault caught by sensors, then the one closed loop.</span><span class="zh">你們最強的工程段落。先機器，再生長曲線，接著感測器抓到的真實故障，最後那個唯一的閉迴路。</span></p>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/engineering/rig-260904-incubator-running-engineering.webp" alt="The bioreactor running inside a 37 degree incubator with a live dashboard"></figure>
+      <div class="body">
+        <span class="tag t-strong">best single frame in the project</span>
+        <h4><span class="en">The rig, running, with its dashboard live</span><span class="zh">裝置運轉中，儀表板即時顯示</span></h4>
+        <p class="src">engineering/rig-260904-incubator-running · <span class="en">local:</span><span class="zh">本地：</span> Engineering Photo/Fig9_Bioreactor_P5_Photo.png</p>
+        <p class="legend"><b>Legend.</b> <span class="en">The rig seven minutes into the run, everything inside the 37 °C incubator. The screen reads OD600 0.1738 AU at 06:58 elapsed.</span><span class="zh">運轉第七分鐘的裝置，全部置於 37 °C 培養箱內。螢幕顯示經過時間 06:58 時 OD600 為 0.1738 AU。</span></p>
+        <div class="say"><span class="en">"Pump, inline photometer, pressure block, culture vessel and hollow-fibre module — all inside the incubator, all logging to one dashboard."</span><span class="zh">「幫浦、線上光度計、壓力模組、培養瓶與中空纖維模組——全部在培養箱內，全部記錄到同一個儀表板。」</span></div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="shot">
+        <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/br-cycle1-growth-v2-results.webp" alt="116 hour growth curve from the inline photometer"></figure>
+        <div class="body">
+          <span class="tag t-strong">strong</span>
+          <h4><span class="en">116 hours, logged continuously</span><span class="zh">連續記錄 116 小時</span></h4>
+          <p class="src">results/br-cycle1-growth-v2 · <span class="en">wiki Fig 59</span><span class="zh">wiki 圖 59</span></p>
+          <p class="legend"><b>Legend.</b> <span class="en">Growth curve (OD600) from the inline photometer in the first integrated cycle. The gray area marks the interval in which the software recorded no reading.</span><span class="zh">首次整合運轉中，線上光度計記錄的生長曲線（OD600）。灰色區域標示軟體未記錄讀值的區間。</span></p>
+          <p>OD600 <span class="num">0.84 → 3.77</span> <span class="en">over 102.4 h · <span class="num">11,493</span> rows kept of <span class="num">12,259</span></span><span class="zh">歷時 102.4 h · <span class="num">12,259</span> 筆中保留 <span class="num">11,493</span> 筆</span></p>
+          <p class="flag"><span class="en">The grey band is ~10 h lost to a host-computer update, and the second rise at ~47 h was loss of erythromycin selection, not biology. Say both.</span><span class="zh">灰色區段是主機更新造成的約 10 小時遺失，而約 47 h 的第二次上升是紅黴素篩選失效，不是生物現象。兩者都要說。</span></p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/br-leak-event-v2-results.webp" alt="Five sensor channels spanning a leakage event"></figure>
+        <div class="body">
+          <span class="tag t-strong">best sensing evidence</span>
+          <h4><span class="en">Sensors caught a leak and told it apart from biology</span><span class="zh">感測器抓到洩漏，並與生物訊號區分開</span></h4>
+          <p class="src">results/br-leak-event-v2 · <span class="en">wiki Fig 65</span><span class="zh">wiki 圖 65</span></p>
+          <p class="legend"><b>Legend.</b> <span class="en">Sensor readings spanning the leakage event at ~37 h (shaded). Lumen pressure rose while TMP was unchanged, and OD600 climbed spuriously as cells settled in the flow cuvette.</span><span class="zh">涵蓋約 37 h 洩漏事件（陰影區）的感測器讀值。管腔壓力上升而跨膜壓差不變，OD600 則因細胞沉積於流動比色槽而出現假性上升。</span></p>
+          <p><span class="en">Feed pressure steps <span class="num">0.19 → 0.37 bar</span> at 37 h while median TMP holds ~<span class="num">0.03 bar</span>.</span><span class="zh">37 h 時進料壓力由 <span class="num">0.19</span> 階躍至 <span class="num">0.37 bar</span>，而跨膜壓差中位數維持約 <span class="num">0.03 bar</span>。</span></p>
+          <div class="say"><span class="en">"Multiple channels let us tell a mechanical fault from a culture event — the pressure moved, the membrane did not."</span><span class="zh">「多通道讓我們能分辨機械故障與培養事件——壓力動了，膜沒有動。」</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/br-cycle4-od-ph-v2-results.webp" alt="Growth and pH with automated base dosing"></figure>
+      <div class="body">
+        <span class="tag t-mod">the one real closed loop</span>
+        <h4><span class="en">pH drove a pump, 53 times, unattended</span><span class="zh">pH 自動驅動幫浦，無人看管下執行 53 次</span></h4>
+        <p class="src">results/br-cycle4-od-ph-v2 · <span class="en">wiki Fig 63</span><span class="zh">wiki 圖 63</span></p>
+        <p class="legend"><b>Legend.</b> <span class="en">B. subtilis growth curve and pH in integrated cycle 4. Each sharp rise in pH corresponds to a base addition; the second exponential phase seen in earlier cycles is absent.</span><span class="zh">整合運轉第 4 輪的 B. subtilis 生長曲線與 pH。每一次 pH 的陡升對應一次加鹼；先前輪次出現的第二指數期在此消失。</span></p>
+        <div class="say"><span class="en">"Below pH six point eight the controller dosed base on its own. Fifty-three doses overnight, pH held in a sawtooth between six point four and seven point nine, with no one in the room."</span><span class="zh">「pH 低於 6.8 時，控制器會自行加鹼。整夜共 53 次加鹼，pH 維持在 6.4 到 7.9 之間的鋸齒狀，過程中沒有人在場。」</span></div>
+        <p class="flag"><span class="en">It ran <strong>one night only</strong> — 1 M KOH corroded four Luer valves in succession and dosing reverted to a human with a pipette. Say "one night" and the failure; it is a better engineering story than hiding it.</span><span class="zh">它<strong>只運行了一個晚上</strong>——1 M KOH 連續腐蝕了四個魯爾接頭閥，加鹼工作退回由人工用移液管執行。請說「一個晚上」並講出這個失敗；這比隱瞞它更像一個好的工程故事。</span></p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/results/fig-containment-plates-results.webp" alt="Lumen and shell side plating comparison"></figure>
+      <div class="body">
+        <span class="tag t-weak">weakest link — must be caveated</span>
+        <h4><span class="en">Nothing grew from the shell side</span><span class="zh">殼側沒有長出任何東西</span></h4>
+        <p class="src">results/fig-containment-plates · <span class="en">wiki Fig 58</span><span class="zh">wiki 圖 58</span></p>
+        <p class="legend"><b>Legend.</b> <span class="en">Bacterial growth comparison between the lumen side (a) and shell side (b). Bacterial growth was observed in the lumen sample, while no colonies were detected in the shell-side medium. No quantitative log reduction measurement was performed.</span><span class="zh">管腔側 (a) 與殼側 (b) 的菌體生長比較。管腔樣品觀察到菌體生長，殼側培養基則未偵測到菌落。未進行定量對數削減測定。</span></p>
+        <div class="say"><span class="en">"The membrane pore is two tenths of a micron; our cells are at least four times that across. Nothing grew from the permeate. Two plates, no replicates, and no log reduction measured — so this is preliminary evidence of retention, not a validated containment efficiency."</span><span class="zh">「膜孔徑為 0.2 微米，我們的細胞至少是它的四倍寬。透過液沒有長出任何東西。兩塊盤、沒有重複、也沒有量對數削減——所以這是初步的截留證據，不是已驗證的圍阻效率。」</span></div>
+        <p class="flag"><span class="en">Panel (a) is a streak plate, not a matched dilution, so no log reduction can exist. Quote the <em>Results</em> cell size (0.8–2.0 µm wide, up to 3.0 µm long) — the Engineering page contradicts it with "0.25 to 1.0 µm."</span><span class="zh">(a) 是劃線盤而非對等稀釋，因此不可能得出對數削減。請引用 <em>Results</em> 頁的細胞尺寸（寬 0.8–2.0 µm，長可達 3.0 µm）——Engineering 頁寫的「0.25 到 1.0 µm」與之矛盾。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="clock"><span class="time">11:00 – 13:15</span><span class="dur"><span class="en">2 min 15 s</span><span class="zh">2 分 15 秒</span></span></div>
+    <h2><span class="en">Claim 5 · The protectant helps stressed plants</span><span class="zh">主張 5 · 保護劑對受逆境植物有幫助</span></h2>
+    <p class="sub"><span class="en">Only one platform had a strain-matched control. Lead with it, and say "proof of concept" out loud.</span><span class="zh">只有一個平台帶了菌株對等的對照。以它為主，並且明確說出「概念驗證」。</span></p>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/plant/h18-bopepsal-rack-plant.webp" alt="Hydroponic rack, BoPep4 under salinity stress"></figure>
+      <div class="body">
+        <span class="tag t-mod">your best plant evidence</span>
+        <h4><span class="en">Hydroponic BoPep4 at 1/40, against a protectant-free control</span><span class="zh">水耕 1/40 BoPep4，對照無保護劑組</span></h4>
+        <p class="src">plant/h18-bopepsal-rack · <span class="en">charts:</span><span class="zh">圖表：</span> <a href="https://static.igem.wiki/teams/6072/wiki/results/pf-hydro-bopep4-salt-chloro-results.webp">results/pf-hydro-bopep4-salt-chloro</a> (wiki Fig 50)</p>
+        <p class="legend"><b>Legend.</b> <span class="en">Hydroponic system for evaluating the effects of BoPep4 on Arabidopsis under salinity stress. WB800 refers to the control culture containing Bacillus subtilis that does not produce the protectant.</span><span class="zh">評估 BoPep4 對鹽逆境下阿拉伯芥影響的水耕系統。WB800 指含有不產生保護劑之枯草桿菌的對照培養液。</span></p>
+        <div class="say"><span class="en">"This is the one experiment with a matched control — the same Bacillus culture, without the protectant. At a hundred millimolar salt, the one-in-forty BoPep4 group was the only salted group still near unsalted weight and still green. One box per condition, a single run, so we present it as proof of concept and not as an effect size."</span><span class="zh">「這是唯一帶有對等對照的實驗——同樣的枯草桿菌培養液，只是不含保護劑。在 100 mM 鹽分下，1/40 BoPep4 組是唯一仍接近無鹽處理重量、而且仍然翠綠的加鹽組。每個條件一個盒子、單次運轉，所以我們將它呈現為概念驗證，而非效果量。」</span></div>
+        <p class="flag"><span class="en">The wiki's own limit line: "Both readouts are single plates with no technical replication, so the gap between 1/40 BoPep4 and the rest of the salted block is what the run supports, and the ordering among 1/60, 1/80 and 1/100 is not."</span><span class="zh">Wiki 自己的限制聲明：「兩項讀值都是單盤、無技術重複，所以這次運轉能支持的是 1/40 BoPep4 與其餘加鹽組之間的落差，而 1/60、1/80、1/100 之間的排序則不被支持。」</span></p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <figure><img loading="lazy" src="https://static.igem.wiki/teams/6072/wiki/plant/s21-accdheat-pots-plant.webp" alt="Soil pots, ACCD applied at three timings under heat stress"></figure>
+      <div class="body">
+        <span class="tag t-mod">the result that justifies forecasting</span>
+        <h4><span class="en">Too late is worse than nothing — in both trials</span><span class="zh">太晚施用比完全不施更糟——兩次試驗皆然</span></h4>
+        <p class="src">plant/s21-accdheat-pots · <span class="en">charts:</span><span class="zh">圖表：</span> plant/s21-accdheat-t1 · plant/s21-accdheat-t2</p>
+        <p class="legend"><b>Legend.</b> <span class="en">ACC deaminase applied at different timings under 37 °C heat stress in soil, on 10-day-old Arabidopsis thaliana: phenotypes in trial 1 (top row) and trial 2 (bottom row), beside the unstressed control.</span><span class="zh">土壤中 37 °C 熱逆境下、於不同時機施用 ACC 去胺酶於 10 日齡阿拉伯芥：試驗 1（上排）與試驗 2（下排）的表型，旁為無逆境對照。</span></p>
+        <div class="say"><span class="en">"Across two trials, the protectant applied after the heat had already hit left plants worse off than no treatment at all — and pre-treatment held the most chlorophyll both times. One pot per condition, so this is a direction and not a dose. It is why we forecast the stress instead of reacting to it."</span><span class="zh">「在兩次試驗中，熱逆境已經發生後才施用保護劑的植株，狀況比完全不處理還差——而前處理兩次都保留了最多葉綠素。每個條件一盆，所以這是一個方向，不是一個劑量。這就是我們選擇預報逆境、而不是事後反應的原因。」</span></div>
+        <p class="flag"><span class="en">Post-treatment fresh weight <span class="num">0.103 g</span> and <span class="num">0.052 g</span>, below the heat-stressed control (<span class="num">0.195</span> / <span class="num">0.225 g</span>). Unnormalised chlorophyll, same order both trials: pre <span class="num">1.05</span> / co <span class="num">0.91</span> / post <span class="num">0.75</span> mg/L and <span class="num">0.89</span> / <span class="num">0.63</span> / <span class="num">0.355</span>. <strong>Use the chart, not the pots</strong> — the pot photo is tiny seedlings against mottled perlite and is illegible at video scale.</span><span class="zh">後處理鮮重 <span class="num">0.103 g</span> 與 <span class="num">0.052 g</span>，低於熱逆境對照（<span class="num">0.195</span> / <span class="num">0.225 g</span>）。未正規化葉綠素，兩次試驗順序相同：前 <span class="num">1.05</span> / 共 <span class="num">0.91</span> / 後 <span class="num">0.75</span> mg/L，以及 <span class="num">0.89</span> / <span class="num">0.63</span> / <span class="num">0.355</span>。<strong>請用圖表，不要用盆栽照</strong>——盆栽照是細小幼苗配上斑駁的珍珠石，在影片尺度下看不清楚。</span></p>
+      </div>
+    </div>
+
+    <div class="cut">
+      <h3 style="margin-top:0"><span class="en">Three plant numbers that must not appear</span><span class="zh">三個絕對不能出現的植物數字</span></h3>
+      <ul>
+        <li><span class="en"><strong>"70% more chlorophyll"</strong> (ACCD pre-treatment, 100 mM NaCl). The wiki admits those plates "were contaminated throughout, so the pre-treatment group has to be repeated," and on inspection the 0 mM untreated control plate is already yellow — worse than treated plates at 75 mM. Plate variation, not salt.</span><span class="zh"><strong>「葉綠素多 70%」</strong>（ACCD 前處理，100 mM NaCl）。Wiki 承認那些盤「全程遭到汙染，所以前處理組必須重做」，而且檢視後發現 0 mM 未處理對照盤本身就已經發黃——比 75 mM 的處理組還差。那是盤間差異，不是鹽分造成的。</span></li>
+        <li><span class="en"><strong>"3 cm more root"</strong> for 5 mM trehalose. The real gap is <span class="num">11.00 → 14.71 mm</span>, i.e. <span class="num">3.7 mm</span> — about eight times smaller than the claim. Trehalose was also never part of the circuit; it was excluded from the Math Model for exactly this reason.</span><span class="zh"><strong>5 mM 海藻糖「根長多 3 公分」</strong>。真實差距是 <span class="num">11.00 → 14.71 mm</span>，即 <span class="num">3.7 mm</span>——比宣稱值小約八倍。海藻糖本來也不是線路的一部分；它正是因為這個原因被排除在數學模型之外。</span></li>
+        <li><span class="en"><strong>"14% higher"</strong> for heat trial 2. The plot actually reads about 33%, no statistical test is cited, and in the plate image all four groups at 37 °C are uniformly dead and pale with no visible rescue. Cut it entirely.</span><span class="zh"><strong>熱逆境試驗 2 的「高 14%」</strong>。圖上實際約為 33%，沒有引用任何統計檢定，而且在盤面影像中，37 °C 下四組一致枯死泛白，看不到任何挽救效果。整項刪除。</span></li>
+      </ul>
+      <p style="margin:14px 0 0"><span class="en"><strong>And never say "statistically significant" about an agar bar.</strong> The protocol pools all seedlings of a group into one tube and reads it three times, so every asterisk — up to ****p&lt;0.0001 — is a technical replicate, not a biological one.</span><span class="zh"><strong>另外，絕對不要對 agar 的長條圖說「統計上顯著」。</strong>該流程把一組的所有幼苗混進同一管、再讀三次，所以每一個星號——甚至到 ****p&lt;0.0001——都是技術重複，不是生物重複。</span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="clock"><span class="time">13:15 – 15:00</span><span class="dur"><span class="en">1 min 45 s</span><span class="zh">1 分 45 秒</span></span></div>
+    <h2><span class="en">Closing · What is joined, and what is not</span><span class="zh">結尾 · 什麼已經接起來，什麼還沒</span></h2>
+
+    <div class="shot">
+      <div class="body">
+        <h4><span class="en">Say the seam out loud</span><span class="zh">把接縫講出來</span></h4>
+        <p>
+          <span class="en">Two joints in the end-to-end story are genuinely open, and both are findable by any judge who reads the wiki. Naming them costs ninety seconds and buys the credibility of everything before them.</span>
+          <span class="zh">端到端故事中有兩個接點確實還沒接上，而且任何讀了 wiki 的評審都找得到。主動點名它們只花 90 秒，卻能為前面所有內容換來可信度。</span>
+        </p>
+        <p>
+          <span class="en"><strong>One.</strong> The forecast has never driven the light. Verbatim from Results: "No forecast has yet driven a light, and no light driven by a forecast has reached a culture, so this stage has not been joined to the next end to end."</span>
+          <span class="zh"><strong>其一。</strong>預報從未真正驅動過燈光。Results 頁原文：「尚未有任何預報驅動過燈光，也沒有任何由預報驅動的燈光抵達過培養物，因此這個階段尚未與下一階段端到端地接起來。」</span>
+        </p>
+        <p>
+          <span class="en"><strong>Two.</strong> No plant run is tied to an activity measurement of the batch actually sprayed. The 24 August blot lane for the 8/23 production batch is blank in the notebook, and that batch went into the early pretests.</span>
+          <span class="zh"><strong>其二。</strong>沒有任何植物試驗能連結到實際噴灑那批材料的活性測定。實驗記錄本中，8 月 24 日針對 8/23 生產批次的墨點泳道是空白的，而那一批正是用在早期預試上的。</span>
+        </p>
+        <div class="say"><span class="en">"We built every stage and we can show each one working. We have not yet run a forecast through to a culture, and we have not yet measured the activity of the exact batch that went onto a plant. Those two joints are what next year starts with."</span><span class="zh">「我們把每一個階段都建起來了，也能展示每一段確實運作。我們還沒有把一次預報一路跑到培養物，也還沒有量測實際施用到植物上那一批材料的活性。這兩個接點，就是明年的起點。」</span></div>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="body">
+        <h4><span class="en">If you have 30 seconds spare, use it here</span><span class="zh">如果多出 30 秒，用在這裡</span></h4>
+        <p>
+          <span class="en">The deleted Berthelot finding is the most transferable thing the team produced and appears nowhere on the wiki: ACC is itself chromogenic at roughly 30% of ammonium, so a plain NH₄Cl calibration underestimates ACC-deaminase product by about 34%. Any team measuring ACC deaminase this way is systematically wrong. It needs one slide and no plant to cooperate — and it is a Measurement-prize argument that nothing else in the video competes with.</span>
+          <span class="zh">被刪掉的 Berthelot 發現是全隊最能被他人沿用的成果，而 wiki 上完全看不到：ACC 本身就會顯色，顯色能力約為銨離子的 30%，所以普通 NH₄Cl 標準曲線會把 ACC 去胺酶的產物低估約 34%。任何用這個方法量 ACC 去胺酶的隊伍都系統性地量錯了。它只需要一張投影片，而且不需要任何植物配合——這是一個 Measurement 獎論述，影片裡沒有別的內容能與它競爭。</span>
+        </p>
+        <p class="flag"><span class="en">Two usable ACC levels, one plate, n not recorded — but the two independent estimates (33.5% and 28.1%) agree. Say "we measured it twice and got the same answer."</span><span class="zh">兩個可用的 ACC 濃度、單一盤、n 未記錄——但兩個獨立估計值（33.5% 與 28.1%）吻合。可以說「我們量了兩次，得到相同答案」。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>
+      <span class="en">Prepared 23 October 2026. Figures verified against the frozen wiki (all 27 live URLs return 200) and against Gabriel's <em>DNPH and ELISA v2.pptx</em>, whose sixteen Prism figures were cross-mapped to their published counterparts. Legends are quoted from the live pages, trimmed. Companion page: <a href="index.html">the gap audit</a>.</span>
+      <span class="zh">製作於 2026 年 10 月 23 日。所有圖片皆對照已凍結的 wiki 查證（27 個線上網址全部回傳 200），並與 Gabriel 的 <em>DNPH and ELISA v2.pptx</em> 交叉比對——該檔 16 張 Prism 圖已全數對應到線上已發表的版本。Figure legend 引自線上頁面並經精簡。另一頁：<a href="index.html">缺口盤點</a>。</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.body,en=document.getElementById('b-en'),zh=document.getElementById('b-zh');
+  function set(l){
+    b.setAttribute('data-lang',l);
+    document.documentElement.lang=(l==='zh'?'zh-Hant':'en');
+    en.setAttribute('aria-pressed',l==='en');
+    zh.setAttribute('aria-pressed',l==='zh');
+    try{localStorage.setItem('releaf-gaps-lang',l)}catch(e){}
+  }
+  en.onclick=function(){set('en')}; zh.onclick=function(){set('zh')};
+  try{var s=localStorage.getItem('releaf-gaps-lang'); if(s) set(s);}catch(e){}
+})();
+</script>
+</body>
+</html>
