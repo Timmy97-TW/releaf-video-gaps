@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1300" viewBox="0 0 2400 1300" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#ff9f45"/>
+  </marker>
+  <marker id="arwg" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#6e747c"/>
+  </marker>
+  <linearGradient id="decay" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#5fd38d"/><stop offset="100%" stop-color="#c7372a"/>
+  </linearGradient>
+  <clipPath id="pc"><rect x="0" y="0" width="540" height="304" rx="10"/></clipPath>
+</defs>
+
+<rect width="2400" height="1300" fill="#f5f5f7"/>
+
+<!-- header -->
+<text x="60" y="76" fill="#1d1d1f" font-size="42" font-weight="650" letter-spacing="-0.8">Supply-chain animation — storyboard</text>
+<text x="60" y="116" fill="#6e6e73" font-size="23">Section 3, shot 3.2 · 14 seconds · cuts in after the fertiliser choropleth and out on the first sight of the rig</text>
+<text x="2340" y="76" fill="#6e6e73" font-size="23" text-anchor="end">GEMS Taiwan · ReLEAF · iGEM 2026</text>
+<text x="2340" y="110" fill="#9aa0a8" font-size="20" text-anchor="end">Palette matches the hardware animations: dark studio, orange callouts</text>
+
+<!-- timing bar -->
+<g>
+  <rect x="60" y="140" width="2280" height="26" rx="6" fill="#e4e4e8"/>
+  <rect x="60"    y="140" width="293" height="26" rx="6" fill="#3a6ea5"/>
+  <rect x="357"   y="140" width="260" height="26" rx="6" fill="#4a7fb5"/>
+  <rect x="621"   y="140" width="358" height="26" rx="6" fill="#5a8fc5"/>
+  <rect x="983"   y="140" width="293" height="26" rx="6" fill="#6a9ad0"/>
+  <rect x="1280"  y="140" width="326" height="26" rx="6" fill="#9a6400"/>
+  <rect x="1610"  y="140" width="293" height="26" rx="6" fill="#a8712a"/>
+  <rect x="1907"  y="140" width="260" height="26" rx="6" fill="#c7372a"/>
+  <rect x="2171"  y="140" width="169" height="26" rx="6" fill="#1d7a46"/>
+  <g fill="#fff" font-size="15" font-weight="600" text-anchor="middle">
+    <text x="206" y="159">1</text><text x="487" y="159">2</text><text x="800" y="159">3</text>
+    <text x="1129" y="159">4</text><text x="1443" y="159">5</text><text x="1756" y="159">6</text>
+    <text x="2037" y="159">7</text><text x="2255" y="159">8</text>
+  </g>
+</g>
+
+<!-- ============ PANEL 1 ============ -->
+<g transform="translate(60,200)">
+  <rect width="540" height="304" rx="10" fill="#0b0d10"/>
+  <g clip-path="url(#pc)">
+    <!-- ground -->
+    <rect x="0" y="250" width="540" height="54" fill="#15181d"/>
+    <!-- factory -->
+    <rect x="150" y="150" width="190" height="100" fill="#2a3038"/>
+    <rect x="340" y="178" width="84" height="72" fill="#232830"/>
+    <rect x="176" y="96" width="26" height="54" fill="#2a3038"/>
+    <rect x="222" y="82" width="26" height="68" fill="#2a3038"/>
+    <circle cx="189" cy="76" r="15" fill="#3a424d" opacity="0.6"/>
+    <circle cx="206" cy="56" r="19" fill="#3a424d" opacity="0.45"/>
+    <circle cx="235" cy="60" r="16" fill="#3a424d" opacity="0.5"/>
+    <!-- tanks -->
+    <rect x="368" y="196" width="22" height="54" rx="11" fill="#39414b"/>
+    <rect x="396" y="196" width="22" height="54" rx="11" fill="#39414b"/>
+    <!-- windows -->
+    <g fill="#5a6572"><rect x="168" y="176" width="20" height="18"/><rect x="200" y="176" width="20" height="18"/><rect x="232" y="176" width="20" height="18"/><rect x="264" y="176" width="20" height="18"/></g>
+    <!-- location pin -->
+    <path d="M245 36 a17 17 0 1 1 34 0 c0 13 -17 30 -17 30 s-17 -17 -17 -30 z" fill="#ff9f45" transform="translate(-20,-10)"/>
+    <circle cx="242" cy="32" r="6" fill="#0b0d10"/>
+  </g>
+  <text x="26" y="282" fill="#f5f5f7" font-size="22" font-weight="600">ONE FACTORY</text>
+</g>
+<text x="60" y="540" fill="#1d1d1f" font-size="21" font-weight="650">1 · 0.0 – 1.8 s</text>
+<text x="60" y="568" fill="#1d1d1f" font-size="19">Wide. A single plant, smoke drifting, one pin on it.</text>
+<text x="60" y="594" fill="#6e6e73" font-size="18">Motion: slow push in. Pin drops on frame 1.</text>
+<text x="60" y="618" fill="#6e6e73" font-size="18">VO: “…making one thing in one place…”</text>
+
+<!-- ============ PANEL 2 ============ -->
+<g transform="translate(640,200)">
+  <rect width="540" height="304" rx="10" fill="#0b0d10"/>
+  <g clip-path="url(#pc)">
+    <rect x="0" y="250" width="540" height="54" fill="#15181d"/>
+    <!-- conveyor -->
+    <rect x="40" y="228" width="460" height="14" rx="7" fill="#2a3038"/>
+    <g fill="#39414b"><circle cx="72" cy="256" r="13"/><circle cx="160" cy="256" r="13"/><circle cx="248" cy="256" r="13"/><circle cx="336" cy="256" r="13"/><circle cx="424" cy="256" r="13"/></g>
+    <!-- boxes -->
+    <g fill="#3a424d" stroke="#4e5765" stroke-width="2">
+      <rect x="78" y="172" width="64" height="56" rx="4"/>
+      <rect x="186" y="172" width="64" height="56" rx="4"/>
+      <rect x="294" y="172" width="64" height="56" rx="4"/>
+    </g>
+    <g stroke="#5a6572" stroke-width="2"><line x1="110" y1="172" x2="110" y2="228"/><line x1="218" y1="172" x2="218" y2="228"/><line x1="326" y1="172" x2="326" y2="228"/></g>
+    <!-- vials -->
+    <g fill="#5fd38d" opacity="0.85"><rect x="406" y="190" width="14" height="38" rx="7"/><rect x="428" y="190" width="14" height="38" rx="7"/><rect x="450" y="190" width="14" height="38" rx="7"/></g>
+    <text x="406" y="178" fill="#5fd38d" font-size="15" font-weight="600">protein</text>
+  </g>
+  <text x="26" y="282" fill="#f5f5f7" font-size="22" font-weight="600">PURIFY · PACK</text>
+</g>
+<text x="640" y="540" fill="#1d1d1f" font-size="21" font-weight="650">2 · 1.8 – 3.4 s</text>
+<text x="640" y="568" fill="#1d1d1f" font-size="19">Conveyor. Vials become boxes. The product is alive here.</text>
+<text x="640" y="594" fill="#6e6e73" font-size="18">Motion: conveyor tracks left to right, boxes exit frame right.</text>
+<text x="640" y="618" fill="#6e6e73" font-size="18">Keep the vials green — it is the only frame where the protein is intact.</text>
+
+<!-- ============ PANEL 3 ============ -->
+<g transform="translate(1220,200)">
+  <rect width="540" height="304" rx="10" fill="#0b0d10"/>
+  <g clip-path="url(#pc)">
+    <rect x="0" y="236" width="540" height="68" fill="#15181d"/>
+    <line x1="0" y1="270" x2="540" y2="270" stroke="#39414b" stroke-width="4" stroke-dasharray="34 26"/>
+    <!-- truck -->
+    <g transform="translate(150,168)">
+      <rect x="0" y="0" width="118" height="62" rx="5" fill="#2a3038" stroke="#4e5765" stroke-width="2"/>
+      <path d="M118 22 h34 l26 26 v14 h-60 z" fill="#39414b" stroke="#4e5765" stroke-width="2"/>
+      <rect x="126" y="28" width="24" height="18" fill="#5a6572"/>
+      <circle cx="34" cy="68" r="14" fill="#1a1e24" stroke="#5a6572" stroke-width="3"/>
+      <circle cx="146" cy="68" r="14" fill="#1a1e24" stroke="#5a6572" stroke-width="3"/>
+    </g>
+    <!-- distance ticker -->
+    <rect x="330" y="62" width="176" height="56" rx="8" fill="#15181d" stroke="#ff9f45" stroke-width="2"/>
+    <text x="418" y="88" fill="#ff9f45" font-size="15" font-weight="600" text-anchor="middle">DISTANCE</text>
+    <text x="418" y="110" fill="#f5f5f7" font-size="20" font-weight="650" text-anchor="middle">1 420 km</text>
+    <!-- motion lines -->
+    <g stroke="#39414b" stroke-width="3" stroke-linecap="round"><line x1="40" y1="196" x2="96" y2="196"/><line x1="24" y1="214" x2="92" y2="214"/></g>
+  </g>
+  <text x="26" y="282" fill="#f5f5f7" font-size="22" font-weight="600">SHIP IT EVERYWHERE</text>
+</g>
+<text x="1220" y="540" fill="#1d1d1f" font-size="21" font-weight="650">3 · 3.4 – 5.6 s</text>
+<text x="1220" y="568" fill="#1d1d1f" font-size="19">Side-on truck, road scrolling. A distance counter climbs.</text>
+<text x="1220" y="594" fill="#6e6e73" font-size="18">Motion: road loops; counter ticks up. Longest panel — let distance land.</text>
+<text x="1220" y="618" fill="#6e6e73" font-size="18">Use a real number or none. Do not invent a figure for the slide.</text>
+
+<!-- ============ PANEL 4 ============ -->
+<g transform="translate(1800,200)">
+  <rect width="540" height="304" rx="10" fill="#0b0d10"/>
+  <g clip-path="url(#pc)">
+    <rect x="0" y="250" width="540" height="54" fill="#15181d"/>
+    <!-- reefer container -->
+    <rect x="96" y="104" width="256" height="146" rx="6" fill="#222830" stroke="#4e5765" stroke-width="2"/>
+    <g stroke="#333b45" stroke-width="3"><line x1="132" y1="104" x2="132" y2="250"/><line x1="168" y1="104" x2="168" y2="250"/><line x1="204" y1="104" x2="204" y2="250"/><line x1="240" y1="104" x2="240" y2="250"/><line x1="276" y1="104" x2="276" y2="250"/><line x1="312" y1="104" x2="312" y2="250"/></g>
+    <rect x="352" y="130" width="54" height="94" rx="5" fill="#2a3038" stroke="#4e5765" stroke-width="2"/>
+    <circle cx="379" cy="162" r="15" fill="#1a1e24" stroke="#6ab0ff" stroke-width="2"/>
+    <!-- snowflake -->
+    <g stroke="#6ab0ff" stroke-width="3" stroke-linecap="round" transform="translate(379,162)">
+      <line x1="-9" y1="0" x2="9" y2="0"/><line x1="0" y1="-9" x2="0" y2="9"/>
+      <line x1="-6" y1="-6" x2="6" y2="6"/><line x1="-6" y1="6" x2="6" y2="-6"/>
+    </g>
+    <!-- temp badge -->
+    <rect x="96" y="54" width="150" height="40" rx="8" fill="#15181d" stroke="#6ab0ff" stroke-width="2"/>
+    <text x="171" y="81" fill="#6ab0ff" font-size="21" font-weight="650" text-anchor="middle">2 – 8 °C</text>
+    <text x="268" y="81" fill="#9aa0a8" font-size="18">the whole way</text>
+  </g>
+  <text x="26" y="282" fill="#f5f5f7" font-size="22" font-weight="600">COLD CHAIN</text>
+</g>
+<text x="1800" y="540" fill="#1d1d1f" font-size="21" font-weight="650">4 · 5.6 – 7.4 s</text>
+<text x="1800" y="568" fill="#1d1d1f" font-size="19">Refrigerated container, chiller running, 2–8 °C badge.</text>
+<text x="1800" y="594" fill="#6e6e73" font-size="18">Motion: snowflake rotates slowly; badge pulses once.</text>
+<text x="1800" y="618" fill="#6e6e73" font-size="18">This is the cost beat — hold it long enough to register as a burden.</text>
+
+<!-- ============ PANEL 5 ============ -->
+<g transform="translate(60,684)">
+  <rect width="540" height="304" rx="10" fill="#0b0d10"/>
+  <g clip-path="url(#pc)">
+    <line x1="60" y1="60" x2="60" y2="240" stroke="#4a515b" stroke-width="2"/>
+    <line x1="60" y1="240" x2="490" y2="240" stroke="#4a515b" stroke-width="2"/>
+    <text transform="translate(34,160) rotate(-90)" fill="#9aa0a8" font-size="15" text-anchor="middle">activity</text>
+    <text x="275" y="266" fill="#9aa0a8" font-size="15" text-anchor="middle">days in transit</text>
+    <path d="M60 86 C 170 92, 250 150, 330 190 S 440 226, 486 232" fill="none" stroke="url(#decay)" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="60" cy="86" r="8" fill="#5fd38d"/>
+    <circle cx="486" cy="232" r="8" fill="#c7372a"/>
+    <text x="78" y="78" fill="#5fd38d" font-size="17" font-weight="600">leaves at full strength</text>
+    <text x="478" y="212" fill="#c7372a" font-size="17" font-weight="600" text-anchor="end">arrives weaker</text>
+  </g>
+  <text x="26" y="282" fill="#f5f5f7" font-size="22" font-weight="600">ACTIVITY FALLS IN TRANSIT</text>
+</g>
+<text x="60" y="1024" fill="#1d1d1f" font-size="21" font-weight="650">5 · 7.4 – 9.4 s</text>
+<text x="60" y="1052" fill="#1d1d1f" font-size="19">A curve falling green → red as the days pass.</text>
+<text x="60" y="1078" fill="#6e6e73" font-size="18">Motion: curve draws left to right in sync with the VO.</text>
+<text x="60" y="1102" fill="#c7372a" font-size="18">No axis numbers — we have no transit-decay data of our own. Shape only.</text>
+
+<!-- ============ PANEL 6 ============ -->
+<g transform="translate(640,684)">
+  <rect width="540" height="304" rx="10" fill="#0b0d10"/>
+  <g clip-path="url(#pc)">
+    <rect x="0" y="236" width="540" height="68" fill="#15181d"/>
+    <!-- wilted plant -->
+    <g transform="translate(150,112)">
+      <path d="M40 128 L40 44" stroke="#5a6572" stroke-width="7" stroke-linecap="round"/>
+      <path d="M40 66 C 12 60, 0 80, 6 100" fill="none" stroke="#8a7230" stroke-width="9" stroke-linecap="round"/>
+      <path d="M40 54 C 72 50, 86 72, 78 92" fill="none" stroke="#8a7230" stroke-width="9" stroke-linecap="round"/>
+      <path d="M40 90 C 16 94, 10 112, 16 126" fill="none" stroke="#6e5a26" stroke-width="8" stroke-linecap="round"/>
+      <ellipse cx="40" cy="132" rx="42" ry="9" fill="#1f242b"/>
+    </g>
+    <!-- calendar -->
+    <rect x="320" y="76" width="160" height="134" rx="8" fill="#1a1e24" stroke="#4e5765" stroke-width="2"/>
+    <rect x="320" y="76" width="160" height="32" rx="8" fill="#c7372a"/>
+    <text x="400" y="99" fill="#fff" font-size="17" font-weight="650" text-anchor="middle">TOO LATE</text>
+    <g fill="#39414b"><rect x="336" y="122" width="24" height="20" rx="3"/><rect x="368" y="122" width="24" height="20" rx="3"/><rect x="400" y="122" width="24" height="20" rx="3"/><rect x="432" y="122" width="24" height="20" rx="3"/><rect x="336" y="150" width="24" height="20" rx="3"/><rect x="368" y="150" width="24" height="20" rx="3"/></g>
+    <rect x="400" y="150" width="24" height="20" rx="3" fill="#c7372a"/>
+    <g fill="#39414b"><rect x="432" y="150" width="24" height="20" rx="3"/><rect x="336" y="178" width="24" height="20" rx="3"/><rect x="368" y="178" width="24" height="20" rx="3"/></g>
+  </g>
+  <text x="26" y="282" fill="#f5f5f7" font-size="22" font-weight="600">THE STRESS ALREADY HAPPENED</text>
+</g>
+<text x="640" y="1024" fill="#1d1d1f" font-size="21" font-weight="650">6 · 9.4 – 11.2 s</text>
+<text x="640" y="1052" fill="#1d1d1f" font-size="19">The box arrives. The plant is already damaged.</text>
+<text x="640" y="1078" fill="#6e6e73" font-size="18">Motion: calendar day stamps red, leaf droops on the stamp.</text>
+<text x="640" y="1102" fill="#6e6e73" font-size="18">VO: “…arrive on a schedule that has nothing to do with the weather.”</text>
+
+<!-- ============ PANEL 7 ============ -->
+<g transform="translate(1220,684)">
+  <rect width="540" height="304" rx="10" fill="#0b0d10"/>
+  <g clip-path="url(#pc)">
+    <text x="42" y="64" fill="#9aa0a8" font-size="17">when the crop needs it</text>
+    <line x1="42" y1="86" x2="498" y2="86" stroke="#2a3038" stroke-width="3"/>
+    <circle cx="170" cy="86" r="13" fill="#ff9f45"/>
+    <text x="170" y="122" fill="#ff9f45" font-size="16" font-weight="600" text-anchor="middle">stress hits</text>
+
+    <text x="42" y="196" fill="#9aa0a8" font-size="17">when the product lands</text>
+    <line x1="42" y1="218" x2="498" y2="218" stroke="#2a3038" stroke-width="3"/>
+    <circle cx="396" cy="218" r="13" fill="#c7372a"/>
+    <text x="396" y="254" fill="#c7372a" font-size="16" font-weight="600" text-anchor="middle">delivery</text>
+
+    <line x1="170" y1="100" x2="396" y2="204" stroke="#6e747c" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arwg)"/>
+    <rect x="212" y="134" width="150" height="38" rx="8" fill="#15181d" stroke="#6e747c" stroke-width="2"/>
+    <text x="287" y="159" fill="#f5f5f7" font-size="18" font-weight="600" text-anchor="middle">the gap</text>
+  </g>
+  <text x="26" y="282" fill="#f5f5f7" font-size="22" font-weight="600">TWO CLOCKS THAT NEVER MATCH</text>
+</g>
+<text x="1220" y="1024" fill="#1d1d1f" font-size="21" font-weight="650">7 · 11.2 – 12.8 s</text>
+<text x="1220" y="1052" fill="#1d1d1f" font-size="19">Two timelines. The need and the delivery never line up.</text>
+<text x="1220" y="1078" fill="#6e6e73" font-size="18">Motion: dots land on each line, then the gap bracket draws between them.</text>
+<text x="1220" y="1102" fill="#6e6e73" font-size="18">This is the thesis frame — the whole section exists to earn it.</text>
+
+<!-- ============ PANEL 8 ============ -->
+<g transform="translate(1800,684)">
+  <rect width="540" height="304" rx="10" fill="#0b0d10"/>
+  <g clip-path="url(#pc)">
+    <g transform="translate(96,96)">
+      <circle cx="0" cy="0" r="34" fill="none" stroke="#c7372a" stroke-width="5"/>
+      <line x1="-15" y1="-15" x2="15" y2="15" stroke="#c7372a" stroke-width="5" stroke-linecap="round"/>
+      <line x1="-15" y1="15" x2="15" y2="-15" stroke="#c7372a" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <text x="150" y="104" fill="#f5f5f7" font-size="21" font-weight="600">No central factory</text>
+    <g transform="translate(96,186)">
+      <circle cx="0" cy="0" r="34" fill="none" stroke="#c7372a" stroke-width="5"/>
+      <line x1="-15" y1="-15" x2="15" y2="15" stroke="#c7372a" stroke-width="5" stroke-linecap="round"/>
+      <line x1="-15" y1="15" x2="15" y2="-15" stroke="#c7372a" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <text x="150" y="194" fill="#f5f5f7" font-size="21" font-weight="600">No cold chain</text>
+    <line x1="60" y1="246" x2="480" y2="246" stroke="#1d7a46" stroke-width="3"/>
+    <text x="270" y="278" fill="#5fd38d" font-size="18" font-weight="600" text-anchor="middle">cut to the rig →</text>
+  </g>
+  <text x="26" y="282" fill="#f5f5f7" font-size="22" font-weight="600">THE ANSWER</text>
+</g>
+<text x="1800" y="1024" fill="#1d1d1f" font-size="21" font-weight="650">8 · 12.8 – 14.0 s</text>
+<text x="1800" y="1052" fill="#1d1d1f" font-size="19">Two red crosses stamp on, then hard cut to the real bioreactor.</text>
+<text x="1800" y="1078" fill="#6e6e73" font-size="18">Borrow these icons from <tspan font-family="ui-monospace, Menlo, monospace" font-size="17">releaf_15s_v2.mp4</tspan> @9 s.</text>
+<text x="1800" y="1102" fill="#6e6e73" font-size="18">Out on shot 3.4: <tspan font-family="ui-monospace, Menlo, monospace" font-size="17">bioreactor transition 1.mp4</tspan> @5.5.</text>
+
+<!-- footer -->
+<line x1="60" y1="1160" x2="2340" y2="1160" stroke="#d2d2d7" stroke-width="2"/>
+<text x="60" y="1196" fill="#1d1d1f" font-size="20" font-weight="600">Narration across the whole 14 seconds</text>
+<text x="60" y="1228" fill="#3a3a3c" font-size="19">“Inputs scaled worldwide by making one thing in one place and shipping it everywhere. That works for fertiliser. It does not work for a protein. Biologicals lose</text>
+<text x="60" y="1256" fill="#3a3a3c" font-size="19">activity in transit, need cold chain, and arrive on a schedule that has nothing to do with the weather. The molecule is fine. The distance is the problem.”</text>
+<text x="2340" y="1256" fill="#9aa0a8" font-size="18" text-anchor="end">No invented figures on screen — shape and icons only.</text>
+</svg>

@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <marker id="a-ok" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#5fd38d"/></marker>
+  <marker id="a-open" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" fill="#c7372a"/></marker>
+</defs>
+
+<rect width="1920" height="1080" fill="#0b0d10"/>
+
+<text x="100" y="86" fill="#f5f5f7" font-size="46" font-weight="600" letter-spacing="-0.8">Six stages. What we measured at each one.</text>
+<text x="100" y="128" fill="#9aa0a8" font-size="25">The whole of ReLEAF, and the evidence behind every step — including the two joints we have not closed.</text>
+
+<!-- ============ STAGE CARDS ============ -->
+<!-- helper geometry: x = 100, 401, 702, 1003, 1304, 1605 ; w = 255 ; y = 210 ; h = 330 -->
+
+<!-- 1 PREDICT -->
+<g>
+  <rect x="100" y="210" width="255" height="330" rx="16" fill="#12161b" stroke="#232830" stroke-width="2"/>
+  <text x="124" y="248" fill="#6ab0ff" font-size="17" font-weight="700" letter-spacing="1.6">DRY LAB</text>
+  <text x="124" y="292" fill="#f5f5f7" font-size="31" font-weight="650">Predict</text>
+  <text x="124" y="330" fill="#9aa0a8" font-size="20">Weather and leaf</text>
+  <text x="124" y="356" fill="#9aa0a8" font-size="20">sensors feed a digital</text>
+  <text x="124" y="382" fill="#9aa0a8" font-size="20">twin; a dose model</text>
+  <text x="124" y="408" fill="#9aa0a8" font-size="20">says when and how much.</text>
+  <line x1="124" y1="432" x2="331" y2="432" stroke="#232830" stroke-width="1.5"/>
+  <circle cx="134" cy="462" r="9" fill="none" stroke="#ff9f45" stroke-width="3"/>
+  <line x1="134" y1="457" x2="134" y2="466" stroke="#ff9f45" stroke-width="3" stroke-linecap="round"/>
+  <text x="154" y="470" fill="#ff9f45" font-size="20" font-weight="650">PARTIAL</text>
+  <text x="124" y="502" fill="#f5f5f7" font-size="21">Forecast and twin run.</text>
+  <text x="124" y="526" fill="#9aa0a8" font-size="19">Never yet drove a light.</text>
+</g>
+
+<!-- 2 SWITCH -->
+<g>
+  <rect x="401" y="210" width="255" height="330" rx="16" fill="#12161b" stroke="#232830" stroke-width="2"/>
+  <text x="425" y="248" fill="#c08a3e" font-size="17" font-weight="700" letter-spacing="1.6">HARDWARE</text>
+  <text x="425" y="292" fill="#f5f5f7" font-size="31" font-weight="650">Switch</text>
+  <text x="425" y="330" fill="#9aa0a8" font-size="20">Green light at 520 nm</text>
+  <text x="425" y="356" fill="#9aa0a8" font-size="20">drives the CcaS/CcaR</text>
+  <text x="425" y="382" fill="#9aa0a8" font-size="20">circuit; red at 660 nm</text>
+  <text x="425" y="408" fill="#9aa0a8" font-size="20">switches it off.</text>
+  <line x1="425" y1="432" x2="632" y2="432" stroke="#232830" stroke-width="1.5"/>
+  <circle cx="435" cy="462" r="9" fill="none" stroke="#ff9f45" stroke-width="3"/>
+  <line x1="435" y1="457" x2="435" y2="466" stroke="#ff9f45" stroke-width="3" stroke-linecap="round"/>
+  <text x="455" y="470" fill="#ff9f45" font-size="20" font-weight="650">PARTIAL</text>
+  <text x="425" y="502" fill="#f5f5f7" font-size="21">14× activity at 13 h.</text>
+  <text x="425" y="526" fill="#9aa0a8" font-size="19">Inverts by 16 h.</text>
+</g>
+
+<!-- 3 MAKE -->
+<g>
+  <rect x="702" y="210" width="255" height="330" rx="16" fill="#12161b" stroke="#1d7a46" stroke-width="2.5"/>
+  <text x="726" y="248" fill="#5fd38d" font-size="17" font-weight="700" letter-spacing="1.6">WET LAB</text>
+  <text x="726" y="292" fill="#f5f5f7" font-size="31" font-weight="650">Make</text>
+  <text x="726" y="330" fill="#9aa0a8" font-size="20">Engineered B. subtilis</text>
+  <text x="726" y="356" fill="#9aa0a8" font-size="20">secretes ACC deaminase,</text>
+  <text x="726" y="382" fill="#9aa0a8" font-size="20">LEA14 or BoPEP4 from a</text>
+  <text x="726" y="408" fill="#9aa0a8" font-size="20">swappable cassette.</text>
+  <line x1="726" y1="432" x2="933" y2="432" stroke="#232830" stroke-width="1.5"/>
+  <path d="M728 462 l7 8 l13 -16" fill="none" stroke="#5fd38d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="758" y="470" fill="#5fd38d" font-size="20" font-weight="650">MEASURED</text>
+  <text x="726" y="502" fill="#f5f5f7" font-size="21">23 / 23 clones verified.</text>
+  <text x="726" y="526" fill="#9aa0a8" font-size="19">~16 µg/mL secreted.</text>
+</g>
+
+<!-- 4 SEPARATE -->
+<g>
+  <rect x="1003" y="210" width="255" height="330" rx="16" fill="#12161b" stroke="#1d7a46" stroke-width="2.5"/>
+  <text x="1027" y="248" fill="#c08a3e" font-size="17" font-weight="700" letter-spacing="1.6">HARDWARE</text>
+  <text x="1027" y="292" fill="#f5f5f7" font-size="31" font-weight="650">Separate</text>
+  <text x="1027" y="330" fill="#9aa0a8" font-size="20">A 0.2 µm hollow fibre</text>
+  <text x="1027" y="356" fill="#9aa0a8" font-size="20">holds the cells in the</text>
+  <text x="1027" y="382" fill="#9aa0a8" font-size="20">loop while the protein</text>
+  <text x="1027" y="408" fill="#9aa0a8" font-size="20">crosses to the shell.</text>
+  <line x1="1027" y1="432" x2="1234" y2="432" stroke="#232830" stroke-width="1.5"/>
+  <path d="M1029 462 l7 8 l13 -16" fill="none" stroke="#5fd38d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1059" y="470" fill="#5fd38d" font-size="20" font-weight="650">MEASURED</text>
+  <text x="1027" y="502" fill="#f5f5f7" font-size="21">No colonies in permeate.</text>
+  <text x="1027" y="526" fill="#9aa0a8" font-size="19">116 h continuous run.</text>
+</g>
+
+<!-- 5 PROVE -->
+<g>
+  <rect x="1304" y="210" width="255" height="330" rx="16" fill="#132019" stroke="#5fd38d" stroke-width="3"/>
+  <text x="1328" y="248" fill="#5fd38d" font-size="17" font-weight="700" letter-spacing="1.6">WET LAB</text>
+  <text x="1328" y="292" fill="#f5f5f7" font-size="31" font-weight="650">Prove</text>
+  <text x="1328" y="330" fill="#9aa0a8" font-size="20">The enzyme collected on</text>
+  <text x="1328" y="356" fill="#9aa0a8" font-size="20">the far side of the</text>
+  <text x="1328" y="382" fill="#9aa0a8" font-size="20">membrane is catalytically</text>
+  <text x="1328" y="408" fill="#9aa0a8" font-size="20">active — with no cells there.</text>
+  <line x1="1328" y1="432" x2="1535" y2="432" stroke="#1d7a46" stroke-width="1.5"/>
+  <path d="M1330 462 l7 8 l13 -16" fill="none" stroke="#5fd38d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1360" y="470" fill="#5fd38d" font-size="20" font-weight="650">MEASURED</text>
+  <text x="1328" y="504" fill="#5fd38d" font-size="26" font-weight="700">6.3 U mg⁻¹ at 18 h</text>
+  <text x="1328" y="528" fill="#9aa0a8" font-size="19">Holds 5 – 8.4 to 72 h.</text>
+</g>
+
+<!-- 6 PROTECT -->
+<g>
+  <rect x="1605" y="210" width="255" height="330" rx="16" fill="#12161b" stroke="#232830" stroke-width="2"/>
+  <text x="1629" y="248" fill="#5fd38d" font-size="17" font-weight="700" letter-spacing="1.6">WET LAB</text>
+  <text x="1629" y="292" fill="#f5f5f7" font-size="31" font-weight="650">Protect</text>
+  <text x="1629" y="330" fill="#9aa0a8" font-size="20">The protectant reaches</text>
+  <text x="1629" y="356" fill="#9aa0a8" font-size="20">stressed Arabidopsis in</text>
+  <text x="1629" y="382" fill="#9aa0a8" font-size="20">agar, hydroponics</text>
+  <text x="1629" y="408" fill="#9aa0a8" font-size="20">and soil.</text>
+  <line x1="1629" y1="432" x2="1836" y2="432" stroke="#232830" stroke-width="1.5"/>
+  <circle cx="1639" cy="462" r="9" fill="none" stroke="#ff9f45" stroke-width="3"/>
+  <line x1="1639" y1="457" x2="1639" y2="466" stroke="#ff9f45" stroke-width="3" stroke-linecap="round"/>
+  <text x="1659" y="470" fill="#ff9f45" font-size="20" font-weight="650">PARTIAL</text>
+  <text x="1629" y="502" fill="#f5f5f7" font-size="21">One matched run worked.</text>
+  <text x="1629" y="526" fill="#9aa0a8" font-size="19">Too late is worse than none.</text>
+</g>
+
+<!-- ============ FORWARD ARROWS ============ -->
+<g stroke-width="4">
+  <line x1="357" y1="375" x2="391" y2="375" stroke="#c7372a" stroke-dasharray="7 6" marker-end="url(#a-open)"/>
+  <line x1="658" y1="375" x2="692" y2="375" stroke="#5fd38d" marker-end="url(#a-ok)"/>
+  <line x1="959" y1="375" x2="993" y2="375" stroke="#5fd38d" marker-end="url(#a-ok)"/>
+  <line x1="1260" y1="375" x2="1294" y2="375" stroke="#5fd38d" marker-end="url(#a-ok)"/>
+  <line x1="1561" y1="375" x2="1595" y2="375" stroke="#c7372a" stroke-dasharray="7 6" marker-end="url(#a-open)"/>
+</g>
+
+<!-- ============ THE TWO OPEN SEAMS ============ -->
+<path d="M228 556 C 228 648, 528 648, 528 560" fill="none" stroke="#c7372a" stroke-width="3" stroke-dasharray="9 7"/>
+<rect x="196" y="652" width="366" height="62" rx="10" fill="#1a1013" stroke="#c7372a" stroke-width="2"/>
+<text x="379" y="679" fill="#c7372a" font-size="20" font-weight="650" text-anchor="middle">SEAM 1 — NOT CLOSED</text>
+<text x="379" y="703" fill="#f5f5f7" font-size="20" text-anchor="middle">No forecast has ever driven a light.</text>
+
+<path d="M1432 556 C 1432 648, 1732 648, 1732 560" fill="none" stroke="#c7372a" stroke-width="3" stroke-dasharray="9 7"/>
+<rect x="1388" y="652" width="390" height="62" rx="10" fill="#1a1013" stroke="#c7372a" stroke-width="2"/>
+<text x="1583" y="679" fill="#c7372a" font-size="20" font-weight="650" text-anchor="middle">SEAM 2 — NOT CLOSED</text>
+<text x="1583" y="703" fill="#f5f5f7" font-size="20" text-anchor="middle">The sprayed batch was never assayed.</text>
+
+<!-- ============ THE SPINE SUMMARY ============ -->
+<rect x="702" y="652" width="558" height="62" rx="10" fill="#101c15" stroke="#1d7a46" stroke-width="2"/>
+<text x="981" y="679" fill="#5fd38d" font-size="20" font-weight="650" text-anchor="middle">THE MIDDLE THREE ARE MEASURED END TO END</text>
+<text x="981" y="703" fill="#f5f5f7" font-size="20" text-anchor="middle">Build it · keep the cells in · collect working enzyme.</text>
+
+<!-- ============ LEGEND ============ -->
+<line x1="100" y1="790" x2="1820" y2="790" stroke="#232830" stroke-width="1.5"/>
+<g>
+  <path d="M102 826 l7 8 l13 -16" fill="none" stroke="#5fd38d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="132" y="834" fill="#5fd38d" font-size="21" font-weight="650">MEASURED</text>
+  <text x="272" y="834" fill="#9aa0a8" font-size="21">a number we can show, against a control or in a cell-free compartment</text>
+
+  <circle cx="110" cy="876" r="9" fill="none" stroke="#ff9f45" stroke-width="3"/>
+  <line x1="110" y1="871" x2="110" y2="880" stroke="#ff9f45" stroke-width="3" stroke-linecap="round"/>
+  <text x="132" y="884" fill="#ff9f45" font-size="21" font-weight="650">PARTIAL</text>
+  <text x="272" y="884" fill="#9aa0a8" font-size="21">it works, but one run, one condition, or not yet predictable</text>
+
+  <line x1="100" y1="920" x2="124" y2="920" stroke="#c7372a" stroke-width="4" stroke-dasharray="7 6"/>
+  <text x="132" y="928" fill="#c7372a" font-size="21" font-weight="650">NOT CLOSED</text>
+  <text x="272" y="928" fill="#9aa0a8" font-size="21">the stages exist, the link between them has not been run end to end</text>
+</g>
+
+<line x1="100" y1="968" x2="1820" y2="968" stroke="#232830" stroke-width="1.5"/>
+<text x="100" y="1006" fill="#f5f5f7" font-size="23" font-weight="600">We are not claiming a finished machine. We are claiming six stages, four of them measured, and two joints we can name.</text>
+<text x="100" y="1040" fill="#9aa0a8" font-size="21">Every number on this slide is on our wiki, with the caveat attached to it.</text>
+</svg>

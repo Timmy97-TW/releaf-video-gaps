@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bandGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5fd38d" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#5fd38d" stop-opacity="0.10"/>
+    </linearGradient>
+    <linearGradient id="riseGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5fd38d" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#5fd38d" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="dotGlow" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="11" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#0b0d10"/>
+
+  <!-- title -->
+  <text x="190" y="92" fill="#f5f5f7" font-size="46" font-weight="600" letter-spacing="-0.8">ACC deaminase is catalytically active in the permeate</text>
+  <text x="190" y="135" fill="#9aa0a8" font-size="25" font-weight="400">Specific activity on the shell side of the membrane — a compartment with no cells in it</text>
+
+  <!-- grid -->
+  <g stroke="#232830" stroke-width="1.5">
+    <line x1="190" y1="190" x2="1800" y2="190"/>
+    <line x1="190" y1="328" x2="1800" y2="328"/>
+    <line x1="190" y1="466" x2="1800" y2="466"/>
+    <line x1="190" y1="604" x2="1800" y2="604"/>
+    <line x1="190" y1="742" x2="1800" y2="742"/>
+  </g>
+  <line x1="190" y1="880" x2="1800" y2="880" stroke="#4a515b" stroke-width="2.5"/>
+  <line x1="190" y1="190" x2="190" y2="880" stroke="#4a515b" stroke-width="2.5"/>
+
+  <!-- y labels -->
+  <g fill="#9aa0a8" font-size="24" text-anchor="end">
+    <text x="165" y="889">0</text>
+    <text x="165" y="751">2</text>
+    <text x="165" y="613">4</text>
+    <text x="165" y="475">6</text>
+    <text x="165" y="337">8</text>
+    <text x="165" y="199">10</text>
+  </g>
+  <text transform="translate(78,535) rotate(-90)" fill="#f5f5f7" font-size="27" font-weight="500" text-anchor="middle">Specific activity (U mg⁻¹)</text>
+
+  <!-- x labels -->
+  <g fill="#9aa0a8" font-size="24" text-anchor="middle">
+    <text x="190" y="925">0</text>
+    <text x="317" y="925">6</text>
+    <text x="444" y="925">12</text>
+    <text x="571" y="925">18</text>
+    <text x="698" y="925">24</text>
+    <text x="825" y="925">30</text>
+    <text x="952" y="925">36</text>
+    <text x="1207" y="925">48</text>
+    <text x="1715" y="925">72</text>
+  </g>
+  <text x="995" y="972" fill="#f5f5f7" font-size="27" font-weight="500" text-anchor="middle">Time in the reactor (h)</text>
+
+  <!-- sustained band 5 to 8.4 -->
+  <rect x="571" y="300" width="1144" height="235" fill="url(#bandGrad)"/>
+  <line x1="571" y1="300" x2="1715" y2="300" stroke="#5fd38d" stroke-width="2" stroke-dasharray="9 7" opacity="0.62"/>
+  <line x1="571" y1="535" x2="1715" y2="535" stroke="#5fd38d" stroke-width="2" stroke-dasharray="9 7" opacity="0.62"/>
+  <text x="1690" y="368" fill="#5fd38d" font-size="29" font-weight="600" text-anchor="end">holds 5 – 8.4 U mg⁻¹ through 72 h</text>
+
+  <!-- sub-1 zone, 6 to 12 h -->
+  <rect x="290" y="811" width="181" height="69" fill="#ff9f45" opacity="0.14"/>
+  <line x1="290" y1="811" x2="471" y2="811" stroke="#ff9f45" stroke-width="2" stroke-dasharray="7 6" opacity="0.7"/>
+  <text x="380" y="800" fill="#ff9f45" font-size="25" font-weight="600" text-anchor="middle">&lt; 1 U mg⁻¹</text>
+
+  <!-- the rise -->
+  <path d="M 317 849 L 444 855 L 571 445" fill="none" stroke="url(#riseGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 571 445 L 1715 445" fill="none" stroke="#5fd38d" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 16" opacity="0.5"/>
+
+  <!-- low points -->
+  <circle cx="317" cy="849" r="9" fill="#0b0d10" stroke="#ff9f45" stroke-width="4"/>
+  <circle cx="444" cy="855" r="9" fill="#0b0d10" stroke="#ff9f45" stroke-width="4"/>
+
+  <!-- the 18 h point -->
+  <circle cx="571" cy="445" r="16" fill="#5fd38d" filter="url(#dotGlow)"/>
+  <line x1="571" y1="461" x2="571" y2="880" stroke="#5fd38d" stroke-width="2" stroke-dasharray="6 8" opacity="0.4"/>
+  <text x="612" y="432" fill="#f5f5f7" font-size="56" font-weight="650" letter-spacing="-1">6.3 U mg⁻¹</text>
+  <text x="614" y="470" fill="#9aa0a8" font-size="26">at 18 hours</text>
+
+  <!-- annotation: marginal before -->
+  <text x="317" y="700" fill="#9aa0a8" font-size="23" text-anchor="middle">marginal</text>
+  <text x="317" y="730" fill="#9aa0a8" font-size="23" text-anchor="middle">at 6 and 12 h</text>
+
+  <!-- footnote -->
+  <line x1="190" y1="1000" x2="1800" y2="1000" stroke="#232830" stroke-width="1.5"/>
+  <text x="190" y="1034" fill="#9aa0a8" font-size="21">Cell-free permeate, fourth integrated cycle. One sample per time point. 1 U = 1 µmol α-ketobutyrate per hour (30 °C, 12 h incubation).</text>
+  <text x="190" y="1062" fill="#6e747c" font-size="21">Because the compartment contains no cells, this activity cannot be host background.</text>
+</svg>
