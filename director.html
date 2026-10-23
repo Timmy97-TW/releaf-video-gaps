@@ -157,6 +157,18 @@ details[open] summary::before{transform:rotate(90deg)}
 summary .tc2{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-left:auto;font-weight:400}
 details .dbody{padding:0 0 18px 30px;font-size:15.5px}
 
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:200;background:rgba(10,10,12,.93);
+  display:none;align-items:center;justify-content:center;padding:28px;cursor:zoom-out}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;
+  box-shadow:0 24px 70px rgba(0,0,0,.6);background:#0b0d10}
+#lb .x{position:absolute;top:16px;right:20px;color:#fff;font-size:30px;line-height:1;
+  opacity:.75;cursor:pointer;font-family:var(--sans);background:none;border:0}
+#lb .dl{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+  border-radius:980px;padding:8px 18px;font-size:14px;text-decoration:none}
 footer{padding:44px 0 70px;color:var(--muted);font-size:14px}
 footer a{color:var(--accent);text-decoration:none}
 
@@ -602,27 +614,27 @@ footer a{color:var(--accent);text-decoration:none}
 <section id="build">
   <div class="wrap">
     <h2><span class="en">The build queue</span><span class="zh">製作清單</span></h2>
-    <p class="sub"><span class="en"><b>Ten of these are now built and sitting in <code>assets/frames/</code></b> as 1920×1080 vectors in one visual language — they are struck through below. What is left is one animation and a handful of cards that need numbers only your team has. Tick as you go; progress is saved in this browser.</span><span class="zh"><b>其中十張已經做好，放在 <code>assets/frames/</code></b>，是同一套視覺語言的 1920×1080 向量檔——下面已劃掉。剩下的是一支動畫，以及幾張需要你們自己才有的數字的卡片。做完就打勾，進度會存在這個瀏覽器裡。</span></p>
+    <p class="sub"><span class="en"><b>Nine result slides are built and sitting in <code>assets/slides/</code></b> — each one composed from your own published figures, not redrawn. They are struck through below. What is left is one animation and the cards that need material only your team has. Tick as you go; progress is saved in this browser.</span><span class="zh"><b>九張 result 投影片已經做好，放在 <code>assets/slides/</code></b>——每一張都由你們自己已發表的圖組成，不是重畫的。下面已劃掉。剩下的是一支動畫，以及那些需要你們才有的素材的卡片。做完就打勾，進度會存在這個瀏覽器裡。</span></p>
     <div class="chk" id="buildlist">
       <label><input type="checkbox" data-k="b1"><span><b><span class="en">Supply-chain animation</span><span class="zh">供應鏈動畫</span></b> — <span class="en">factory → truck → cold chain → degraded product. The only genuinely missing animation in Act I. Borrow the red-X icons from <code>releaf_15s_v2.mp4</code> @9.</span><span class="zh">工廠 → 卡車 → 冷鏈 → 失效產品。第一幕唯一真正缺的動畫。可借用 <code>releaf_15s_v2.mp4</code> @9 的紅叉圖示。</span></span><span class="hrs">4 h · §3</span></label>
-      <label><input type="checkbox" data-k="b2" checked disabled><span><b><span class="en">Permeate activity chart</span><span class="zh">透過液活性圖</span></b> — <span class="en"><b>the most important graphic in the film.</b> Give it motion: line draws left to right, hold the 18 h point.</span><span class="zh"><b>全片最重要的一張圖。</b>要有動態：曲線由左至右畫出，在 18 小時那點停住。</span></span><span class="hrs" style="color:var(--green);font-weight:700">R03 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b3" checked disabled><span><b><span class="en">Cloning results card</span><span class="zh">選殖結果卡</span></b> — 23/23 · 9/9 · 10,293 / 7,543 bp</span><span class="hrs" style="color:var(--green);font-weight:700">R01 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b4" checked disabled><span><b><span class="en">Maturation-lag card</span><span class="zh">成熟延遲卡</span></b> — <span class="en">protein 12 h vs activity 18 h</span><span class="zh">蛋白 12 h 對活性 18 h</span></span><span class="hrs" style="color:var(--green);font-weight:700">R04 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b5" checked disabled><span><b><span class="en">Light-switch honest card</span><span class="zh">光開關誠實卡</span></b> — <span class="en">14× at 13 h, inverted at 16 h</span><span class="zh">13 h 相差 14 倍，16 h 反轉</span></span><span class="hrs" style="color:var(--green);font-weight:700">R05 ✓ built</span></label>
+      <label><input type="checkbox" data-k="b2" checked disabled><span><b><span class="en">Permeate activity chart</span><span class="zh">透過液活性圖</span></b> — <span class="en"><b>the most important graphic in the film.</b> Give it motion: line draws left to right, hold the 18 h point.</span><span class="zh"><b>全片最重要的一張圖。</b>要有動態：曲線由左至右畫出，在 18 小時那點停住。</span></span><span class="hrs" style="color:var(--green);font-weight:700">C3 ✓ composed</span></label>
+      <label><input type="checkbox" data-k="b3" checked disabled><span><b><span class="en">Cloning results card</span><span class="zh">選殖結果卡</span></b> — 23/23 · 9/9 · 10,293 / 7,543 bp</span><span class="hrs" style="color:var(--green);font-weight:700">C1 ✓ composed</span></label>
+      <label><input type="checkbox" data-k="b4" checked disabled><span><b><span class="en">Maturation-lag card</span><span class="zh">成熟延遲卡</span></b> — <span class="en">protein 12 h vs activity 18 h</span><span class="zh">蛋白 12 h 對活性 18 h</span></span><span class="hrs" style="color:var(--green);font-weight:700">C2 ✓ composed</span></label>
+      <label><input type="checkbox" data-k="b5" checked disabled><span><b><span class="en">Light-switch honest card</span><span class="zh">光開關誠實卡</span></b> — <span class="en">14× at 13 h, inverted at 16 h</span><span class="zh">13 h 相差 14 倍，16 h 反轉</span></span><span class="hrs" style="color:var(--green);font-weight:700">C4 ✓ composed</span></label>
       <label><input type="checkbox" data-k="b6"><span><b><span class="en">GIS title card</span><span class="zh">GIS 標題卡</span></b> — <span class="en">title, legend, units, year, source. Mandatory.</span><span class="zh">標題、圖例、單位、年份、來源。必要。</span></span><span class="hrs">0.75 h · §2</span></label>
       <label><input type="checkbox" data-k="b7"><span><b><span class="en">Dose / payback card</span><span class="zh">劑量／回本卡</span></b> — <span class="en">anchored on the hydroponic run only</span><span class="zh">只錨定在水耕那次試驗</span></span><span class="hrs">1 h · §7</span></label>
       <label><input type="checkbox" data-k="b8"><span><b><span class="en">Open-seam cards ×2</span><span class="zh">未接通的接縫卡 ×2</span></b> — <span class="en">forecast→light; sprayed batch activity</span><span class="zh">預報→光；噴灑批次活性</span></span><span class="hrs">0.5 h · §7 §8</span></label>
-      <label><input type="checkbox" data-k="b9" checked disabled><span><b><span class="en">BoPEP4 proof-of-concept card</span><span class="zh">BoPEP4 概念驗證卡</span></b> — <span class="en">1/40, strain-matched control, single run</span><span class="zh">1/40、對等菌株對照、單次運轉</span></span><span class="hrs" style="color:var(--green);font-weight:700">R08 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b10" checked disabled><span><b><span class="en">Timing result card</span><span class="zh">時機結果卡</span></b> — <span class="en">post-treatment below the heat control, both trials</span><span class="zh">後處理低於熱逆境對照，兩次試驗皆然</span></span><span class="hrs" style="color:var(--green);font-weight:700">R09 ✓ built</span></label>
+      <label><input type="checkbox" data-k="b9" checked disabled><span><b><span class="en">BoPEP4 proof-of-concept card</span><span class="zh">BoPEP4 概念驗證卡</span></b> — <span class="en">1/40, strain-matched control, single run</span><span class="zh">1/40、對等菌株對照、單次運轉</span></span><span class="hrs" style="color:var(--green);font-weight:700">C8 ✓ composed</span></label>
+      <label><input type="checkbox" data-k="b10" checked disabled><span><b><span class="en">Timing result card</span><span class="zh">時機結果卡</span></b> — <span class="en">post-treatment below the heat control, both trials</span><span class="zh">後處理低於熱逆境對照，兩次試驗皆然</span></span><span class="hrs" style="color:var(--green);font-weight:700">C9 ✓ composed</span></label>
       <label><input type="checkbox" data-k="b11"><span><b><span class="en">Stakeholder map</span><span class="zh">利害關係人地圖</span></b> — <span class="en">animated, counter, named orgs</span><span class="zh">動態、計數器、具名單位</span></span><span class="hrs">2 h · §9</span></label>
       <label><input type="checkbox" data-k="b12"><span><b><span class="en">"What changed" cards ×3</span><span class="zh">「改了什麼」卡 ×3</span></b> — <span class="en">conversation → change, three times, no padding. <b>This is the one judges score.</b></span><span class="zh">對話 → 改動，三次，不要灌水。<b>這是評審真正給分的那張。</b></span></span><span class="hrs">2 h · §9</span></label>
       <label><input type="checkbox" data-k="b13"><span><b><span class="en">Business-plan cards</span><span class="zh">商業計畫卡</span></b> — <span class="en">positioning, markets, unit economics</span><span class="zh">定位、市場、單位經濟</span></span><span class="hrs">2 h · §9</span></label>
-      <label><input type="checkbox" data-k="b14" checked disabled><span><b><span class="en">"What's next" card</span><span class="zh">「下一步」卡</span></b> — <span class="en">the three open seams, named</span><span class="zh">三個未接通的接縫，明確點名</span></span><span class="hrs" style="color:var(--green);font-weight:700">R10 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b15" checked disabled><span><b><span class="en">Secretion yield card</span><span class="zh">分泌產量卡</span></b> — <span class="en">~16 vs ~6 µg/mL, with the negative-control caveat on the frame</span><span class="zh">約 16 對約 6 µg/mL，陰性對照的但書就印在畫面上</span></span><span class="hrs" style="color:var(--green);font-weight:700">R02 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b16" checked disabled><span><b><span class="en">Containment card</span><span class="zh">圍阻卡</span></b> — <span class="en">both sides plated, with “two plates, no replicates” on the frame</span><span class="zh">兩側都塗盤，畫面上寫明「兩塊盤、沒有重複」</span></span><span class="hrs" style="color:var(--green);font-weight:700">R06 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b17" checked disabled><span><b><span class="en">Reactor runs card</span><span class="zh">反應器運轉卡</span></b> — <span class="en">116 h, 11,493 rows, 53 automatic doses, 194 h reference beam</span><span class="zh">116 小時、11,493 筆、53 次自動加鹼、194 小時參考光束</span></span><span class="hrs" style="color:var(--green);font-weight:700">R07 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b18" checked disabled><span><b><span class="en">Architecture + evidence map</span><span class="zh">架構與證據地圖</span></b> — <span class="en">six stages, four measured, two open seams. <b>The closing slide.</b></span><span class="zh">六個階段、四個已量測、兩個未接通。<b>收尾投影片。</b></span></span><span class="hrs" style="color:var(--green);font-weight:700">R11 ✓ built</span></label>
-      <label><input type="checkbox" data-k="b19" checked disabled><span><b><span class="en">Vision card</span><span class="zh">願景卡</span></b> — <span class="en">the team's own closing line, set to hold for six seconds</span><span class="zh">團隊自己的收尾句，設計成停留六秒</span></span><span class="hrs" style="color:var(--green);font-weight:700">R12 ✓ built</span></label>
+      <label><input type="checkbox" data-k="b14" checked disabled><span><b><span class="en">"What's next" card</span><span class="zh">「下一步」卡</span></b> — <span class="en">the three open seams, named</span><span class="zh">三個未接通的接縫，明確點名</span></span><span class="hrs" style="color:var(--green);font-weight:700">✓ built (text card)</span></label>
+      <label><input type="checkbox" data-k="b15" checked disabled><span><b><span class="en">Secretion yield card</span><span class="zh">分泌產量卡</span></b> — <span class="en">~16 vs ~6 µg/mL, with the negative-control caveat on the frame</span><span class="zh">約 16 對約 6 µg/mL，陰性對照的但書就印在畫面上</span></span><span class="hrs" style="color:var(--green);font-weight:700">C5 ✓ composed</span></label>
+      <label><input type="checkbox" data-k="b16" checked disabled><span><b><span class="en">Containment card</span><span class="zh">圍阻卡</span></b> — <span class="en">both sides plated, with “two plates, no replicates” on the frame</span><span class="zh">兩側都塗盤，畫面上寫明「兩塊盤、沒有重複」</span></span><span class="hrs" style="color:var(--green);font-weight:700">C7 ✓ composed</span></label>
+      <label><input type="checkbox" data-k="b17" checked disabled><span><b><span class="en">Reactor runs card</span><span class="zh">反應器運轉卡</span></b> — <span class="en">116 h, 11,493 rows, 53 automatic doses, 194 h reference beam</span><span class="zh">116 小時、11,493 筆、53 次自動加鹼、194 小時參考光束</span></span><span class="hrs" style="color:var(--green);font-weight:700">C6 ✓ composed</span></label>
+      <label><input type="checkbox" data-k="b18" checked disabled><span><b><span class="en">Architecture + evidence map</span><span class="zh">架構與證據地圖</span></b> — <span class="en">six stages, four measured, two open seams. <b>The closing slide.</b></span><span class="zh">六個階段、四個已量測、兩個未接通。<b>收尾投影片。</b></span></span><span class="hrs" style="color:var(--green);font-weight:700">✓ built (framework)</span></label>
+      <label><input type="checkbox" data-k="b19" checked disabled><span><b><span class="en">Vision card</span><span class="zh">願景卡</span></b> — <span class="en">the team's own closing line, set to hold for six seconds</span><span class="zh">團隊自己的收尾句，設計成停留六秒</span></span><span class="hrs" style="color:var(--green);font-weight:700">✓ built (text card)</span></label>
       <label><input type="checkbox" data-k="b20"><span><b><span class="en">Supply-chain storyboard → animate it</span><span class="zh">供應鏈分鏡 → 做成動畫</span></b> — <span class="en">the eight-panel board is drawn and timed; what is left is the animation itself</span><span class="zh">八格分鏡已經畫好、時間也排好了；剩下的是動畫本身</span></span><span class="hrs">3 h · §3</span></label>
     </div>
 
@@ -673,35 +685,43 @@ footer a{color:var(--accent);text-decoration:none}
   </div>
 </section>
 
-<!-- ============ RESULT FRAMES ============ -->
-<section id="frames">
+<!-- ============ COMPOSITE SLIDES ============ -->
+<section id="slides">
   <div class="wrap">
-    <h2><span class="en">The result frames — built and ready</span><span class="zh">Result 畫面 — 已完成可用</span></h2>
-    <p class="sub"><span class="en">Twelve 1920×1080 slides in one visual language, each carrying its own caveat on the frame so the claim can't drift away from the data. SVG, so they scale to any resolution and import straight into After Effects or Premiere. Click to open full size.</span><span class="zh">十二張 1920×1080 的投影片，同一套視覺語言，每一張都把自己的但書印在畫面上，讓說法不會脫離資料。SVG 格式，可無損縮放，能直接匯入 After Effects 或 Premiere。點擊開啟原尺寸。</span></p>
-    <div class="figgrid">
-      <div class="fig"><a class="ph" href="assets/frames/r03-permeate-activity.svg"><img loading="lazy" src="assets/frames/r03-permeate-activity.svg" alt=""></a><div class="ft"><b>R03 · 6.3 U mg⁻¹ ★</b><span class="dim">the hero of the film</span><span class="en" style="color:var(--muted)">Active enzyme in a cell-free compartment. Your single most defensible claim.</span><span class="zh" style="color:var(--muted)">無細胞區間中的有活性酵素。你們最站得住的一個主張。</span><a href="assets/frames/r03-permeate-activity.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r11-architecture-evidence.svg"><img loading="lazy" src="assets/frames/r11-architecture-evidence.svg" alt=""></a><div class="ft"><b>R11 · Architecture ★</b><span class="dim">the closing slide</span><span class="en" style="color:var(--muted)">Six stages, four measured, two open seams named.</span><span class="zh" style="color:var(--muted)">六個階段、四個已量測、兩個接縫明確點名。</span><a href="assets/frames/r11-architecture-evidence.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r01-cloning.svg"><img loading="lazy" src="assets/frames/r01-cloning.svg" alt=""></a><div class="ft"><b>R01 · 23 of 23</b><span class="dim">cloning verified</span><a href="assets/frames/r01-cloning.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r02-yield.svg"><img loading="lazy" src="assets/frames/r02-yield.svg" alt=""></a><div class="ft"><b>R02 · ~16 µg/mL</b><span class="dim">secretion yield</span><a href="assets/frames/r02-yield.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r04-maturation-lag.svg"><img loading="lazy" src="assets/frames/r04-maturation-lag.svg" alt=""></a><div class="ft"><b>R04 · 12 h vs 18 h</b><span class="dim">the maturation lag</span><a href="assets/frames/r04-maturation-lag.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r05-light-switch.svg"><img loading="lazy" src="assets/frames/r05-light-switch.svg" alt=""></a><div class="ft"><b>R05 · 14×, then inverts</b><span class="dim">the light switch, honestly</span><a href="assets/frames/r05-light-switch.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r06-containment.svg"><img loading="lazy" src="assets/frames/r06-containment.svg" alt=""></a><div class="ft"><b>R06 · Containment</b><span class="dim">both sides plated</span><a href="assets/frames/r06-containment.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r07-reactor-runs.svg"><img loading="lazy" src="assets/frames/r07-reactor-runs.svg" alt=""></a><div class="ft"><b>R07 · 116 h, 53 doses</b><span class="dim">it runs and senses</span><a href="assets/frames/r07-reactor-runs.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r08-plant-hydroponics.svg"><img loading="lazy" src="assets/frames/r08-plant-hydroponics.svg" alt=""></a><div class="ft"><b>R08 · Matched control</b><span class="dim">the only one</span><a href="assets/frames/r08-plant-hydroponics.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r09-plant-timing.svg"><img loading="lazy" src="assets/frames/r09-plant-timing.svg" alt=""></a><div class="ft"><b>R09 · Too late is worse</b><span class="dim">why you forecast</span><a href="assets/frames/r09-plant-timing.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r10-open-seams.svg"><img loading="lazy" src="assets/frames/r10-open-seams.svg" alt=""></a><div class="ft"><b>R10 · Open seams</b><span class="dim">what is not finished</span><a href="assets/frames/r10-open-seams.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/frames/r12-vision.svg"><img loading="lazy" src="assets/frames/r12-vision.svg" alt=""></a><div class="ft"><b>R12 · Vision</b><span class="dim">the closing line</span><a href="assets/frames/r12-vision.svg" download>download ↓</a></div></div>
+    <h2><span class="en">The result slides</span><span class="zh">Result 投影片</span></h2>
+    <p class="sub"><span class="en">Nine slides built from <b>your own published figures</b> — nothing is redrawn. What each one adds is the arrangement: figures that only make an argument <em>together</em> are put on the same slide, with the number that ties them and the caveat that bounds them. Click any slide to enlarge it here.</span><span class="zh">九張投影片，全部由<b>你們自己已發表的圖</b>組成——沒有任何一張是重畫的。它加上去的只有編排：那些<em>放在一起</em>才成立的圖，被放到同一張投影片上，附上串起它們的數字，以及框住它們的但書。點任一張可在此放大。</span></p>
+
+    <div class="callout c-green" style="margin-bottom:24px">
+      <h3><span class="en">The one that matters most</span><span class="zh">最關鍵的那一張</span></h3>
+      <p><span class="en"><b>C3</b> puts Figure 67 and Figure 66 together: the permeate contains the enzyme, both sides of the membrane agree, and the activity per milligram reaches 6.3 U mg⁻¹ at 18 h in a compartment with no cells in it. Separately these are two figures on a wiki page. Together they are the sentence “we made working enzyme and we can prove it was not the host.”</span><span class="zh"><b>C3</b> 把圖 67 與圖 66 放在一起：透過液裡有酵素、膜兩側讀數一致，而且在一個沒有細胞的區間裡，每毫克活性在 18 小時達到 6.3 U。分開看，它們只是 wiki 上的兩張圖；放在一起，它們就是一句話——「我們做出了有功能的酵素，而且能證明那不是宿主。」</span></p>
     </div>
 
-    <h3><span class="en">Also built</span><span class="zh">另外做好的</span></h3>
     <div class="figgrid">
-      <div class="fig"><a class="ph" href="assets/build/supply-chain-storyboard.svg"><img loading="lazy" src="assets/build/supply-chain-storyboard.svg" alt=""></a><div class="ft"><b>Supply-chain storyboard</b><span class="dim">8 panels · timed to 14 s</span><span class="en" style="color:var(--muted)">Drawn, timed and annotated in the final palette — an animator can work straight from it.</span><span class="zh" style="color:var(--muted)">已用最終色票畫好、排好時間並加註說明——動畫師可以直接照著做。</span><a href="assets/build/supply-chain-storyboard.svg" download>download ↓</a></div></div>
-      <div class="fig"><a class="ph" href="assets/build/permeate-activity-animated.html"><img loading="lazy" src="assets/frames/r03-permeate-activity.svg" alt=""></a><div class="ft"><b>R03, animated</b><span class="dim">HTML · screen-record it</span><span class="en" style="color:var(--muted)">The line draws in and the 18 h point lands. Open it, add <code>?record=1</code> for exact 1920×1080, then screen-record.</span><span class="zh" style="color:var(--muted)">曲線會畫出來，並停在 18 小時那點。打開後加上 <code>?record=1</code> 可得精確 1920×1080，再錄螢幕。</span><a href="assets/build/permeate-activity-animated.html" target="_blank">open ↗</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c3-permeate-proof.svg"><img loading="lazy" src="assets/slides/c3-permeate-proof.svg" alt=""></a><div class="ft"><b>C3 · Active in the permeate ★</b><span class="dim">Fig 67 + Fig 66</span><span class="en" style="color:var(--muted)">Cell-free compartment, 6.3 U mg⁻¹ at 18 h. Your strongest claim.</span><span class="zh" style="color:var(--muted)">無細胞區間，18 小時 6.3 U mg⁻¹。你們最強的主張。</span><a href="assets/slides/c3-permeate-proof.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c2-maturation-lag.svg"><img loading="lazy" src="assets/slides/c2-maturation-lag.svg" alt=""></a><div class="ft"><b>C2 · The six-hour lag</b><span class="dim">ELISA + DNPH time courses</span><span class="en" style="color:var(--muted)">Protein peaks at 12 h, activity at 18 h. Two charts, one argument.</span><span class="zh" style="color:var(--muted)">蛋白 12 小時達峰、活性 18 小時。兩張圖，一個論點。</span><a href="assets/slides/c2-maturation-lag.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c1-cloning.svg"><img loading="lazy" src="assets/slides/c1-cloning.svg" alt=""></a><div class="ft"><b>C1 · The build is verified</b><span class="dim">4 gels</span><span class="en" style="color:var(--muted)">23/23 colony PCR as the hero, junctions and digest supporting.</span><span class="zh" style="color:var(--muted)">以 23/23 菌落 PCR 為主，接點與酶切為輔。</span><a href="assets/slides/c1-cloning.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c4-light-switch.svg"><img loading="lazy" src="assets/slides/c4-light-switch.svg" alt=""></a><div class="ft"><b>C4 · Activity, not amount</b><span class="dim">4 light figures, 2×2</span><span class="en" style="color:var(--muted)">ELISA flat on top, DNPH moving below. The split result in one look.</span><span class="zh" style="color:var(--muted)">上排 ELISA 不動，下排 DNPH 會動。一眼看完這個分裂的結果。</span><a href="assets/slides/c4-light-switch.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c5-secretion.svg"><img loading="lazy" src="assets/slides/c5-secretion.svg" alt=""></a><div class="ft"><b>C5 · All three secreted</b><span class="dim">ELISA + the control caveat</span><span class="en" style="color:var(--muted)">~16 vs ~6 µg/mL, with what the figure cannot say printed beside it.</span><span class="zh" style="color:var(--muted)">約 16 對約 6 µg/mL，旁邊就寫著這張圖不能說什麼。</span><a href="assets/slides/c5-secretion.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c6-reactor-runs.svg"><img loading="lazy" src="assets/slides/c6-reactor-runs.svg" alt=""></a><div class="ft"><b>C6 · It runs and regulates</b><span class="dim">rig + 116 h + pH loop</span><span class="en" style="color:var(--muted)">The machine, the long run and the 53 automatic doses together.</span><span class="zh" style="color:var(--muted)">機器、長時間運轉與 53 次自動加鹼放在一起。</span><a href="assets/slides/c6-reactor-runs.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c7-sensing-containment.svg"><img loading="lazy" src="assets/slides/c7-sensing-containment.svg" alt=""></a><div class="ft"><b>C7 · Leak caught, cells held</b><span class="dim">leak event + plates</span><span class="en" style="color:var(--muted)">Sensing and containment on one slide — both honestly bounded.</span><span class="zh" style="color:var(--muted)">感測與圍阻同一張——兩者都誠實標出界線。</span><a href="assets/slides/c7-sensing-containment.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c8-plant-proof.svg"><img loading="lazy" src="assets/slides/c8-plant-proof.svg" alt=""></a><div class="ft"><b>C8 · Matched control ★</b><span class="dim">rack photo + chlorophyll</span><span class="en" style="color:var(--muted)">The photo and the quantification, side by side. Your best plant evidence.</span><span class="zh" style="color:var(--muted)">照片與定量並列。你們最好的植物證據。</span><a href="assets/slides/c8-plant-proof.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/slides/c9-plant-timing.svg"><img loading="lazy" src="assets/slides/c9-plant-timing.svg" alt=""></a><div class="ft"><b>C9 · Too late is worse</b><span class="dim">pots + both trials</span><span class="en" style="color:var(--muted)">Phenotype above, both trials below. The case for forecasting.</span><span class="zh" style="color:var(--muted)">上面表型、下面兩次試驗。這就是「要預報」的論據。</span><a href="assets/slides/c9-plant-timing.svg" download>download ↓</a></div></div>
+    </div>
+
+    <h3><span class="en">Three slides that are not figures</span><span class="zh">三張不是資料圖的投影片</span></h3>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:16px">
+      <span class="en">These three carry no data, so there was no existing figure to use — they are a text card, the framework you asked for, and the closing line. Say the word and I will drop them too.</span>
+      <span class="zh">這三張沒有任何資料，所以也沒有既有的圖可以用——它們是一張文字卡、你上次要求的架構框架，以及收尾句。你說一聲，我也可以把它們拿掉。</span>
+    </p>
+    <div class="figgrid">
+      <div class="fig"><a class="ph" href="assets/frames/r11-architecture-evidence.svg"><img loading="lazy" src="assets/frames/r11-architecture-evidence.svg" alt=""></a><div class="ft"><b>Architecture + evidence</b><span class="dim">the framework you asked for</span><span class="en" style="color:var(--muted)">Six stages, four measured, two open seams.</span><span class="zh" style="color:var(--muted)">六個階段、四個已量測、兩個未接通。</span><a href="assets/frames/r11-architecture-evidence.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/frames/r10-open-seams.svg"><img loading="lazy" src="assets/frames/r10-open-seams.svg" alt=""></a><div class="ft"><b>What is not finished</b><span class="dim">text card</span><a href="assets/frames/r10-open-seams.svg" download>download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/frames/r12-vision.svg"><img loading="lazy" src="assets/frames/r12-vision.svg" alt=""></a><div class="ft"><b>Vision</b><span class="dim">your own closing line</span><a href="assets/frames/r12-vision.svg" download>download ↓</a></div></div>
     </div>
 
     <p style="margin-top:20px;font-size:14.5px;color:var(--muted)">
-      <span class="en"><b>How these were made, if you want to change one:</b> they are generated from a single script so they stay one visual language. Editing the text or a number is a one-line change in the SVG — it is plain XML, so open it in any text editor. If you change a number, change the caveat with it.</span>
-      <span class="zh"><b>如果你要改其中一張：</b>它們是由同一支腳本產生的，所以視覺語言一致。改文字或數字只要動 SVG 裡的一行——那就是純文字 XML，任何編輯器都能開。改數字的時候，記得把但書一起改。</span>
+      <span class="en"><b>Each slide is one self-contained SVG</b> with your figures embedded inside it, so there are no broken links when you move the file. Open one in a text editor to change a word — it is plain XML. If you change a number, change the caveat with it.</span>
+      <span class="zh"><b>每張投影片都是一個自包含的 SVG</b>，你們的圖已經內嵌在裡面，所以搬動檔案也不會斷連結。要改字就用文字編輯器打開——那是純 XML。改數字時，記得把但書一起改。</span>
     </p>
   </div>
 </section>
@@ -842,6 +862,11 @@ footer a{color:var(--accent);text-decoration:none}
   </div>
 </section>
 
+<div id="lb" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="x" aria-label="Close">&times;</button>
+  <img alt="">
+  <a class="dl" download>Download ↓</a>
+</div>
 <footer>
   <div class="wrap">
     <p>
@@ -890,29 +915,61 @@ footer a{color:var(--accent);text-decoration:none}
     {s:765, e:845, t:"Limits + vision", zt:"限制與願景", m:"What's unfinished, what it becomes", zm:"還沒完成的，與將成為的", c:"#a8712a", b:"1 card"},
     {s:845, e:865, t:"Credits",        zt:"片尾",       m:"", zm:"", c:"#6e6e73", b:null}
   ];
+
+  // ---- lightbox: enlarge in place, never a new tab ----
+  (function(){
+    var lb=document.getElementById('lb');
+    if(!lb) return;
+    var im=lb.querySelector('img'), dl=lb.querySelector('.dl');
+    var RX=/\.(svg|png|jpe?g|webp|gif)(\?.*)?$/i;
+    function open_(src){ im.src=src; dl.href=src; lb.classList.add('on');
+      document.body.style.overflow='hidden'; }
+    function close_(){ lb.classList.remove('on'); im.src='';
+      document.body.style.overflow=''; }
+    document.addEventListener('click', function(e){
+      var a=e.target.closest && e.target.closest('a[href]');
+      if(!a) return;
+      if(a.hasAttribute('download')) return;          // let real downloads through
+      if(a.closest('#lb')) return;
+      var h=a.getAttribute('href')||'';
+      if(!RX.test(h)) return;
+      e.preventDefault(); open_(a.href);
+    });
+    lb.addEventListener('click', function(e){
+      if(e.target===im) return;
+      if(e.target.classList.contains('dl')) return;
+      close_();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape' && lb.classList.contains('on')) close_();
+    });
+  })();
+
   // row 3 — the frame actually on screen. s/e in seconds.
+  // c* = composite slide built from the team's OWN published figures.
   var FRM=[
     {s:0,  e:35, img:"assets/shots/01-farmer-opening.jpg", cap:"Ms Chen, 4K @4:07", zcap:"陳女士，4K @4:07"},
     {s:35, e:70, img:"assets/shots/02-problem-news.jpg",   cap:"news segment @0:02", zcap:"新聞片段 @0:02"},
     {s:70, e:100,img:"assets/shots/03-current-solutions.jpg",cap:"fertiliser map", zcap:"肥料地圖"},
     {s:100,e:135,img:"assets/shots/04-system-overview.jpg", cap:"system animation", zcap:"系統動畫"},
-    {s:135,e:200,img:"assets/shots/05-synbio-cassette.jpg", cap:"Synbio Final @1:22", zcap:"Synbio Final @1:22"},
-    {s:200,e:245,img:"assets/frames/r01-cloning.svg", frame:1, cap:"R01 · 23 of 23", zcap:"R01 · 23 比 23"},
-    {s:245,e:275,img:"assets/frames/r02-yield.svg", frame:1, cap:"R02 · ~16 µg/mL", zcap:"R02 · 約 16 µg/mL"},
-    {s:275,e:310,img:"assets/frames/r03-permeate-activity.svg", frame:1, cap:"R03 · 6.3 U/mg ★", zcap:"R03 · 6.3 U/mg ★"},
-    {s:310,e:330,img:"assets/frames/r04-maturation-lag.svg", frame:1, cap:"R04 · 12 h vs 18 h", zcap:"R04 · 12 h 對 18 h"},
-    {s:330,e:370,img:"assets/frames/r05-light-switch.svg", frame:1, cap:"R05 · 14×, inverts", zcap:"R05 · 14 倍、反轉"},
-    {s:370,e:420,img:"assets/shots/06-hardware-membrane.jpg", cap:"section1 @0:19 membrane", zcap:"section1 @0:19 膜"},
-    {s:420,e:455,img:"assets/frames/r06-containment.svg", frame:1, cap:"R06 · containment", zcap:"R06 · 圍阻"},
-    {s:455,e:510,img:"assets/frames/r07-reactor-runs.svg", frame:1, cap:"R07 · 116 h, 53 doses", zcap:"R07 · 116 h、53 次加鹼"},
-    {s:510,e:560,img:"assets/shots/09-plant-results.jpg", cap:"Hydroponics Visual", zcap:"水耕資料動畫"},
-    {s:560,e:595,img:"assets/frames/r08-plant-hydroponics.svg", frame:1, cap:"R08 · matched control", zcap:"R08 · 對等對照"},
-    {s:595,e:630,img:"assets/frames/r09-plant-timing.svg", frame:1, cap:"R09 · too late is worse", zcap:"R09 · 太晚更糟"},
+    {s:135,e:190,img:"assets/shots/05-synbio-cassette.jpg", cap:"Synbio Final @1:22", zcap:"Synbio Final @1:22"},
+    {s:190,e:228,img:"assets/slides/c1-cloning.svg", frame:1, cap:"C1 · the build is verified", zcap:"C1 · 構築已驗證"},
+    {s:228,e:252,img:"assets/slides/c5-secretion.svg", frame:1, cap:"C5 · all three secreted", zcap:"C5 · 三種都有分泌"},
+    {s:252,e:292,img:"assets/slides/c3-permeate-proof.svg", frame:1, cap:"C3 · active in the permeate ★", zcap:"C3 · 透過液中有活性 ★"},
+    {s:292,e:312,img:"assets/slides/c2-maturation-lag.svg", frame:1, cap:"C2 · the six-hour lag", zcap:"C2 · 六小時延遲"},
+    {s:312,e:330,img:"assets/slides/c4-light-switch.svg", frame:1, cap:"C4 · activity, not amount", zcap:"C4 · 是活性，不是量"},
+    {s:330,e:380,img:"assets/shots/06-hardware-membrane.jpg", cap:"section1 @0:19 membrane", zcap:"section1 @0:19 膜"},
+    {s:380,e:420,img:"assets/slides/c6-reactor-runs.svg", frame:1, cap:"C6 · 116 h, 53 doses", zcap:"C6 · 116 小時、53 次加鹼"},
+    {s:420,e:455,img:"assets/slides/c7-sensing-containment.svg", frame:1, cap:"C7 · leak caught, cells held", zcap:"C7 · 抓到洩漏、留住細胞"},
+    {s:455,e:510,img:"assets/shots/08-math-model.jpg", cap:"1021 Math Model @0:23", zcap:"1021 Math Model @0:23"},
+    {s:510,e:550,img:"assets/shots/09-plant-results.jpg", cap:"Hydroponics Visual", zcap:"水耕資料動畫"},
+    {s:550,e:595,img:"assets/slides/c8-plant-proof.svg", frame:1, cap:"C8 · matched control ★", zcap:"C8 · 對等對照 ★"},
+    {s:595,e:630,img:"assets/slides/c9-plant-timing.svg", frame:1, cap:"C9 · too late is worse", zcap:"C9 · 太晚更糟"},
     {s:630,e:700,img:"assets/human/h2-mschen-paddy.jpg", cap:"Ms Chen in the paddy", zcap:"陳女士在稻田"},
     {s:700,e:765,img:"assets/human/h6-demo-public.jpg", cap:"demoing the rig", zcap:"向民眾示範裝置"},
-    {s:765,e:790,img:"assets/frames/r10-open-seams.svg", frame:1, cap:"R10 · what is not done", zcap:"R10 · 還沒完成的"},
-    {s:790,e:822,img:"assets/frames/r11-architecture-evidence.svg", frame:1, cap:"R11 · six stages ★", zcap:"R11 · 六個階段 ★"},
-    {s:822,e:845,img:"assets/frames/r12-vision.svg", frame:1, cap:"R12 · vision", zcap:"R12 · 願景"},
+    {s:765,e:790,img:"assets/frames/r10-open-seams.svg", frame:1, cap:"what is not done", zcap:"還沒完成的"},
+    {s:790,e:822,img:"assets/frames/r11-architecture-evidence.svg", frame:1, cap:"six stages ★", zcap:"六個階段 ★"},
+    {s:822,e:845,img:"assets/frames/r12-vision.svg", frame:1, cap:"vision", zcap:"願景"},
     {s:845,e:865,img:"assets/human/h1-team.jpg", cap:"the team", zcap:"全隊"}
   ];
 
@@ -943,7 +1000,7 @@ footer a{color:var(--accent);text-decoration:none}
       var w=(f.e-f.s)*PX-4;
       var a=document.createElement('a');
       a.className='frm'+(f.frame?' isframe':'');
-      a.href=f.img; a.target='_blank'; a.rel='noopener';
+      a.href=f.img;
       a.style.left=(f.s*PX)+'px'; a.style.width=w+'px'; a.style.height=Math.round(w*9/16)+'px';
       a.innerHTML='<img loading="lazy" src="'+f.img+'" alt="">'+
         '<span class="cap"><span class="en">'+f.cap+'</span><span class="zh">'+f.zcap+'</span></span>';
