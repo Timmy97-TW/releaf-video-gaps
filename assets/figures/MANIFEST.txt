@@ -1,0 +1,121 @@
+FIGURE PACK — GEMS Taiwan iGEM 2026, 15-minute presentation video
+Assembled 2026-10-24 for Ryan (student director).
+Sources: https://static.igem.wiki/teams/6072/wiki/ (26 files) + local originals (6 files).
+Total: 32 images, 2.8 MB on disk (well under the 40 MB Pages budget).
+
+RESOLUTION RULE USED BELOW
+  OK      = 900 px wide or more; safe to fill a 1920-wide frame.
+  SMALL   = under 900 px wide; use as an inset, a quarter-screen card, or skip.
+  VECTOR  = scales to any size with no quality loss.
+
+======================================================================
+CLONING
+======================================================================
+cloning-l2-goldengate-panel.webp            2001x786   42 KB   OK
+    Golden Gate assembly panel for the Level 2 constructs.
+cloning-colony-pcr-23-lanes-HIRES.png       3048x1174  843 KB  OK
+    23-lane colony PCR screen. Highest-resolution image in the pack;
+    the sharpest cloning figure available for a full-screen hold.
+cloning-wb800-bopep4-23-lanes.webp          1400x539   35 KB   OK
+    WB800 BoPEP4 gel, 23 lanes (web copy of the colony PCR screen above;
+    prefer the HIRES PNG for full screen).
+cloning-stk0c-csn-lea14.webp                735x349    15 KB   SMALL
+    stK0c CSN / LEA14 construct gel.
+cloning-level2-acdi-three-clones.webp       712x782    17 KB   SMALL
+    Level 2 ACC deaminase, three clones, gel of 19 September 2026.
+cloning-level2-ecori-btsi-digest.webp       540x456    22 KB   SMALL
+    Level 2 EcoRI / BtsI diagnostic digest.
+
+======================================================================
+PRODUCTION (protein yield and carbonyl assays)
+======================================================================
+production-dnph-variants-HIRES.png          588x633    26 KB   SMALL
+    DNPH carbonyl assay across protein variants. Local original; no
+    larger copy exists.
+production-dnph-reactor-timecourse-HIRES.png 775x598   25 KB   SMALL
+    DNPH carbonyl assay over the bioreactor time course. Local original,
+    2.7x the wiki copy, still under 900 px.
+production-elisa-reactor-timecourse-HIRES.png 670x508  17 KB   SMALL
+    ELISA over the bioreactor time course. Local original, 2.3x the wiki
+    copy, still under 900 px.
+production-elisa-three-protectants-HIRES.png 322x441   10 KB   SMALL
+    ELISA comparing three protectants. Local original, 2x the wiki copy;
+    smallest usable figure in the pack.
+production-lumen-shell-assays.webp          600x359     8 KB   SMALL
+    Lumen vs shell compartment assays from the hollow-fibre reactor.
+production-shell-permeate-72h.webp          600x382     9 KB   SMALL
+    Shell permeate measured at 72 hours.
+production-dnph-reactor-timecourse.webp     285x223     7 KB   SMALL
+    Wiki copy. Superseded by the HIRES PNG above; kept for reference.
+production-elisa-reactor-timecourse.webp    295x235     7 KB   SMALL
+    Wiki copy. Superseded by the HIRES PNG above; kept for reference.
+production-elisa-three-protectants.webp     154x240     6 KB   SMALL
+    Wiki copy. Superseded by the HIRES PNG above; kept for reference.
+
+======================================================================
+LIGHT (optogenetic induction)
+======================================================================
+light-dnph-light-induced.webp               1258x1016  14 KB   OK
+    DNPH carbonyl signal under light induction. The only light-panel
+    figure large enough to fill a frame.
+light-elisa-short-exposure.webp             268x244     8 KB   SMALL
+    ELISA, short light exposure.
+light-dnph-short-exposure.webp              202x244     7 KB   SMALL
+    DNPH, short light exposure.
+light-elisa-long-exposure.webp              229x215     6 KB   SMALL
+    ELISA, long light exposure.
+light-dnph-long-exposure.webp               209x230     7 KB   SMALL
+    DNPH, long light exposure.
+
+======================================================================
+BIOREACTOR
+======================================================================
+reactor-cycle1-growth.webp                  2048x658   23 KB   OK
+    BR-01 cycle 1 growth curve.
+reactor-cycle4-od-ph.webp                   2000x1300  35 KB   OK
+    BR-01 cycle 4, optical density against pH.
+reactor-leak-event.webp                     1733x2048 112 KB   OK
+    The leak event during the reactor runs. Tall portrait format; crop or
+    letterbox for a 16:9 frame.
+reactor-containment-plates.webp             1400x664   41 KB   OK
+    Biocontainment plate assay.
+reactor-rig-incubator-running.webp          1200x1594 215 KB   OK
+    The BR-01 rig running inside the incubator, 4 September 2026.
+    Portrait. This is the LARGER of the two rig photos.
+reactor-rig-running-p5-photo.png            587x779   844 KB   SMALL
+    Second rig photo (Fig9 Bioreactor P5). Supplied as a local "original"
+    but it is SMALLER than the wiki rig photo above despite the large file
+    size. Use reactor-rig-incubator-running.webp instead for full screen.
+reactor-r2-sio2-calibration.svg             vector     15 KB   VECTOR
+    R2: both in-line photometers and the BioDrop against SiO2 dose,
+    10 October 2026. Vector, so it scales to any frame size cleanly.
+    Export to PNG at 1920 or wider before dropping into the editor.
+
+======================================================================
+PLANT
+======================================================================
+plant-hydro-bopep4-salt-chlorophyll.webp    1809x1219  46 KB   OK
+    Hydroponic BoPEP4 under salt stress, chlorophyll readout.
+plant-accd-heat-pots.webp                   1600x827  109 KB   OK
+    ACC deaminase heat-stress pot trial, the pots themselves.
+plant-hydroponic-bopep-salt-rack.webp       1600x900  151 KB   OK
+    The hydroponic rack, BoPEP salt experiment (H18). Exactly 16:9.
+plant-accd-heat-trial1.webp                 1600x775   34 KB   OK
+    ACC deaminase heat stress, trial 1.
+plant-accd-heat-trial2.webp                 1600x775   33 KB   OK
+    ACC deaminase heat stress, trial 2.
+
+======================================================================
+NOTES FOR THE EDIT
+======================================================================
+1. Sixteen of the 32 files are under 900 px wide. Every one of them is a
+   plot or an assay chart, not a photograph, so the cleanest fix is to
+   re-export them from the plotting source at 1920 px or wider rather
+   than upscaling these.
+2. The four light-exposure panels (202-268 px) are the weakest in the
+   pack. At full screen they will visibly pixelate. Use them only as
+   small multiples in a grid, or re-export them.
+3. reactor-r2-sio2-calibration.svg is the one file with no resolution
+   ceiling. Favour it where a clean full-screen data slide is needed.
+4. Five of the six local "HIRES" originals do beat their wiki copies
+   (2x to 3x). The exception is the P5 rig photo, flagged above.

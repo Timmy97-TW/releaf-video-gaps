@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Director Pack</title>
+<meta name="description" content="The full cut plan for the GEMS Taiwan 15-minute presentation video: running order, shot lists, script, figure downloads, build queue and the claims that must not drift.">
+<style>
+:root{
+  --bg:#fff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --soft:#f5f5f7;
+  --accent:#0071e3; --red:#c7372a; --amber:#9a6400; --green:#1d7a46;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang TC","Noto Sans TC",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:17px;line-height:1.6;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.85);
+  backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;height:48px;gap:14px}
+.brand{font-size:15px;font-weight:600;white-space:nowrap}
+.navlinks{display:flex;gap:16px;font-size:14px;margin-left:auto;margin-right:4px}
+.navlinks a{color:var(--muted);text-decoration:none;white-space:nowrap}
+.navlinks a.on{color:var(--fg);font-weight:600}
+.toggle{display:flex;gap:2px;background:var(--soft);border-radius:980px;padding:2px}
+.toggle button{border:0;background:transparent;font-family:inherit;font-size:13px;
+  padding:5px 13px;border-radius:980px;cursor:pointer;color:var(--muted)}
+.toggle button[aria-pressed="true"]{background:#fff;color:var(--fg);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+
+header{padding:80px 0 44px;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(34px,5.2vw,54px);line-height:1.07;letter-spacing:-.025em;font-weight:700;margin:0 0 18px}
+.lede{font-size:clamp(18px,2vw,21px);line-height:1.47;color:var(--muted);margin:0;max-width:42em}
+.runtime{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px}
+.rt{font-variant-numeric:tabular-nums}
+.rt b{display:block;font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.rt span{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+section{padding:50px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;letter-spacing:-.022em;font-weight:700;margin:0 0 6px}
+h3{font-size:19px;font-weight:600;letter-spacing:-.018em;margin:30px 0 10px}
+.sub{color:var(--muted);margin:0 0 24px;font-size:16px}
+p{margin:0 0 15px}
+
+/* OUTLINE TABLE */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:640px}
+th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);
+  border-bottom:1px solid var(--fg);font-weight:600;white-space:nowrap}
+td.tc{font-family:var(--mono);font-size:13.5px;white-space:nowrap;color:var(--muted)}
+tr.hilite td{background:#fffdf5}
+
+/* TIMELINE */
+.tlouter{border:1px solid var(--line);border-radius:16px;background:var(--soft);padding:0;overflow:hidden}
+.tlhint{font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);background:#fff}
+.tlscroll{overflow-x:auto;overflow-y:hidden;padding:18px 16px 16px}
+.tlinner{position:relative;height:186px;min-width:2280px}
+.ruler{position:absolute;top:0;left:0;right:0;height:22px;border-bottom:1px solid var(--line)}
+.tick{position:absolute;top:0;font-family:var(--mono);font-size:11px;color:var(--muted);
+  padding-left:4px;border-left:1px solid var(--line);height:22px;line-height:22px}
+.blk{position:absolute;top:30px;height:142px;border-radius:9px;padding:9px 10px;overflow:hidden;
+  color:#fff;font-size:12.5px;line-height:1.35;display:flex;flex-direction:column}
+.blk b{font-size:13.5px;font-weight:650;display:block;margin-bottom:3px}
+.blk .d{font-family:var(--mono);font-size:10.5px;opacity:.82;margin-bottom:5px}
+.blk .m{opacity:.95;font-size:11.5px}
+.blk .bld{margin-top:auto;font-size:10.5px;background:rgba(255,255,255,.22);
+  border-radius:5px;padding:2px 6px;align-self:flex-start}
+
+/* SECTION CARDS */
+.sec{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:0 0 20px;scroll-margin-top:60px}
+.sechead{display:flex;align-items:baseline;gap:12px;padding:18px 24px 0;flex-wrap:wrap}
+.sectc{font-family:var(--mono);font-size:13px;font-weight:600;color:#fff;background:var(--fg);
+  border-radius:980px;padding:4px 11px;white-space:nowrap}
+.secdur{font-size:13px;color:var(--muted);font-family:var(--mono)}
+.secown{font-size:12.5px;color:var(--muted);margin-left:auto}
+.sec h4{margin:9px 24px 2px;font-size:20px;font-weight:650;letter-spacing:-.018em}
+.msg{margin:0 24px 16px;font-size:16px;color:var(--muted)}
+.secimg{width:100%;display:block;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.secbody{padding:20px 24px 24px}
+
+.shotlist{font-size:14.5px;margin:0 0 16px}
+.shotlist table{min-width:520px;font-size:14px}
+.shotlist td{padding:8px 10px}
+code{font-family:var(--mono);font-size:13px;background:var(--soft);padding:1.5px 5px;border-radius:4px;word-break:break-word}
+
+.vo{background:var(--soft);border-radius:12px;padding:15px 18px;margin:0 0 14px;font-size:15.5px}
+.vo::before{content:"NARRATION";display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;color:var(--muted);margin-bottom:6px}
+.vo .g{background:#fdecea;border-bottom:1.5px solid var(--red);padding:0 2px}
+.build{border-left:3px solid var(--accent);background:#f7fbff;border-radius:0 10px 10px 0;padding:12px 16px;margin:0 0 12px;font-size:14.5px}
+.build::before{content:"MUST BUILD";display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;color:var(--accent);margin-bottom:5px}
+.warn{color:var(--red);font-size:14.5px;margin:0 0 10px}
+.warn::before{content:"⚠ "}
+.trans{font-size:14px;color:var(--muted);margin:0}
+
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 9px;
+  border-radius:980px;margin:0 5px 6px 0;text-transform:uppercase}
+.t-ready{background:#e3f4ea;color:var(--green)}
+.t-build{background:#e8f1fd;color:#1c5fb5}
+.t-risk{background:#fbe6e3;color:var(--red)}
+
+/* downloads */
+.figgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(188px,1fr));gap:14px}
+.fig{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.fig .ph{background:var(--soft);display:flex;align-items:center;justify-content:center;height:118px;overflow:hidden}
+.fig .ph img{max-width:100%;max-height:118px;display:block}
+.fig .ft{padding:10px 12px;font-size:12.5px;flex:1;display:flex;flex-direction:column}
+.fig .ft b{font-size:13px;font-weight:600;display:block;margin-bottom:3px;line-height:1.3}
+.fig .dim{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:7px}
+.fig a{margin-top:auto;font-size:12.5px;color:var(--accent);text-decoration:none;font-weight:500}
+.small-badge{display:inline-block;font-size:10px;font-weight:700;background:#fbe6e3;color:var(--red);
+  padding:1.5px 6px;border-radius:4px;margin-left:5px}
+
+/* checklist */
+.chk{border:1px solid var(--line);border-radius:14px;padding:6px 20px;margin:0 0 16px}
+.chk label{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line);
+  font-size:15px;cursor:pointer}
+.chk label:last-child{border-bottom:0}
+.chk input{margin:4px 0 0;flex:0 0 auto;width:17px;height:17px;accent-color:var(--accent);cursor:pointer}
+.chk input:checked + span{color:var(--muted);text-decoration:line-through}
+.chk .hrs{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-left:auto;white-space:nowrap;padding-left:12px}
+
+.callout{border-radius:16px;padding:22px 26px;margin:0 0 18px}
+.c-red{background:#fff8f7;border:1px solid #f0cdc7}
+.c-blue{background:#f7fbff;border:1px solid #cfe2f7}
+.c-green{background:#f4faf6;border:1px solid #c9e6d5}
+.callout h3{margin:0 0 9px;font-size:18px}
+.c-red h3{color:var(--red)} .c-green h3{color:var(--green)} .c-blue h3{color:#1c5fb5}
+.callout p:last-child,.callout ul:last-child{margin-bottom:0}
+ul{margin:0 0 15px;padding-left:21px} li{margin:0 0 8px}
+
+.scriptbox{border:1px solid var(--line);border-radius:14px;padding:4px 22px;background:#fff}
+details{border-bottom:1px solid var(--line)}
+details:last-child{border-bottom:0}
+summary{cursor:pointer;padding:15px 0;font-weight:600;font-size:16px;list-style:none;display:flex;gap:11px;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"›";font-size:19px;color:var(--muted);transition:transform .2s;display:inline-block}
+details[open] summary::before{transform:rotate(90deg)}
+summary .tc2{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-left:auto;font-weight:400}
+details .dbody{padding:0 0 18px 30px;font-size:15.5px}
+
+footer{padding:44px 0 70px;color:var(--muted);font-size:14px}
+footer a{color:var(--accent);text-decoration:none}
+
+[data-lang] .zh{display:none}
+[data-lang="zh"] .en{display:none}
+[data-lang="zh"] .zh{display:initial}
+[data-lang="zh"] li.zh,[data-lang="zh"] p.zh,[data-lang="zh"] div.zh{display:block}
+[data-lang="zh"] td.zh{display:table-cell}
+
+@media(max-width:600px){
+  header{padding:54px 0 34px} section{padding:40px 0}
+  .secbody,.callout{padding:18px} .sec h4,.msg,.sechead{margin-left:18px;margin-right:18px;padding-left:0;padding-right:0}
+  .sechead{padding:16px 18px 0} .navlinks{display:none}
+}
+</style>
+</head>
+<body data-lang="en">
+
+<nav>
+  <div class="wrap">
+    <span class="brand">GEMS Taiwan · ReLEAF</span>
+    <div class="navlinks">
+      <a href="index.html"><span class="en">Gap audit</span><span class="zh">缺口盤點</span></a>
+      <a href="evidence.html"><span class="en">Evidence</span><span class="zh">素材包</span></a>
+      <a href="director.html" class="on"><span class="en">Director pack</span><span class="zh">導演包</span></a>
+    </div>
+    <div class="toggle" role="group" aria-label="Language">
+      <button id="b-en" aria-pressed="true">EN</button>
+      <button id="b-zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <h1><span class="en">Director pack</span><span class="zh">導演包</span></h1>
+    <p class="lede">
+      <span class="en">The whole 15-minute presentation video in one place: running order, shot-by-shot lists against real filenames and timecodes, the narration with every risky claim flagged, the figures to download, and what still has to be built.</span>
+      <span class="zh">整支 15 分鐘簡報影片都在這一頁：播放順序、對應真實檔名與時間碼的逐鏡表、標出所有高風險說法的旁白稿、可下載的圖檔，以及還需要製作的東西。</span>
+    </p>
+    <div class="runtime">
+      <div class="rt"><b>14:25</b><span><span class="en">target runtime</span><span class="zh">目標長度</span></span></div>
+      <div class="rt"><b>11</b><span><span class="en">sections</span><span class="zh">段落</span></span></div>
+      <div class="rt"><b>26 min</b><span><span class="en">footage available</span><span class="zh">現有素材</span></span></div>
+      <div class="rt"><b>~15 h</b><span><span class="en">still to build</span><span class="zh">待製作</span></span></div>
+      <div class="rt"><b>32</b><span><span class="en">figures ready</span><span class="zh">圖檔就緒</span></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ READ FIRST ============ -->
+<section>
+  <div class="wrap">
+    <h2><span class="en">Ryan — read these four first</span><span class="zh">Ryan — 先看這四件事</span></h2>
+    <p class="sub"><span class="en">Everything else can wait until after coffee. These cannot.</span><span class="zh">其他都可以等，這四件不行。</span></p>
+
+    <div class="callout c-red">
+      <h3><span class="en">1 · One clip has a placeholder chart burned into it</span><span class="zh">1 · 有一支素材燒了「placeholder」圖表進去</span></h3>
+      <p>
+        <span class="en"><code>#6 Hardware/section3.mp4</code> is a finished LPA animation — but at <b>t≈32 s</b> its payoff chart is stamped <code>DATA PENDING — PLACEHOLDER BARS: NO VALUES YET</code> with empty <code>[ ]</code> axis labels. <b>Hard out at 28 s.</b> Put a marker on the clip and have a second person verify the out-point at lock. Shipping that frame in a public judging video is the worst single outcome available to this project.</span>
+        <span class="zh"><code>#6 Hardware/section3.mp4</code> 是一支完成度很高的 LPA 動畫——但在 <b>t≈32 秒</b>，它的結論圖表上印著 <code>DATA PENDING — PLACEHOLDER BARS: NO VALUES YET</code>，座標軸標籤是空的 <code>[ ]</code>。<b>務必在 28 秒硬切。</b>在那支素材上標記，鎖檔時請第二個人複查出點。把那一格送進公開的評審影片，是這個專案可能發生的最糟結果。</span>
+      </p>
+    </div>
+
+    <div class="callout c-green">
+      <h3><span class="en">2 · Your "Not usable" folder is full of usable things</span><span class="zh">2 · 你們的「Not usable」資料夾裡全是能用的東西</span></h3>
+      <p>
+        <span class="en">A finished <b>BREAKING NEWS segment</b> with a GEMS-TAIWAN lower third. A finished <b>credits roll</b> with the full crew. The <b>only system schematic the team owns</b> (inside <code>Packaging.mov</code> at t=29–46). A built <b>lab→field match cut</b>. And both <b>"Releaf Ending"</b> clips — ~50 people in green hoodies, sharp, nobody blinking. <b>Your ending problem is already solved.</b> Four of the six clips named "Not usable" inside Plant validation are fine too — someone labelled a camera roll, not the clips.</span>
+        <span class="zh">一段做完的 <b>BREAKING NEWS 新聞片段</b>，還有 GEMS-TAIWAN 的下標。一段做完的 <b>片尾名單</b>，全組人都在。<b>全隊唯一的系統示意圖</b>（在 <code>Packaging.mov</code> 的 t=29–46）。一個做好的 <b>實驗室→田間 match cut</b>。還有兩支 <b>「Releaf Ending」</b>——大約 50 個人穿綠帽 T，畫面清晰，沒有人眨眼。<b>你們的結尾問題其實已經解決了。</b>Plant validation 裡那六支叫「Not usable」的，有四支也沒問題——有人標錯的是整捲，不是個別素材。</span>
+      </p>
+    </div>
+
+    <div class="callout c-red">
+      <h3><span class="en">3 · The script contradicts itself on Human Practices</span><span class="zh">3 · 人類實踐那段，腳本自己打架</span></h3>
+      <p>
+        <span class="en">The master doc carries the HP section twice. <b>Version A:</b> seven months, over 20 stakeholders, markets Philippines / Indonesia / Vietnam. <b>Version B:</b> nine months, more than 31 stakeholders, markets United States / Thailand / Philippines, naming CH Biotech and biostimulant positioning. <b>Use Version B</b> — later, more specific, and the named industry partner plus regulatory positioning is what judges reward. Decide before the voiceover is recorded, and make the wiki match the same day.</span>
+        <span class="zh">主文件裡 HP 這段出現了兩次。<b>版本 A：</b>七個月、超過 20 位利害關係人，市場是菲律賓／印尼／越南。<b>版本 B：</b>九個月、超過 31 位，市場是美國／泰國／菲律賓，並點名 CH Biotech 與生物刺激素的法規定位。<b>採用版本 B</b>——它較新、較具體，而且點名產業夥伴加上法規定位，正是評審會給分的地方。錄旁白之前就要定案，並在同一天讓 wiki 一致。</span>
+      </p>
+    </div>
+
+    <div class="callout c-blue">
+      <h3><span class="en">4 · Delete these from the bin before you start</span><span class="zh">4 · 開工前先把這些從素材庫刪掉</span></h3>
+      <p>
+        <span class="en"><code>#5/synbio.mov</code> and <code>8_10_4_synbio.mov</code> (earlier partial renders of Synbio Final, one with a ghosting artifact) · <code>20 minute presentation+feedback-014.MP4</code> (byte-identical duplicate of -012, 9.4 GB) · <code>#7/agar.mp4</code> (same as <code>1021 Agar.mp4</code> without the highlight boxes). Wrong-version risk outweighs their value, and you get 9.4 GB back.</span>
+        <span class="zh"><code>#5/synbio.mov</code> 與 <code>8_10_4_synbio.mov</code>（Synbio Final 的早期半成品，其中一支有疊影瑕疵）·<code>20 minute presentation+feedback-014.MP4</code>（與 -012 位元完全相同的重複檔，9.4 GB）·<code>#7/agar.mp4</code>（與 <code>1021 Agar.mp4</code> 相同，只是少了標示框）。選到錯版本的風險大於它們的價值，而且可以拿回 9.4 GB。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTLINE ============ -->
+<section id="outline">
+  <div class="wrap">
+    <h2><span class="en">The film at a glance</span><span class="zh">全片一覽</span></h2>
+    <p class="sub"><span class="en">One line per section — this is the table to send the whole team. Three acts: a farmer's problem, we built it and it works, people and future.</span><span class="zh">每段一行——這張表可以直接傳給全組。三幕：農民的問題、我們做出來而且會動、人與未來。</span></p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr>
+          <th><span class="en">Time</span><span class="zh">時間</span></th>
+          <th><span class="en">Section</span><span class="zh">段落</span></th>
+          <th><span class="en">The one message</span><span class="zh">核心訊息</span></th>
+          <th><span class="en">State</span><span class="zh">狀態</span></th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="tc">0:00–0:35</td><td><b><span class="en">Cold open — the farmer</span><span class="zh">冷開場 — 農民</span></b></td><td><span class="en">A real farmer already knows what she needs; nobody has given her the tool.</span><span class="zh">農民早就知道自己需要什麼，只是沒有人給她工具。</span></td><td><span class="tag t-ready">footage ready</span></td></tr>
+          <tr><td class="tc">0:35–1:10</td><td><b><span class="en">The problem</span><span class="zh">問題</span></b></td><td><span class="en">Heat and drought are already cutting yields, and the loss is mapped, not hypothetical.</span><span class="zh">高溫與乾旱已經在減產，而且損失是有圖可查的，不是假設。</span></td><td><span class="tag t-build">GIS card</span></td></tr>
+          <tr><td class="tc">1:10–1:40</td><td><b><span class="en">Why today's solutions miss her</span><span class="zh">現有方案為何到不了她手上</span></b></td><td><span class="en">The molecules exist — the supply chain, not the chemistry, is the failure.</span><span class="zh">分子早就存在——失敗的是供應鏈，不是化學。</span></td><td><span class="tag t-build">animation</span></td></tr>
+          <tr><td class="tc">1:40–2:15</td><td><b><span class="en">The whole system</span><span class="zh">整體系統</span></b></td><td><span class="en">Forecast triggers light; light triggers protein; membrane keeps the bacteria in.</span><span class="zh">預報觸發光，光觸發蛋白，膜把細菌留在裡面。</span></td><td><span class="tag t-ready">ready</span></td></tr>
+          <tr class="hilite"><td class="tc">2:15–5:30</td><td><b><span class="en">Synthetic biology</span><span class="zh">合成生物學</span></b></td><td><span class="en">The circuit is built and verified at the DNA level, and the reactor permeate proves working enzyme — the light switch is not yet demonstrated.</span><span class="zh">線路已建成並在 DNA 層級驗證，反應器透過液證明酵素有功能——但光開關尚未被證明。</span></td><td><span class="tag t-ready">2:13 animation</span><span class="tag t-build">4 cards</span></td></tr>
+          <tr><td class="tc">5:30–7:35</td><td><b><span class="en">Hardware</span><span class="zh">硬體</span></b></td><td><span class="en">Reactor, photometer and light array are built, instrumented and running for days.</span><span class="zh">反應器、光度計與光照陣列都已建成、裝上感測器，並能連續運轉數日。</span></td><td><span class="tag t-ready">animation done</span><span class="tag t-risk">hard out 28s</span></td></tr>
+          <tr><td class="tc">7:35–8:30</td><td><b><span class="en">Software + model</span><span class="zh">軟體與模型</span></b></td><td><span class="en">A forecast and a dose model decide when to switch the light on — that loop is not yet closed.</span><span class="zh">預報與劑量模型決定何時開燈——但這個迴路還沒接起來。</span></td><td><span class="tag t-build">2 cards</span></td></tr>
+          <tr class="hilite"><td class="tc">8:30–10:30</td><td><b><span class="en">Does it help a plant?</span><span class="zh">對植物有用嗎？</span></b></td><td><span class="en">One strain-matched hydroponic run says yes; the soil trials say late is worse than nothing.</span><span class="zh">一次有對等菌株對照的水耕試驗說有用；土耕試驗則說，太晚比不做更糟。</span></td><td><span class="tag t-ready">ready</span><span class="tag t-build">3 cards</span></td></tr>
+          <tr><td class="tc">10:30–12:45</td><td><b><span class="en">Human practices + business</span><span class="zh">人類實踐與商業</span></b></td><td><span class="en">The farmers and the industry shaped the machine; here is who we asked and what changed.</span><span class="zh">農民與產業形塑了這台機器；這是我們問了誰、以及因此改了什麼。</span></td><td><span class="tag t-ready">best footage</span><span class="tag t-build">3 builds</span></td></tr>
+          <tr><td class="tc">12:45–14:05</td><td><b><span class="en">Limits, vision, impact</span><span class="zh">限制、願景、影響</span></b></td><td><span class="en">Here is exactly what is unfinished, and here is what it becomes.</span><span class="zh">這是還沒完成的部分，以及它將成為什麼。</span></td><td><span class="tag t-build">1 card</span></td></tr>
+          <tr><td class="tc">14:05–14:25</td><td><b><span class="en">Credits</span><span class="zh">片尾</span></b></td><td><span class="en">Who built it.</span><span class="zh">這是誰做的。</span></td><td><span class="tag t-ready">roll exists</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section id="timeline">
+  <div class="wrap">
+    <h2><span class="en">The timeline</span><span class="zh">時間軸</span></h2>
+    <p class="sub"><span class="en">Scroll sideways from 0:00 to 14:25. Block width is real screen time, so you can see what the film actually spends its minutes on.</span><span class="zh">左右捲動，從 0:00 到 14:25。色塊寬度就是真實秒數，所以你能一眼看出這支片把時間花在哪裡。</span></p>
+    <div class="tlouter">
+      <div class="tlhint"><span class="en">← scroll →&nbsp;&nbsp;·&nbsp;&nbsp;Act I ends at 2:15 · Act II (the evidence) runs 2:15–10:30 · Act III closes from 10:30</span><span class="zh">← 左右捲動 →&nbsp;&nbsp;·&nbsp;&nbsp;第一幕結束於 2:15 · 第二幕（證據）2:15–10:30 · 第三幕從 10:30 收尾</span></div>
+      <div class="tlscroll"><div class="tlinner" id="tl"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTIONS ============ -->
+<section id="sections">
+  <div class="wrap">
+    <h2><span class="en">Section by section</span><span class="zh">逐段拆解</span></h2>
+    <p class="sub"><span class="en">Every shot against its real filename and in/out point. Narration is written to stay inside what the data support — the <span class="vo"><span class="g">highlighted</span></span> phrases are the ones that must not drift in the booth.</span><span class="zh">每一顆鏡頭都對應真實檔名與進出點。旁白是照著資料能支撐的範圍寫的——<span class="vo"><span class="g">標紅</span></span>的句子在錄音間裡絕對不能走樣。</span></p>
+
+    <!-- 1 -->
+    <div class="sec" id="s1">
+      <div class="sechead"><span class="sectc">0:00–0:35</span><span class="secdur">35s</span><span class="secown">Jac · Olivia L</span></div>
+      <h4><span class="en">Cold open — the farmer</span><span class="zh">冷開場 — 農民</span></h4>
+      <p class="msg"><span class="en">A real farmer already knows what she needs; nobody has given her the tool.</span><span class="zh">農民早就知道自己需要什麼，只是沒有人給她工具。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/01-farmer-opening.jpg" alt="Ms Chen talking in her tool shed">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">1.1</td><td><code>ms chen talking in shed-013.mp4</code> @247–262</td><td class="tc">15s</td><td><span class="en">Centred medium, hands clasped. Lower third: <b>Ms Chen · rice farmer</b></span><span class="zh">置中中景，雙手交握。下標：<b>陳女士 · 稻農</b></span></td></tr>
+          <tr><td class="tc">1.2</td><td><code>ms chen talking in shed-013.mp4</code> @49–52</td><td class="tc">3s</td><td><span class="en">Her laugh — cutaway</span><span class="zh">她的笑 — 插入鏡</span></td></tr>
+          <tr><td class="tc">1.3</td><td><code>ms chen talking in shed-013.mp4</code> @262–273</td><td class="tc">11s</td><td><span class="en">Back to medium, lands on the chosen line</span><span class="zh">回到中景，收在選定的那句話</span></td></tr>
+          <tr><td class="tc">1.4</td><td><code>Not usable/8_10_3_text_overlay.mov</code> @0–4.2</td><td class="tc">4s</td><td><span class="en">Title card: WHAT IF CROP PROTECTION COULD RESPOND AUTOMATICALLY?</span><span class="zh">標題卡：若作物保護能自動回應呢？</span></td></tr>
+          <tr><td class="tc">1.5</td><td><code>#1/releaf_15s_v2.mp4</code> @12–14</td><td class="tc">2s</td><td><span class="en">ReLEAF logo on field-at-dusk</span><span class="zh">黃昏田景上的 ReLEAF logo</span></td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en"><b>No narration over 1.1–1.3.</b> Subtitles only — let her talk. Land on: <i>"Once I know that, I observe what happened so I can understand what to improve next time."</i></span><span class="zh"><b>1.1–1.3 不要旁白。</b>只上字幕，讓她自己講。收在：<i>「知道之後，我就觀察發生了什麼，這樣下次才知道要改什麼。」</i></span></div>
+        <p class="warn"><span class="en">Cut from the 4K master, not from <code>#1/intro.mp4</code> — that file has English subtitles burned in. Use it as the reference for wording only.</span><span class="zh">請從 4K 母檔剪，不要用 <code>#1/intro.mp4</code>——那支的英文字幕是燒進畫面的。它只能當文字參考。</span></p>
+        <p class="trans"><span class="en"><b>Out:</b> hard cut on her last syllable → title card → 12-frame dissolve to logo → whip cut to news.</span><span class="zh"><b>出點：</b>在她最後一個音節硬切 → 標題卡 → 12 格溶接到 logo → 甩鏡切到新聞。</span></p>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="sec" id="s2">
+      <div class="sechead"><span class="sectc">0:35–1:10</span><span class="secdur">35s</span><span class="secown">Olivia L · Anna</span></div>
+      <h4><span class="en">The problem</span><span class="zh">問題</span></h4>
+      <p class="msg"><span class="en">Heat and drought are already cutting yields, and the loss is mapped, not hypothetical.</span><span class="zh">高溫與乾旱已經在減產，而且損失是有圖可查的，不是假設。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/02-problem-news.jpg" alt="Breaking news segment with GEMS Taiwan lower third">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">2.1</td><td><code>Not usable/opening news.mov</code> @2–15</td><td class="tc">13s</td><td><span class="en">Finished BREAKING NEWS segment, cracked earth, tractor dust</span><span class="zh">完成的新聞片段，龜裂土地、曳引機揚塵</span></td></tr>
+          <tr><td class="tc">2.2</td><td><b>BUILD</b> GIS title card + <code>#2/gis pv.mp4</code></td><td class="tc">6s</td><td><span class="en">Raster plays inside a built frame with title, legend, units, year, source</span><span class="zh">網格圖放在自製外框中，含標題、圖例、單位、年份、來源</span></td></tr>
+          <tr><td class="tc">2.3</td><td><code>#2/gis hottest pv.mp4</code> 2s slice, same frame</td><td class="tc">4s</td><td><span class="en">Hottest-scenario comparison</span><span class="zh">最熱情境對照</span></td></tr>
+          <tr><td class="tc">2.4</td><td><code>#1/releaf_15s_v2.mp4</code> @0–6</td><td class="tc">6s</td><td><span class="en">"On-site, On-demand" motion graphic</span><span class="zh">「現地、隨需」動態圖</span></td></tr>
+          <tr><td class="tc">2.5</td><td><code>ms chen talking in shed-013.mp4</code> @49–52, 50% speed</td><td class="tc">6s</td><td><span class="en">Her face under the closing line</span><span class="zh">收尾句下的她的臉</span></td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en">"Taiwan's growers are not facing one bad year. They are facing a trend. Heat and drought stress crops before any disease arrives — and the plant's own distress signal, ethylene, makes it worse. The maps say where. Nobody has said <i>when</i>, to a single field, in time to act."</span><span class="zh">「台灣的農民面對的不是某一個壞年份，而是一個趨勢。在任何病害出現之前，高溫與乾旱就已經讓作物承受逆境——而植物自己的求救訊號乙烯，還會讓情況更糟。地圖說得出在哪裡，卻沒有人說得出，對某一塊田來說，是什麼時候，而且來得及行動。」</span></div>
+        <div class="build"><span class="en">The GIS title card is <b>mandatory, not cosmetic</b>. The raw captures have no title, legend, units, year or source — a judge cannot tell what is being shown, so they cannot carry an evidence claim bare. ~45 min.</span><span class="zh">GIS 標題卡是<b>必要的，不是裝飾</b>。原始畫面沒有標題、圖例、單位、年份或來源——評審看不出那在呈現什麼，所以它們不能單獨承擔證據性的說法。約 45 分鐘。</span></div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="sec" id="s3">
+      <div class="sechead"><span class="sectc">1:10–1:40</span><span class="secdur">30s</span><span class="secown">Ryan</span></div>
+      <h4><span class="en">Why today's solutions miss her</span><span class="zh">現有方案為何到不了她手上</span></h4>
+      <p class="msg"><span class="en">Protectant molecules exist — the supply chain, not the chemistry, is the failure.</span><span class="zh">保護劑分子早就存在——失敗的是供應鏈，不是化學。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/03-current-solutions.jpg" alt="Our World in Data fertilizer consumption choropleth">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">3.1</td><td><code>#3/Global Fertilizer Consumption.mp4</code> @0–7.9</td><td class="tc">8s</td><td><span class="en">Choropleth 1961→2023, FAO credit already burned in — keep it</span><span class="zh">1961→2023 分層設色圖，FAO 來源已燒錄在畫面上——請保留</span></td></tr>
+          <tr><td class="tc">3.2</td><td><b>BUILD</b> supply-chain animation</td><td class="tc">14s</td><td><span class="en">Factory → truck → cold chain → degraded product</span><span class="zh">工廠 → 卡車 → 冷鏈 → 失效的產品</span></td></tr>
+          <tr><td class="tc">3.3</td><td><code>#1/releaf_15s_v2.mp4</code> @8–12</td><td class="tc">4s</td><td><span class="en">No central factory / No cold chain</span><span class="zh">沒有中央工廠／沒有冷鏈</span></td></tr>
+          <tr><td class="tc">3.4</td><td><code>#5/bioreactor transition 1.mp4</code> @5.5–9.5</td><td class="tc">4s</td><td><span class="en">Clean wide of the real rig — first sight of the machine</span><span class="zh">真實裝置的乾淨廣角——機器首次登場</span></td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en">"Inputs scaled worldwide by making one thing in one place and shipping it everywhere. That works for fertiliser. It does not work for a protein. Biologicals lose activity in transit, need cold chain, and arrive on a schedule that has nothing to do with the weather. The molecule is fine. The distance is the problem."</span><span class="zh">「農業投入品之所以能擴散到全世界，是因為在一個地方做好一樣東西，再運到各地。這對肥料行得通，對蛋白質卻行不通。生物製劑在運送中會失去活性，需要冷鏈，而且抵達的時程跟天氣毫無關係。分子沒有問題，問題是距離。」</span></div>
+        <div class="build"><span class="en"><b>The one genuinely missing animation in Act I.</b> You can borrow the two red-X icons from <code>releaf_15s_v2.mp4</code> @9 as a starting point. 3–4 hours — assign it first.</span><span class="zh"><b>第一幕唯一真正缺的動畫。</b>可以先借用 <code>releaf_15s_v2.mp4</code> @9 的兩個紅叉圖示當起點。3–4 小時——優先指派。</span></div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="sec" id="s4">
+      <div class="sechead"><span class="sectc">1:40–2:15</span><span class="secdur">35s</span><span class="secown">Abby K · Naomi · Audrey C</span></div>
+      <h4><span class="en">The whole system</span><span class="zh">整體系統</span></h4>
+      <p class="msg"><span class="en">Forecast triggers light; light triggers protein; membrane keeps the bacteria in; the farmer gets the product the same day.</span><span class="zh">預報觸發光，光觸發蛋白，膜把細菌留住，農民當天就拿到產品。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/04-system-overview.jpg" alt="Photoreal reactor render with live HUD">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">4.1</td><td><code>#4/how-releaf-works_reactor+art_relaxed-24s.mp4</code> @0–24</td><td class="tc">24s</td><td><span class="en">Photoreal rig, HUD 0.32→0.88→0.54, LED green→red</span><span class="zh">擬真裝置，HUD 0.32→0.88→0.54，LED 綠轉紅</span></td></tr>
+          <tr><td class="tc">4.2</td><td><code>Not usable/Packaging.mov</code> @29–40</td><td class="tc">11s</td><td><span class="en">The full system schematic — the only one the team owns</span><span class="zh">完整系統示意圖——全隊唯一的一張</span></td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en">"ReLEAF is one box beside the field. A stress forecast turns on green light at 520 nanometres. Our engineered <i>Bacillus subtilis</i> reads that light and makes a plant protectant. A 0.2-micron hollow-fibre membrane holds the cells inside while the protein flows out. Red light at 660 switches it off. On-site, on-demand, no cold chain."</span><span class="zh">「ReLEAF 就是放在田邊的一個箱子。逆境預報會打開 520 奈米的綠光。我們改造的枯草桿菌讀到這個光，就製造植物保護劑。0.2 微米的中空纖維膜把細胞留在裡面，讓蛋白質流出去。660 奈米的紅光則把它關掉。現地、隨需、不需冷鏈。」</span></div>
+        <p class="trans"><span class="en"><b>Use the <code>reactor+art</code> variant, not <code>art-only</code></b> — the art-only files are 1352×1080, i.e. not 16:9. And grade 4.2 to match 4.1; Packaging is warmer and will otherwise read as a different film.</span><span class="zh"><b>請用 <code>reactor+art</code> 版本，不要用 <code>art-only</code></b>——art-only 的尺寸是 1352×1080，不是 16:9。另外請把 4.2 調光對齊 4.1；Packaging 偏暖，否則會像另一支片。</span></p>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="sec" id="s5">
+      <div class="sechead"><span class="sectc">2:15–5:30</span><span class="secdur">3:15</span><span class="secown">Chloe · Sophie C · Ryan Y</span></div>
+      <h4><span class="en">Synthetic biology</span><span class="zh">合成生物學</span></h4>
+      <p class="msg"><span class="en">The circuit is built and verified at the DNA level, and the reactor permeate proves it makes working enzyme — the light switch itself is not yet demonstrated.</span><span class="zh">線路已建成並在 DNA 層級驗證，反應器透過液證明它能做出有功能的酵素——但光開關本身尚未被證明。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/05-synbio-cassette.jpg" alt="Construct map with dropout cassette from Synbio Final">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">5.1</td><td><code>Synbio Final.mp4</code> @0–55</td><td class="tc">55s</td><td><span class="en">Module 1 PCB synthesis (ho1::pcyA); Module 2 CcaS</span><span class="zh">模組 1 PCB 合成（ho1::pcyA）；模組 2 CcaS</span></td></tr>
+          <tr><td class="tc">5.2</td><td><code>Synbio Final.mp4</code> @62–100</td><td class="tc">38s</td><td><span class="en">Module 3 CcaR dimer → promoter</span><span class="zh">模組 3 CcaR 雙體 → 啟動子</span></td></tr>
+          <tr><td class="tc">5.3</td><td><code>Synbio Final.mp4</code> @108–132.7</td><td class="tc">25s</td><td><span class="en">Construct map, dropout cassette, → culture bottle → DNPH</span><span class="zh">構築圖、可替換卡匣 → 培養瓶 → DNPH</span></td></tr>
+          <tr><td class="tc">5.4</td><td><code>#5/olivia loading gel 2.mp4</code> @3–14</td><td class="tc">11s</td><td><span class="en">Clean pipetting. <b>Hard out by 20s</b> — she laughs at camera at 25s</span><span class="zh">乾淨的移液動作。<b>20 秒前務必切掉</b>——25 秒她會對鏡頭笑場</span></td></tr>
+          <tr><td class="tc">5.5</td><td><code>#5/ryan+olivia discussing electrophoresis.mp4</code> @4–9</td><td class="tc">5s</td><td><span class="en">Two students at the bench</span><span class="zh">兩位學生在實驗檯前</span></td></tr>
+          <tr><td class="tc">5.6</td><td><b>BUILD</b> cloning results card</td><td class="tc">12s</td><td><span class="en">23/23 lanes · 9/9 junctions · digest 10,293 / 7,543 bp</span><span class="zh">23/23 泳道 · 9/9 接點 · 酶切 10,293 / 7,543 bp</span></td></tr>
+          <tr><td class="tc">5.7</td><td><code>#5/abbyt x2 speed transformation.mp4</code> @1.5–4</td><td class="tc">2.5s</td><td><span class="en">Gloved hands plating by a flame</span><span class="zh">戴手套的手在火焰旁塗盤</span></td></tr>
+          <tr><td class="tc">5.8</td><td><b>BUILD</b> permeate activity chart</td><td class="tc">26s</td><td><span class="en"><b>The most important graphic in the film.</b> &lt;1 U/mg at 6–12 h → 6.3 at 18 h → 5–8.4 to 72 h</span><span class="zh"><b>全片最重要的一張圖。</b>6–12 h 低於 1 U/mg → 18 h 的 6.3 → 72 h 前維持 5–8.4</span></td></tr>
+          <tr><td class="tc">5.9</td><td><b>BUILD</b> maturation-lag card</td><td class="tc">10s</td><td><span class="en">Protein peaks 12 h (6.522 µg/mL) vs activity peaks 18 h (30.907)</span><span class="zh">蛋白 12 h 達峰（6.522 µg/mL）對活性 18 h 達峰（30.907）</span></td></tr>
+          <tr><td class="tc">5.10</td><td><b>BUILD</b> light-switch honest card</td><td class="tc">11s</td><td><span class="en">Concentration flat; activity 14× at 13 h — and inverted by 16 h</span><span class="zh">濃度不動；活性在 13 h 相差 14 倍——到 16 h 卻反轉</span></td></tr>
+        </tbody></table></div>
+        <div class="vo">
+          <p><span class="en"><b>Over 5.1–5.3</b> (use the animation's own captions; VO only at module transitions): "Three modules. <i>Bacillus</i> doesn't make the pigment the sensor needs, so we gave it one. CcaS reads green light. CcaR carries the signal to the promoter. Downstream, a swappable cassette — ACC deaminase, LEA14, or BoPEP4, each His-tagged."</span><span class="zh"><b>5.1–5.3</b>（用動畫自己的字卡，只在模組轉換處配旁白）：「三個模組。枯草桿菌本身不會製造感測器需要的色素，所以我們給了它一個。CcaS 讀取綠光。CcaR 把訊號帶到啟動子。下游是一個可替換的卡匣——ACC 去胺酶、LEA14 或 BoPEP4，每一個都帶 His 標籤。」</span></p>
+          <p><span class="en"><b>Over 5.4–5.7:</b> "Every construct was verified by colony PCR and junction sequencing — twenty-three of twenty-three, nine of nine. <span class="g">We have not yet sequenced a Level 2 construct end to end.</span>"</span><span class="zh"><b>5.4–5.7：</b>「每一個構築都用菌落 PCR 與接點定序驗證過——23 比 23，9 比 9。<span class="g">我們還沒有對任何一個 Level 2 構築做過端到端定序。</span>」</span></p>
+          <p><span class="en"><b>Over 5.8:</b> "<span class="g">The proof that we make working enzyme is the reactor permeate. This is cell-free liquid from the far side of the membrane, so it cannot be host background.</span> Activity is under one unit per milligram at six and twelve hours, reaches <b>six point three at eighteen</b>, and holds between five and eight to seventy-two hours."</span><span class="zh"><b>5.8：</b>「<span class="g">我們能做出有功能酵素的證據，是反應器的透過液。這是膜另一側、不含細胞的液體，所以不可能是宿主背景。</span>活性在 6 與 12 小時低於每毫克 1 單位，在 <b>18 小時達到 6.3</b>，並維持在 5 到 8 之間直到 72 小時。」</span></p>
+          <p><span class="en"><b>Over 5.9:</b> "Protein peaks at twelve hours; activity peaks at eighteen. <span class="g">We think the enzyme needs time to mature. That is a hypothesis, not a result.</span>"</span><span class="zh"><b>5.9：</b>「蛋白在 12 小時達峰，活性在 18 小時達峰。<span class="g">我們認為酵素需要時間成熟。這是一個假說，不是結果。</span>」</span></p>
+          <p><span class="en"><b>Over 5.10:</b> "<span class="g">Our light switch is the part that is not finished. Protein concentration doesn't change between green and red. Activity does — fourteen-fold at thirteen hours — but it inverts three hours later. We cannot say the switch works yet.</span>"</span><span class="zh"><b>5.10：</b>「<span class="g">光開關是還沒完成的那一塊。綠光與紅光之間，蛋白濃度沒有改變。活性有——13 小時相差 14 倍——但三小時後就反轉了。我們還不能說這個開關有效。</span>」</span></p>
+        </div>
+        <p class="warn"><span class="en"><b>Never say</b> any ELISA or DNPH plate number as evidence of expression · "434 colonies" (those plates had no antibiotic) · decimals on yield — it is "about 16 µg/mL ACCD, about 6 for LEA14 and BoPEP4".</span><span class="zh"><b>絕對不要說</b>任何 ELISA 或 DNPH 微量盤數字作為表現量的證據 ·「434 個菌落」（那些盤沒有抗生素）· 產量帶小數——要說「ACCD 約 16 µg/mL，LEA14 與 BoPEP4 約 6」。</span></p>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="sec" id="s6">
+      <div class="sechead"><span class="sectc">5:30–7:35</span><span class="secdur">2:05</span><span class="secown">Jac · Anton · Noah</span></div>
+      <h4><span class="en">Hardware</span><span class="zh">硬體</span></h4>
+      <p class="msg"><span class="en">The reactor, the photometer and the light array are built, instrumented and running for days at a time.</span><span class="zh">反應器、光度計與光照陣列都已建成、裝上感測器，並能連續運轉數日。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/06-hardware-membrane.jpg" alt="Hollow fibre membrane interior with 0.2 micron callout">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">6.1</td><td><code>#6/section1.mp4</code> @0–19</td><td class="tc">19s</td><td><span class="en">3D build, culture pump 84 mL/min, pinch valve</span><span class="zh">3D 組建，培養泵 84 mL/min，夾管閥</span></td></tr>
+          <tr><td class="tc">6.2</td><td><code>#5/bioreactor transition 1.mp4</code> @0–1.5</td><td class="tc">1.5s</td><td><span class="en">Real pump macro — proves it exists</span><span class="zh">真實泵浦特寫——證明它存在</span></td></tr>
+          <tr><td class="tc">6.3</td><td><code>#6/section1.mp4</code> @19–40</td><td class="tc">21s</td><td><span class="en">Hollow-fibre interior, 0.2 µm, cells on the lumen side</span><span class="zh">中空纖維內部，0.2 µm，細胞留在管腔側</span></td></tr>
+          <tr><td class="tc">6.4</td><td><code>#5/bioreactor transition membrane.mp4</code> @0–1.5</td><td class="tc">1.5s</td><td><span class="en">Rack-focus to the real membrane. <b>Hard out at 1.5s</b> — t=2–3 are out of focus</span><span class="zh">變焦到真實的膜組。<b>1.5 秒硬切</b>——t=2–3 完全失焦</span></td></tr>
+          <tr><td class="tc">6.5</td><td><code>#6/section1.mp4</code> @45–52</td><td class="tc">7s</td><td><span class="en">Sterility card: inside-loop growth vs clean output</span><span class="zh">無菌結果卡：迴路內長菌 vs 出口端乾淨</span></td></tr>
+          <tr><td class="tc">6.6</td><td><code>#6/section2.mp4</code> @0–20</td><td class="tc">20s</td><td><span class="en">Photometer, optical path, beam splitter 90:10</span><span class="zh">光度計、光路、90:10 分光鏡</span></td></tr>
+          <tr><td class="tc">6.7</td><td><code>#6/section2.mp4</code> @28–40</td><td class="tc">12s</td><td><span class="en">OD600 over 162 h; reference beam over 194 h</span><span class="zh">162 小時的 OD600；194 小時的參考光束</span></td></tr>
+          <tr><td class="tc">6.8</td><td><code>#5/Bioreactor Close up.MP4</code> @0–3</td><td class="tc">3s</td><td><span class="en">The real LPA glowing green (file is mislabelled — it is the LPA, not the reactor)</span><span class="zh">真實 LPA 發綠光（檔名標錯了——那是 LPA，不是反應器）</span></td></tr>
+          <tr><td class="tc">6.9</td><td><code>#6/section3.mp4</code> @0–28</td><td class="tc">28s</td><td><span class="en">LPA, macro cutaway at 13. <b>HARD OUT AT 28s</b></span><span class="zh">LPA，13 秒的剖面特寫。<b>28 秒硬切</b></span></td></tr>
+          <tr><td class="tc">6.10</td><td><code>#5/bioreactor transition 1.mp4</code> @5.5–7</td><td class="tc">1.5s</td><td><span class="en">Wide, whole rig, button</span><span class="zh">廣角全機，收尾</span></td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en">"The culture loop runs at eighty-four millilitres a minute through a pinch valve. The hollow-fibre membrane has a nominal pore of zero-point-two microns; our cells are zero-point-eight to two microns wide. <span class="g">We plated both sides: the loop grew, the output side stayed clean. That is preliminary evidence of retention — two plates, no replicates. It is not a validated containment efficiency.</span> The photometer measures OD600 in-line with a ninety-ten beam splitter, so a reference beam corrects for lamp drift — it held for a hundred and ninety-four hours."</span><span class="zh">「培養迴路以每分鐘 84 毫升通過夾管閥。中空纖維膜的標稱孔徑是 0.2 微米；我們的細胞寬 0.8 到 2 微米。<span class="g">我們兩側都做了塗盤：迴路內長菌，出口端保持乾淨。那是截留的初步證據——兩塊盤、沒有重複。它不是一個已驗證的圍阻效率。</span>光度計以 90:10 分光鏡在線量測 OD600，參考光束可校正光源漂移——它穩定維持了 194 小時。」</span></div>
+        <p class="warn"><span class="en"><b>section3.mp4 hard out at 28 s.</b> Do not extend it even if the edit runs short. If real LPA numbers arrive before lock, re-export the clip rather than letting it run.</span><span class="zh"><b>section3.mp4 務必在 28 秒硬切。</b>就算整段長度不夠也不要延長。如果鎖檔前拿到真實的 LPA 數據，請重新輸出該片段，而不是讓它繼續播。</span></p>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="sec" id="s7">
+      <div class="sechead"><span class="sectc">7:35–8:30</span><span class="secdur">55s</span><span class="secown">Felix · Ethan L</span></div>
+      <h4><span class="en">Software + model</span><span class="zh">軟體與模型</span></h4>
+      <p class="msg"><span class="en">A forecast and a dose model decide when to switch the light on — and that loop has not yet been closed end to end.</span><span class="zh">預報與劑量模型決定何時開燈——而這個迴路還沒有端到端接起來。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/08-math-model.jpg" alt="Rice yield prediction chart">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">7.1</td><td><code>#4/how-releaf-works...24s.mp4</code> @3–10, punched 140%</td><td class="tc">7s</td><td><span class="en">Stress index 0.32→0.88, HUD only</span><span class="zh">逆境指數 0.32→0.88，只取 HUD</span></td></tr>
+          <tr><td class="tc">7.2</td><td><code>#7/1021 Math Model.mp4</code> @0–10</td><td class="tc">10s</td><td><span class="en">Farmer in rice paddy, stress-variable bars</span><span class="zh">稻田中的農民，逆境變項長條圖</span></td></tr>
+          <tr><td class="tc">7.3</td><td><code>#7/1021 Math Model.mp4</code> @23–30</td><td class="tc">7s</td><td><span class="en">Rice-yield prediction chart</span><span class="zh">稻作產量預測圖</span></td></tr>
+          <tr><td class="tc">7.4</td><td><code>#7/1021 Math Model.mp4</code> @33–40</td><td class="tc">7s</td><td><span class="en">Red-lit growth chamber</span><span class="zh">紅光生長箱</span></td></tr>
+          <tr><td class="tc">7.5</td><td><b>BUILD</b> dose / payback card</td><td class="tc">12s</td><td><span class="en">Dose anchored on the hydroponic BoPEP4 1/40 run</span><span class="zh">劑量錨定在水耕 1/40 BoPEP4 那次試驗</span></td></tr>
+          <tr><td class="tc">7.6</td><td><b>BUILD</b> open-seam card #1</td><td class="tc">12s</td><td><span class="en">NOT YET CLOSED: no forecast has driven a light end-to-end</span><span class="zh">尚未接通：沒有任何預報端到端驅動過燈光</span></td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en">"The software pulls a weather forecast, converts it to a stress index, and schedules a run. The model turns that index into a dose and asks whether the dose pays for itself at the farm gate. <span class="g">We want to be clear: a forecast has never yet driven a light in our reactor end to end. Every subsystem works. The loop between them is the next build.</span>"</span><span class="zh">「軟體抓取氣象預報，轉換成逆境指數，並排定一次運轉。模型把這個指數換算成劑量，再問這個劑量在田邊的經濟上划不划得來。<span class="g">我們要講清楚：到目前為止，從來沒有一次預報端到端地驅動過我們反應器裡的燈。每一個子系統都能運作，但它們之間的迴路，是下一步要做的。</span>」</span></div>
+        <div class="build"><span class="en">7.5 and 7.6, ~90 min. Pull the dose number from the hydroponic run only — <b>do not invent a field dose</b>.</span><span class="zh">7.5 與 7.6，約 90 分鐘。劑量數字只能取自水耕那次試驗——<b>不要自行編造田間劑量</b>。</span></div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="sec" id="s8">
+      <div class="sechead"><span class="sectc">8:30–10:30</span><span class="secdur">2:00</span><span class="secown">Abby K · Abby T · Abigail</span></div>
+      <h4><span class="en">Does it help a plant?</span><span class="zh">對植物有用嗎？</span></h4>
+      <p class="msg"><span class="en">One strain-matched hydroponic run says yes; the soil trials say timing is everything, and late is worse than nothing.</span><span class="zh">一次有對等菌株對照的水耕試驗說有用；土耕試驗則說，時機決定一切，而太晚比不做更糟。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/09-plant-results.jpg" alt="Hydroponics chlorophyll comparison visual">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">8.1</td><td><code>Not usable/Protectant animation.mov</code> @5–12</td><td class="tc">7s</td><td><span class="en">LEA14 / ACCD / BoPEP bottles → heat chamber → hydroponics</span><span class="zh">LEA14／ACCD／BoPEP 瓶 → 熱逆境箱 → 水耕</span></td></tr>
+          <tr><td class="tc">8.2</td><td><code>#7/C0100.MP4</code> @4–12</td><td class="tc">8s</td><td><span class="en">Top-down gloved hands, forceps, seedlings</span><span class="zh">俯拍戴手套的手、鑷子、幼苗</span></td></tr>
+          <tr><td class="tc">8.3</td><td><code>#7/Not usable(2).MP4</code> @5–12</td><td class="tc">7s</td><td><span class="en">Best seedling-transfer coverage — <b>rescued, it is fine</b></span><span class="zh">最好的移苗畫面——<b>救回來的，沒問題</b></span></td></tr>
+          <tr><td class="tc">8.4</td><td><code>#7/Hydroponics Visual.mp4</code> @0–16</td><td class="tc">16s</td><td><span class="en">22 °C vs 37 °C, ±ACCD, n=12/n=8, chlorophyll 10.088 vs 5.867</span><span class="zh">22 °C 對 37 °C，±ACCD，n=12／n=8，葉綠素 10.088 對 5.867</span></td></tr>
+          <tr><td class="tc">8.5</td><td><b>BUILD</b> BoPEP4 proof-of-concept card</td><td class="tc">14s</td><td><span class="en">1/40 · strain-matched WB800 control · single run, one box per condition</span><span class="zh">1/40 · 對等菌株 WB800 對照 · 單次運轉，每條件一盒</span></td></tr>
+          <tr><td class="tc">8.6</td><td><code>#7/1021 Agar.mp4</code> @0–12</td><td class="tc">12s</td><td><span class="en">Student pipetting at the cabinet</span><span class="zh">學生在無菌操作台移液</span></td></tr>
+          <tr><td class="tc">8.7</td><td><code>#7/1021 Agar.mp4</code> @12–31</td><td class="tc">19s</td><td><span class="en">4-panel agar figure, No/Pre/Co/Post at 37 °C</span><span class="zh">四格 agar 圖，37 °C 下未處理／前／共／後處理</span></td></tr>
+          <tr><td class="tc">8.8</td><td><code>#7/Soil.MP4</code> @4–8, graded +1.5 stops</td><td class="tc">4s</td><td><span class="en">The only soil footage you have</span><span class="zh">你們唯一的土耕畫面</span></td></tr>
+          <tr><td class="tc">8.9</td><td><b>BUILD</b> timing result card</td><td class="tc">16s</td><td><span class="en">Post-treatment 0.103 g / 0.052 g vs heat control 0.195 / 0.225 g</span><span class="zh">後處理 0.103 g／0.052 g 對熱逆境對照 0.195／0.225 g</span></td></tr>
+          <tr><td class="tc">8.10</td><td><code>#7/Plant transferring.mov</code> @1–9</td><td class="tc">8s</td><td><span class="en">Alternate transfer, under the closing VO</span><span class="zh">另一組移苗畫面，墊在收尾旁白下</span></td></tr>
+          <tr><td class="tc">8.11</td><td><b>BUILD</b> open-seam card #2</td><td class="tc">9s</td><td><span class="en">No plant run is tied to an activity measurement of the batch sprayed</span><span class="zh">沒有任何植物試驗連結到實際噴灑批次的活性測定</span></td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en">"Three protectants, one question: does the plant notice? <span class="g">The hydroponic BoPEP4 run at one-in-forty is our only trial with a strain-matched control — plain WB800, no protectant. It is a proof of concept: one run, one box per condition.</span> On agar we compared pre-, co- and post-treatment with ACC deaminase. <span class="g">These bars are three reads of one pooled extract from one plate — we are showing a direction, not a statistic.</span> In soil, across two trials, the post-treatment plants came out <i>below</i> the heat-stressed control. Treating too late was worse than not treating. <b>That is the argument for forecasting, written by our own failure.</b> <span class="g">And we have not yet tied any plant run to an activity measurement of the batch we sprayed.</span>"</span><span class="zh">「三種保護劑，一個問題：植物感覺得到嗎？<span class="g">水耕 1/40 的 BoPEP4 是我們唯一帶有對等菌株對照的試驗——就是不含保護劑的 WB800。它是一個概念驗證：單次運轉，每個條件一盒。</span>在 agar 上，我們比較了 ACC 去胺酶的前處理、共處理與後處理。<span class="g">這些長條是同一盤、同一管混合萃取液的三次讀值——我們呈現的是一個方向，不是一個統計量。</span>在土壤中，兩次試驗裡，後處理的植株都落在熱逆境對照<i>之下</i>。太晚處理比不處理更糟。<b>那就是『要預報』的論據，而且是我們自己的失敗寫出來的。</b><span class="g">另外，我們還沒有把任何一次植物試驗，連結到實際噴灑那批材料的活性測定。</span>」</span></div>
+        <p class="warn"><span class="en"><b>Never say</b> "statistically significant" about an agar bar · "70% more chlorophyll" (contaminated plates) · "3 cm more root" (the real value is 3.7 mm) · "14% higher" for heat trial 2. And there is <b>no hydroponic-rack footage</b> — do not fake it; 8.4's chart carries the beat.</span><span class="zh"><b>絕對不要說</b>agar 長條圖「統計上顯著」·「葉綠素多 70%」（盤子汙染了）·「根長多 3 公分」（真實值是 3.7 mm）· 熱逆境試驗 2 的「高 14%」。另外<b>沒有水耕架的實拍</b>——不要造假，這一拍由 8.4 的圖表承擔。</span></p>
+        <p class="trans"><span class="en"><b>Out:</b> <code>Not usable/walk in out transition.mov</code> @8–13 is your built lab→field match cut into HP.</span><span class="zh"><b>出點：</b><code>Not usable/walk in out transition.mov</code> @8–13 就是接進 HP 的實驗室→田間 match cut。</span></p>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="sec" id="s9">
+      <div class="sechead"><span class="sectc">10:30–12:45</span><span class="secdur">2:15</span><span class="secown">Olivia Du · Mia</span></div>
+      <h4><span class="en">Human practices + business</span><span class="zh">人類實踐與商業</span></h4>
+      <p class="msg"><span class="en">The farmers and the industry shaped the machine; here is who we asked and what changed because of it.</span><span class="zh">農民與產業形塑了這台機器；這是我們問了誰，以及因此改了什麼。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/10-hp-mschen.jpg" alt="Ms Chen teaching a student in a rice paddy">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">9.1</td><td><code>#8/Ms. Chen talking (INFO).mov</code> @8–14</td><td class="tc">6s</td><td><span class="en"><b>Your best HP image</b> — Ms Chen teaching a student in the paddy</span><span class="zh"><b>你們最好的 HP 畫面</b>——陳女士在稻田裡教學生</span></td></tr>
+          <tr><td class="tc">9.2</td><td><code>#8/Interviewing.MP4</code> @1–9</td><td class="tc">8s</td><td><span class="en">Three students interviewing a farm-estate staffer</span><span class="zh">三位學生訪問農場員工</span></td></tr>
+          <tr><td class="tc">9.3</td><td><code>#8/Interviewing(1).MP4</code> @2–6</td><td class="tc">4s</td><td><span class="en">Closer two-shot, student on tablet</span><span class="zh">較近的雙人鏡，學生拿平板記錄</span></td></tr>
+          <tr><td class="tc">9.4</td><td><code>#8/ms chen teaching how to farm.mp4</code> @0–3</td><td class="tc">3s</td><td><span class="en"><b>Hard out at 3s</b> — drifts out of focus</span><span class="zh"><b>3 秒硬切</b>——之後失焦</span></td></tr>
+          <tr><td class="tc">9.5</td><td><b>BUILD</b> stakeholder map</td><td class="tc">20s</td><td><span class="en">Animated map, counter, named orgs incl. CH Biotech</span><span class="zh">動態地圖、計數器、點名單位含 CH Biotech</span></td></tr>
+          <tr><td class="tc">9.6</td><td><code>#8/expo presenter talking.mp4</code> @1–4</td><td class="tc">3s</td><td><span class="en">Industry exhibitor teaching the team</span><span class="zh">產業參展者在教我們的隊員</span></td></tr>
+          <tr><td class="tc">9.7</td><td><b>BUILD</b> "what changed" card ×3</td><td class="tc">24s</td><td><span class="en"><b>The card judges actually score.</b> Three design changes, each traced to a named conversation</span><span class="zh"><b>評審真正會給分的那張。</b>三項設計改動，每一項都連回一場具名的對話</span></td></tr>
+          <tr><td class="tc">9.8</td><td><code>Not usable/Felix introducing(1).MP4</code> @6–15</td><td class="tc">9s</td><td><span class="en">Students demoing the real reactor to adults — <b>rescued</b></span><span class="zh">學生向成人示範真實反應器——<b>救回來的</b></span></td></tr>
+          <tr><td class="tc">9.9</td><td><code>#8/Ryan introducing.MP4</code> @1–4</td><td class="tc">3s</td><td><span class="en">A member of the public hands-on with the tablet demo</span><span class="zh">民眾實際操作平板示範</span></td></tr>
+          <tr><td class="tc">9.10</td><td><code>#8/Baker and event (hoop).MP4</code> @3–9</td><td class="tc">6s</td><td><span class="en">The public playing the outreach game</span><span class="zh">民眾玩推廣遊戲</span></td></tr>
+          <tr><td class="tc">9.11</td><td><b>BUILD</b> business-plan cards</td><td class="tc">30s</td><td><span class="en">Biostimulant positioning, three markets, unit economics</span><span class="zh">生物刺激素定位、三個市場、單位經濟</span></td></tr>
+          <tr><td class="tc">9.12</td><td><code>#5/ryan+olivia discussing electrophoresis.mp4</code> @12.5–14.5</td><td class="tc">2s</td><td><span class="en">Genuine laugh — human beat before the close</span><span class="zh">真實的笑——收尾前的人味</span></td></tr>
+          <tr><td class="tc">9.13</td><td><code>Not usable/8_10_6_Sophia y &amp; Felix end.mp4</code> @0–3</td><td class="tc">3s</td><td><span class="en">Signed cardboard reactor box, lab coat → farmer hat</span><span class="zh">簽滿名字的紙箱反應器，實驗衣 → 農夫帽</span></td></tr>
+          <tr><td class="tc">9.14</td><td><span class="en">Mixed b-roll reprise (9.2, 9.8, 9.10 tails)</span><span class="zh">綜合畫面重現（9.2、9.8、9.10 的尾段）</span></td><td class="tc">14s</td><td><span class="en">Under closing VO</span><span class="zh">墊在收尾旁白下</span></td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en">Open on Ms Chen: "We did not design a reactor and then look for a farmer." Then the stakeholder map, then three concrete changes — each one a named person, a sentence of what they said, and the thing you altered because of it.</span><span class="zh">從陳女士開場：「我們不是先設計了一台反應器，再去找農民。」接著是利害關係人地圖，然後三項具體改動——每一項都要有具名的人、他們說的一句話，以及你們因此修改了什麼。</span></div>
+        <p class="warn"><span class="en"><b>Resolve the Version A / Version B conflict before the VO is recorded</b> (see the top of this page). Use Version B.</span><span class="zh"><b>錄旁白前先解決版本 A／版本 B 的衝突</b>（見本頁最上方）。採用版本 B。</span></p>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="sec" id="s10">
+      <div class="sechead"><span class="sectc">12:45–14:05</span><span class="secdur">80s</span><span class="secown">Ryan · Jac</span></div>
+      <h4><span class="en">Limits, vision, impact</span><span class="zh">限制、願景、影響</span></h4>
+      <p class="msg"><span class="en">Here is exactly what is unfinished, here is what it becomes, and here is who built it.</span><span class="zh">這是還沒完成的部分，這是它將成為什麼，以及這是誰做的。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/11-vision-field-unit.jpg" alt="Enclosed field unit render at night">
+      <div class="secbody">
+        <div class="shotlist tblwrap"><table><tbody>
+          <tr><td class="tc">10.1</td><td><b>BUILD</b> "What's next" card</td><td class="tc">14s</td><td><span class="en">Close the forecast→light loop · pair a plant run with an activity assay · sequence a Level 2 construct</span><span class="zh">接通預報→光迴路 · 把植物試驗與活性測定配對 · 完成 Level 2 構築定序</span></td></tr>
+          <tr><td class="tc">10.2</td><td><code>#6/section4.mp4</code> @0–18</td><td class="tc">18s</td><td><span class="en">Field unit at night. <b>Burn in: CONCEPT RENDER — NOT BUILT</b></span><span class="zh">夜間田間機組。<b>燒字：概念算圖 — 尚未建造</b></span></td></tr>
+          <tr><td class="tc">10.3</td><td><code>#8/world_zoom_tour.mp4</code> @0–15</td><td class="tc">15s</td><td><span class="en">Taiwan → Thailand → Philippines → USA</span><span class="zh">台灣 → 泰國 → 菲律賓 → 美國</span></td></tr>
+          <tr><td class="tc">10.4</td><td><code>#4/how-releaf-works...24s.mp4</code> @16–24</td><td class="tc">8s</td><td><span class="en">LED green→red, HUD settling</span><span class="zh">LED 綠轉紅，HUD 穩定下來</span></td></tr>
+          <tr><td class="tc">10.5</td><td><code>ms chen talking in shed-013.mp4</code> @273–278</td><td class="tc">5s</td><td><span class="en">Ms Chen, no subtitle, held</span><span class="zh">陳女士，不上字幕，停住</span></td></tr>
+          <tr><td class="tc">10.6</td><td><code>20 minute presentation+feedback-012.mp4</code> @1055–1060</td><td class="tc">5s</td><td><span class="en">Full-team stage line-up</span><span class="zh">全隊在台上一字排開</span></td></tr>
+          <tr><td class="tc">10.7</td><td><code>(Not usable) Releaf Ending(1).MP4</code> @1–5</td><td class="tc">4s</td><td><span class="en">~50 people in green hoodies. <b>Final shot</b></span><span class="zh">大約 50 人穿綠帽 T。<b>最後一顆鏡頭</b></span></td></tr>
+          <tr><td class="tc">10.8</td><td><span class="en">Title card</span><span class="zh">標題卡</span></td><td class="tc">11s</td><td>ReLEAF · GEMS Taiwan · iGEM 2026</td></tr>
+        </tbody></table></div>
+        <div class="vo"><span class="en">"What we have: a verified circuit, a reactor that retains its cells, enzyme activity measured on the far side of the membrane, and one plant run that worked. What we don't: a closed forecast-to-light loop, an activity number attached to a sprayed batch, and a sequenced Level 2 construct. <span class="g">The field unit you're looking at is a render — we have not built it.</span> What we're aiming at is the same box beside a rice field in Thailand, the Philippines, or California, making the protein that field needs, the week it needs it."</span><span class="zh">「我們有的：一組已驗證的線路、一台能留住細胞的反應器、在膜另一側量到的酵素活性，以及一次成功的植物試驗。我們沒有的：接通的預報到光的迴路、與實際噴灑批次對應的活性數字，以及一個完成端到端定序的 Level 2 構築。<span class="g">你現在看到的田間機組是算圖——我們還沒有造出來。</span>我們要做到的，是同樣一個箱子，放在泰國、菲律賓或加州的稻田旁邊，在那塊田需要的那一週，製造它需要的那個蛋白。」</span></div>
+        <p class="warn"><span class="en">Do not let the closing VO upgrade "preliminary evidence of retention" into "contained" or "biosafe".</span><span class="zh">不要讓收尾旁白把「截留的初步證據」升級成「已圍阻」或「生物安全無虞」。</span></p>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="sec" id="s11">
+      <div class="sechead"><span class="sectc">14:05–14:25</span><span class="secdur">20s</span><span class="secown">Ryan Y</span></div>
+      <h4><span class="en">Credits</span><span class="zh">片尾</span></h4>
+      <p class="msg"><span class="en">Who built it.</span><span class="zh">這是誰做的。</span></p>
+      <img class="secimg" loading="lazy" src="assets/shots/12-credits-team.jpg" alt="Full team in green hoodies">
+      <div class="secbody">
+        <p><span class="en"><code>Not usable/8_10_7_credits.mov</code> @0–10 is a <b>finished crew roll</b> — drop it straight in. Add 10 s for advisors, funders and the iGEM attribution block. Music resolves under. <b>Nothing after the last card.</b></span><span class="zh"><code>Not usable/8_10_7_credits.mov</code> @0–10 是一段<b>已完成的工作人員名單</b>——直接放進去。再加 10 秒給指導老師、贊助者與 iGEM 標示。音樂在下面收掉。<b>最後一張卡之後什麼都不要。</b></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILD QUEUE ============ -->
+<section id="build">
+  <div class="wrap">
+    <h2><span class="en">The build queue</span><span class="zh">製作清單</span></h2>
+    <p class="sub"><span class="en">Twelve graphics and one animation, about 15 hours. Tick as you go — your progress is saved in this browser. Use one shared template for every card: one font, one palette pulled from the hardware animations, one layout.</span><span class="zh">十二張圖加一支動畫，大約 15 小時。做完就打勾——進度會存在這個瀏覽器裡。所有卡片請用同一個模板：一種字體、一組取自硬體動畫的色票、一種排版。</span></p>
+    <div class="chk" id="buildlist">
+      <label><input type="checkbox" data-k="b1"><span><b><span class="en">Supply-chain animation</span><span class="zh">供應鏈動畫</span></b> — <span class="en">factory → truck → cold chain → degraded product. The only genuinely missing animation in Act I. Borrow the red-X icons from <code>releaf_15s_v2.mp4</code> @9.</span><span class="zh">工廠 → 卡車 → 冷鏈 → 失效產品。第一幕唯一真正缺的動畫。可借用 <code>releaf_15s_v2.mp4</code> @9 的紅叉圖示。</span></span><span class="hrs">4 h · §3</span></label>
+      <label><input type="checkbox" data-k="b2"><span><b><span class="en">Permeate activity chart</span><span class="zh">透過液活性圖</span></b> — <span class="en"><b>the most important graphic in the film.</b> Give it motion: line draws left to right, hold the 18 h point.</span><span class="zh"><b>全片最重要的一張圖。</b>要有動態：曲線由左至右畫出，在 18 小時那點停住。</span></span><span class="hrs">1.5 h · §5</span></label>
+      <label><input type="checkbox" data-k="b3"><span><b><span class="en">Cloning results card</span><span class="zh">選殖結果卡</span></b> — 23/23 · 9/9 · 10,293 / 7,543 bp</span><span class="hrs">0.5 h · §5</span></label>
+      <label><input type="checkbox" data-k="b4"><span><b><span class="en">Maturation-lag card</span><span class="zh">成熟延遲卡</span></b> — <span class="en">protein 12 h vs activity 18 h</span><span class="zh">蛋白 12 h 對活性 18 h</span></span><span class="hrs">0.5 h · §5</span></label>
+      <label><input type="checkbox" data-k="b5"><span><b><span class="en">Light-switch honest card</span><span class="zh">光開關誠實卡</span></b> — <span class="en">14× at 13 h, inverted at 16 h</span><span class="zh">13 h 相差 14 倍，16 h 反轉</span></span><span class="hrs">1 h · §5</span></label>
+      <label><input type="checkbox" data-k="b6"><span><b><span class="en">GIS title card</span><span class="zh">GIS 標題卡</span></b> — <span class="en">title, legend, units, year, source. Mandatory.</span><span class="zh">標題、圖例、單位、年份、來源。必要。</span></span><span class="hrs">0.75 h · §2</span></label>
+      <label><input type="checkbox" data-k="b7"><span><b><span class="en">Dose / payback card</span><span class="zh">劑量／回本卡</span></b> — <span class="en">anchored on the hydroponic run only</span><span class="zh">只錨定在水耕那次試驗</span></span><span class="hrs">1 h · §7</span></label>
+      <label><input type="checkbox" data-k="b8"><span><b><span class="en">Open-seam cards ×2</span><span class="zh">未接通的接縫卡 ×2</span></b> — <span class="en">forecast→light; sprayed batch activity</span><span class="zh">預報→光；噴灑批次活性</span></span><span class="hrs">0.5 h · §7 §8</span></label>
+      <label><input type="checkbox" data-k="b9"><span><b><span class="en">BoPEP4 proof-of-concept card</span><span class="zh">BoPEP4 概念驗證卡</span></b> — <span class="en">1/40, strain-matched control, single run</span><span class="zh">1/40、對等菌株對照、單次運轉</span></span><span class="hrs">1 h · §8</span></label>
+      <label><input type="checkbox" data-k="b10"><span><b><span class="en">Timing result card</span><span class="zh">時機結果卡</span></b> — <span class="en">post-treatment below the heat control, both trials</span><span class="zh">後處理低於熱逆境對照，兩次試驗皆然</span></span><span class="hrs">1 h · §8</span></label>
+      <label><input type="checkbox" data-k="b11"><span><b><span class="en">Stakeholder map</span><span class="zh">利害關係人地圖</span></b> — <span class="en">animated, counter, named orgs</span><span class="zh">動態、計數器、具名單位</span></span><span class="hrs">2 h · §9</span></label>
+      <label><input type="checkbox" data-k="b12"><span><b><span class="en">"What changed" cards ×3</span><span class="zh">「改了什麼」卡 ×3</span></b> — <span class="en">conversation → change, three times, no padding. <b>This is the one judges score.</b></span><span class="zh">對話 → 改動，三次，不要灌水。<b>這是評審真正給分的那張。</b></span></span><span class="hrs">2 h · §9</span></label>
+      <label><input type="checkbox" data-k="b13"><span><b><span class="en">Business-plan cards</span><span class="zh">商業計畫卡</span></b> — <span class="en">positioning, markets, unit economics</span><span class="zh">定位、市場、單位經濟</span></span><span class="hrs">2 h · §9</span></label>
+      <label><input type="checkbox" data-k="b14"><span><b><span class="en">"What's next" card</span><span class="zh">「下一步」卡</span></b> — <span class="en">the three open seams, named</span><span class="zh">三個未接通的接縫，明確點名</span></span><span class="hrs">0.5 h · §10</span></label>
+    </div>
+
+    <h3><span class="en">Technical housekeeping</span><span class="zh">技術雜務</span></h3>
+    <div class="chk" id="techlist">
+      <label><input type="checkbox" data-k="t1"><span><b><span class="en">Mask the timecode stamps</span><span class="zh">遮掉時間碼浮水印</span></b> — <span class="en">all four <code>#6 Hardware/section*.mp4</code> carry an ID stamp bottom-right (e.g. <code>S1 00:00:15</code>). A 180×40 px blur, one effect, copy-pasted. <b>Do this first — judges notice.</b></span><span class="zh">四支 <code>#6 Hardware/section*.mp4</code> 右下角都有編號浮水印（例如 <code>S1 00:00:15</code>）。一個 180×40 px 的模糊，做一次複製貼上。<b>先做這件——評審看得到。</b></span></span><span class="hrs">15 min</span></label>
+      <label><input type="checkbox" data-k="t2"><span><b><span class="en">Set a hard-out marker on section3 @28s</span><span class="zh">在 section3 的 28 秒設硬切標記</span></b> — <span class="en">and have a second person verify it at lock</span><span class="zh">並請第二個人在鎖檔時複查</span></span><span class="hrs">2 min</span></label>
+      <label><input type="checkbox" data-k="t3"><span><b><span class="en">Delete the wrong-version files from the bin</span><span class="zh">把錯版本檔案從素材庫刪掉</span></b> — <span class="en">see the top of this page; recovers 9.4 GB</span><span class="zh">見本頁最上方；可回收 9.4 GB</span></span><span class="hrs">5 min</span></label>
+      <label><input type="checkbox" data-k="t4"><span><b><span class="en">One LUT across all live action</span><span class="zh">所有實拍套同一組 LUT</span></b> — <span class="en">you are intercutting broadcast 3D, scrapbook animation, news graphics and handheld 4K. Without this it reads as a compilation.</span><span class="zh">你們混剪了廣播級 3D、剪貼風動畫、新聞圖卡與手持 4K。不統一的話會像一支合輯。</span></span><span class="hrs">1 h</span></label>
+      <label><input type="checkbox" data-k="t5"><span><b><span class="en">Grade <code>Packaging.mov</code> to match the system animation</span><span class="zh">把 <code>Packaging.mov</code> 調光對齊系統動畫</span></b> — <span class="en">it is warmer and will otherwise read as a different film</span><span class="zh">它偏暖，不調的話會像另一支片</span></span><span class="hrs">20 min</span></label>
+      <label><input type="checkbox" data-k="t6"><span><b><span class="en">Grade <code>Soil.MP4</code> +1.5 stops</span><span class="zh">把 <code>Soil.MP4</code> 提亮 1.5 格</span></b> — <span class="en">underexposed with a blue cast, and it is the only soil footage</span><span class="zh">曝光不足且偏藍，而且那是唯一的土耕畫面</span></span><span class="hrs">10 min</span></label>
+      <label><input type="checkbox" data-k="t7"><span><b><span class="en">Re-export the small charts at 1920 px</span><span class="zh">把小圖表重新輸出成 1920 px</span></b> — <span class="en">16 of the 32 figures are under 900 px. Export from PowerPoint (File → Export → PNG, 300 dpi) or from the Prism source rather than upscaling.</span><span class="zh">32 張圖裡有 16 張小於 900 px。請從 PowerPoint（檔案 → 輸出 → PNG，300 dpi）或 Prism 原檔重新輸出，不要放大。</span></span><span class="hrs">1 h</span></label>
+      <label><input type="checkbox" data-k="t8"><span><b><span class="en">Burn in "CONCEPT RENDER — NOT BUILT"</span><span class="zh">燒上「概念算圖 — 尚未建造」</span></b> — <span class="en">on <code>section4.mp4</code> in §10</span><span class="zh">加在 §10 的 <code>section4.mp4</code> 上</span></span><span class="hrs">10 min</span></label>
+      <label><input type="checkbox" data-k="t9"><span><b><span class="en">Subtitles</span><span class="zh">字幕</span></b> — <span class="en">Ms Chen speaks Mandarin/Taiwanese; burn in English subs and re-time from the 4K master. Caption the whole film for accessibility.</span><span class="zh">陳女士講華語／台語；請燒上英文字幕，並從 4K 母檔重新對時。整支片都要上字幕以符合無障礙需求。</span></span><span class="hrs">2 h</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUARDRAILS ============ -->
+<section id="guardrails">
+  <div class="wrap">
+    <h2><span class="en">Red lines for the voiceover booth</span><span class="zh">錄音間的紅線</span></h2>
+    <p class="sub"><span class="en">Narrators smooth hedges out loud. "Preliminary evidence of retention" becomes "contained"; "we think" becomes "we showed". Print this, mark the flagged lines in red, record them twice, and have whoever wrote the wiki Results page sit in the booth.</span><span class="zh">旁白唸出來的時候會不自覺把保留語氣磨掉。「截留的初步證據」會變成「已圍阻」；「我們認為」會變成「我們證明了」。把這頁印出來，把標紅的句子圈起來，每句錄兩次，並請寫 wiki Results 頁的人坐在錄音間裡。</span></p>
+
+    <div class="callout c-red">
+      <h3><span class="en">Never say these</span><span class="zh">絕對不要說這些</span></h3>
+      <ul>
+        <li><span class="en"><b>Any ELISA or DNPH plate number as proof of expression.</b> The untransformed WB800 control reads 5.452 and 4.562 µg/mL — the same range as four of six constructs. The wiki says the assay "is reading something other than recombinant protein". On the DNPH variants plot the plasmid-free control (~32) sits <i>above</i> csn (~21).</span><span class="zh"><b>任何 ELISA 或 DNPH 微量盤數字，都不能當作表現量的證據。</b>未轉形的 WB800 對照讀到 5.452 與 4.562 µg/mL——與六個構築中的四個同範圍。Wiki 自己寫著這個試驗「讀到的不是重組蛋白」。在 DNPH 變體圖中，無質體對照（約 32）<i>高於</i> csn（約 21）。</span></li>
+        <li><span class="en"><b>"434 colonies."</b> Those plates had no antibiotic. The selective counts are 15, 16, 16 and 337.</span><span class="zh"><b>「434 個菌落」。</b>那些盤沒有抗生素。有篩選性的數字是 15、16、16 與 337。</span></li>
+        <li><span class="en"><b>"Statistically significant"</b> about any agar bar — each is three reads of one pooled extract from one plate.</span><span class="zh"><b>任何 agar 長條圖「統計上顯著」</b>——每一根都是同一盤、同一管混合萃取液的三次讀值。</span></li>
+        <li><span class="en"><b>"70% more chlorophyll"</b> (those plates were contaminated) · <b>"3 cm more root"</b> (the real value is 3.7 mm) · <b>"14% higher"</b> for heat trial 2 (the plot reads ~33%, no test, and all four groups are dead).</span><span class="zh"><b>「葉綠素多 70%」</b>（那些盤被汙染了）·<b>「根長多 3 公分」</b>（真實值是 3.7 mm）· 熱逆境試驗 2 的<b>「高 14%」</b>（圖上約 33%、沒有檢定，而且四組都枯死了）。</span></li>
+        <li><span class="en"><b>A green-vs-red number from the short-term light run.</b> The Results and Measurement pages contradict each other on which colour leads.</span><span class="zh"><b>短期光照試驗的綠紅比較數字。</b>Results 頁與 Measurement 頁對於哪一色較高，彼此矛盾。</span></li>
+        <li><span class="en"><b>"Contained" or "biosafe."</b> Two plates, no replicates, no log reduction measured.</span><span class="zh"><b>「已圍阻」或「生物安全無虞」。</b>兩塊盤、沒有重複、沒有量對數削減。</span></li>
+      </ul>
+    </div>
+
+    <div class="callout c-green">
+      <h3><span class="en">Say these instead — they are fully defensible</span><span class="zh">改說這些——它們完全站得住</span></h3>
+      <ul>
+        <li><span class="en"><b>Specific activity in the cell-free permeate:</b> under 1 U/mg at 6–12 h, <b>6.3 U/mg at 18 h</b>, holding 5–8.4 U/mg to 72 h. Measured on the far side of the membrane, so it cannot be host background.</span><span class="zh"><b>無細胞透過液的比活性：</b>6–12 h 低於 1 U/mg，<b>18 h 為 6.3 U/mg</b>，到 72 h 維持 5–8.4 U/mg。量在膜的另一側，所以不可能是宿主背景。</span></li>
+        <li><span class="en"><b>Cloning:</b> 23 of 23 colony-PCR lanes positive; 9 of 9 Level 2 junctions; digest at 10,293 bp and 7,543 bp — paired with "no Level 2 construct has been sequenced end to end."</span><span class="zh"><b>選殖：</b>23 條菌落 PCR 泳道全為陽性；9 個 Level 2 接點全部正確；酶切為 10,293 bp 與 7,543 bp——同時說明「沒有任何 Level 2 構築做過端到端定序」。</span></li>
+        <li><span class="en"><b>Yield:</b> "about 16 µg/mL" ACCD against "about 6" for LEA14 and BoPEP4. No decimals.</span><span class="zh"><b>產量：</b>ACCD「約 16 µg/mL」，LEA14 與 BoPEP4「約 6」。不要小數。</span></li>
+        <li><span class="en"><b>Retention:</b> "we plated both sides; the loop grew and the output stayed clean — preliminary evidence of retention, two plates, no replicates."</span><span class="zh"><b>截留：</b>「我們兩側都塗盤；迴路內長菌，出口端乾淨——截留的初步證據，兩塊盤、沒有重複。」</span></li>
+        <li><span class="en"><b>Plants:</b> the hydroponic 1/40 BoPEP4 run as a proof of concept with a strain-matched control; the soil timing result as "a direction, not a dose."</span><span class="zh"><b>植物：</b>水耕 1/40 BoPEP4 作為帶有對等菌株對照的概念驗證；土耕的時機結果則是「一個方向，不是一個劑量」。</span></li>
+        <li><span class="en"><b>The two open seams:</b> no forecast has driven a light end to end, and no plant run is tied to an activity measurement of the batch sprayed. Saying these out loud reads as rigour and inoculates you in the Judging Session.</span><span class="zh"><b>兩個未接通的接縫：</b>沒有任何預報端到端驅動過燈光；沒有任何植物試驗連結到實際噴灑批次的活性測定。主動講出來會顯得嚴謹，而且能讓你們在評審場次先打預防針。</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIGURES ============ -->
+<section id="figures">
+  <div class="wrap">
+    <h2><span class="en">Figure downloads</span><span class="zh">圖檔下載</span></h2>
+    <p class="sub"><span class="en">32 figures, 2.8 MB, pulled from the frozen wiki plus the highest-resolution local originals. Click any to open full size, then save. <span class="small-badge">small</span> means under 900 px — use it as an inset or re-export it, don't fill a 1920 frame with it.</span><span class="zh">32 張圖，2.8 MB，取自已凍結的 wiki 以及解析度最高的本地原檔。點任一張開啟原尺寸後儲存。<span class="small-badge">small</span> 表示小於 900 px——請當小圖使用或重新輸出，不要拿它填滿 1920 的畫面。</span></p>
+
+    <h3><span class="en">Cloning — §5</span><span class="zh">選殖 — §5</span></h3>
+    <div class="figgrid">
+      <div class="fig"><a class="ph" href="assets/figures/cloning-colony-pcr-23-lanes-HIRES.png"><img loading="lazy" src="assets/figures/cloning-colony-pcr-23-lanes-HIRES.png" alt=""></a><div class="ft"><b>23-lane colony PCR</b><span class="dim">3048×1174 · PNG</span><span class="en" style="color:var(--muted)">Sharpest image in the pack. 23/23 positive.</span><span class="zh" style="color:var(--muted)">整包最銳利的一張。23/23 陽性。</span><a href="assets/figures/cloning-colony-pcr-23-lanes-HIRES.png" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/cloning-l2-goldengate-panel.webp"><img loading="lazy" src="assets/figures/cloning-l2-goldengate-panel.webp" alt=""></a><div class="ft"><b>Level 2 Golden Gate panel</b><span class="dim">2001×786 · WEBP</span><a href="assets/figures/cloning-l2-goldengate-panel.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/cloning-level2-acdi-three-clones.webp"><img loading="lazy" src="assets/figures/cloning-level2-acdi-three-clones.webp" alt=""></a><div class="ft"><b>9/9 junctions, three clones<span class="small-badge">small</span></b><span class="dim">712×782 · WEBP</span><a href="assets/figures/cloning-level2-acdi-three-clones.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/cloning-level2-ecori-btsi-digest.webp"><img loading="lazy" src="assets/figures/cloning-level2-ecori-btsi-digest.webp" alt=""></a><div class="ft"><b>Level 2 digest<span class="small-badge">small</span></b><span class="dim">540×456 · WEBP</span><span class="en" style="color:var(--muted)">10,293 / 7,543 bp. Visibly a spliced composite.</span><span class="zh" style="color:var(--muted)">10,293／7,543 bp。明顯是拼接合成圖。</span><a href="assets/figures/cloning-level2-ecori-btsi-digest.webp" download>Download ↓</a></div></div>
+    </div>
+
+    <h3><span class="en">Production — §5</span><span class="zh">產量與活性 — §5</span></h3>
+    <div class="figgrid">
+      <div class="fig"><a class="ph" href="assets/figures/production-shell-permeate-72h.webp"><img loading="lazy" src="assets/figures/production-shell-permeate-72h.webp" alt=""></a><div class="ft"><b>Shell permeate, 72 h<span class="small-badge">small</span></b><span class="dim">600×382 · WEBP</span><span class="en" style="color:var(--muted)"><b>Your strongest claim.</b> Re-export this one at 1920 px.</span><span class="zh" style="color:var(--muted)"><b>你們最強的主張。</b>這張請重新輸出成 1920 px。</span><a href="assets/figures/production-shell-permeate-72h.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/production-lumen-shell-assays.webp"><img loading="lazy" src="assets/figures/production-lumen-shell-assays.webp" alt=""></a><div class="ft"><b>Lumen vs shell assays<span class="small-badge">small</span></b><span class="dim">600×359 · WEBP</span><a href="assets/figures/production-lumen-shell-assays.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/production-elisa-three-protectants-HIRES.png"><img loading="lazy" src="assets/figures/production-elisa-three-protectants-HIRES.png" alt=""></a><div class="ft"><b>ELISA, three protectants<span class="small-badge">small</span></b><span class="dim">322×441 · PNG</span><span class="en" style="color:var(--muted)">~16 vs ~6 µg/mL. No decimals on screen.</span><span class="zh" style="color:var(--muted)">約 16 對約 6 µg/mL。畫面上不要小數。</span><a href="assets/figures/production-elisa-three-protectants-HIRES.png" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/production-dnph-reactor-timecourse-HIRES.png"><img loading="lazy" src="assets/figures/production-dnph-reactor-timecourse-HIRES.png" alt=""></a><div class="ft"><b>DNPH reactor time course<span class="small-badge">small</span></b><span class="dim">775×598 · PNG</span><span class="en" style="color:var(--muted)">Activity peaks 18 h.</span><span class="zh" style="color:var(--muted)">活性在 18 h 達峰。</span><a href="assets/figures/production-dnph-reactor-timecourse-HIRES.png" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/production-elisa-reactor-timecourse-HIRES.png"><img loading="lazy" src="assets/figures/production-elisa-reactor-timecourse-HIRES.png" alt=""></a><div class="ft"><b>ELISA reactor time course<span class="small-badge">small</span></b><span class="dim">670×508 · PNG</span><span class="en" style="color:var(--muted)">Protein peaks 12 h.</span><span class="zh" style="color:var(--muted)">蛋白在 12 h 達峰。</span><a href="assets/figures/production-elisa-reactor-timecourse-HIRES.png" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/production-dnph-variants-HIRES.png"><img loading="lazy" src="assets/figures/production-dnph-variants-HIRES.png" alt=""></a><div class="ft"><b>DNPH variants ±PLP<span class="small-badge">small</span></b><span class="dim">588×633 · PNG</span><span class="en" style="color:var(--red)">Method result only — the WB800 control sits above csn.</span><span class="zh" style="color:var(--red)">只能當方法結果——WB800 對照高於 csn。</span><a href="assets/figures/production-dnph-variants-HIRES.png" download>Download ↓</a></div></div>
+    </div>
+
+    <h3><span class="en">Light — §5</span><span class="zh">光照 — §5</span></h3>
+    <div class="figgrid">
+      <div class="fig"><a class="ph" href="assets/figures/light-dnph-long-exposure.webp"><img loading="lazy" src="assets/figures/light-dnph-long-exposure.webp" alt=""></a><div class="ft"><b>DNPH 13 h / 16 h<span class="small-badge">small</span></b><span class="dim">209×230 · WEBP</span><span class="en" style="color:var(--muted)">The 14× and the inversion. Re-export.</span><span class="zh" style="color:var(--muted)">14 倍與反轉。請重新輸出。</span><a href="assets/figures/light-dnph-long-exposure.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/light-elisa-long-exposure.webp"><img loading="lazy" src="assets/figures/light-elisa-long-exposure.webp" alt=""></a><div class="ft"><b>ELISA 13 h / 16 h<span class="small-badge">small</span></b><span class="dim">229×215 · WEBP</span><a href="assets/figures/light-elisa-long-exposure.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/light-dnph-light-induced.webp"><img loading="lazy" src="assets/figures/light-dnph-light-induced.webp" alt=""></a><div class="ft"><b>Light-induced activity</b><span class="dim">1258×1016 · WEBP</span><a href="assets/figures/light-dnph-light-induced.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/light-dnph-short-exposure.webp"><img loading="lazy" src="assets/figures/light-dnph-short-exposure.webp" alt=""></a><div class="ft"><b>DNPH short run<span class="small-badge">small</span></b><span class="dim">202×244 · WEBP</span><span class="en" style="color:var(--red)">Time trend only — no green/red number.</span><span class="zh" style="color:var(--red)">只用時間趨勢——不要綠紅數字。</span><a href="assets/figures/light-dnph-short-exposure.webp" download>Download ↓</a></div></div>
+    </div>
+
+    <h3><span class="en">Bioreactor — §6</span><span class="zh">生物反應器 — §6</span></h3>
+    <div class="figgrid">
+      <div class="fig"><a class="ph" href="assets/figures/reactor-rig-incubator-running.webp"><img loading="lazy" src="assets/figures/reactor-rig-incubator-running.webp" alt=""></a><div class="ft"><b>The rig running</b><span class="dim">1200×1594 · WEBP</span><span class="en" style="color:var(--muted)">Portrait. Best photo of the real machine.</span><span class="zh" style="color:var(--muted)">直幅。真實機器最好的一張照片。</span><a href="assets/figures/reactor-rig-incubator-running.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/reactor-leak-event.webp"><img loading="lazy" src="assets/figures/reactor-leak-event.webp" alt=""></a><div class="ft"><b>Leak event, 5 sensor channels</b><span class="dim">1733×2048 · WEBP</span><span class="en" style="color:var(--muted)">Portrait. Your best sensing evidence.</span><span class="zh" style="color:var(--muted)">直幅。最好的感測證據。</span><a href="assets/figures/reactor-leak-event.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/reactor-cycle4-od-ph.webp"><img loading="lazy" src="assets/figures/reactor-cycle4-od-ph.webp" alt=""></a><div class="ft"><b>pH closed loop, 53 doses</b><span class="dim">2000×1300 · WEBP</span><a href="assets/figures/reactor-cycle4-od-ph.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/reactor-cycle1-growth.webp"><img loading="lazy" src="assets/figures/reactor-cycle1-growth.webp" alt=""></a><div class="ft"><b>116-hour growth curve</b><span class="dim">2048×658 · WEBP</span><a href="assets/figures/reactor-cycle1-growth.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/reactor-containment-plates.webp"><img loading="lazy" src="assets/figures/reactor-containment-plates.webp" alt=""></a><div class="ft"><b>Containment plates</b><span class="dim">1400×664 · WEBP</span><span class="en" style="color:var(--red)">Caveat required — two plates, no replicates.</span><span class="zh" style="color:var(--red)">必須加但書——兩塊盤、沒有重複。</span><a href="assets/figures/reactor-containment-plates.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/reactor-r2-sio2-calibration.svg"><img loading="lazy" src="assets/figures/reactor-r2-sio2-calibration.svg" alt=""></a><div class="ft"><b>Photometer calibration</b><span class="dim">SVG · vector</span><span class="en" style="color:var(--muted)">Scales to any size. Export at 1920+.</span><span class="zh" style="color:var(--muted)">可無損縮放。請以 1920 以上輸出。</span><a href="assets/figures/reactor-r2-sio2-calibration.svg" download>Download ↓</a></div></div>
+    </div>
+
+    <h3><span class="en">Plants — §8</span><span class="zh">植物 — §8</span></h3>
+    <div class="figgrid">
+      <div class="fig"><a class="ph" href="assets/figures/plant-hydroponic-bopep-salt-rack.webp"><img loading="lazy" src="assets/figures/plant-hydroponic-bopep-salt-rack.webp" alt=""></a><div class="ft"><b>Hydroponic BoPEP4 rack</b><span class="dim">1600×900 · WEBP</span><span class="en" style="color:var(--muted)">Exactly 16:9. Your best plant evidence.</span><span class="zh" style="color:var(--muted)">剛好 16:9。最好的植物證據。</span><a href="assets/figures/plant-hydroponic-bopep-salt-rack.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/plant-hydro-bopep4-salt-chlorophyll.webp"><img loading="lazy" src="assets/figures/plant-hydro-bopep4-salt-chlorophyll.webp" alt=""></a><div class="ft"><b>Hydroponic chlorophyll</b><span class="dim">1809×1219 · WEBP</span><a href="assets/figures/plant-hydro-bopep4-salt-chlorophyll.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/plant-accd-heat-trial1.webp"><img loading="lazy" src="assets/figures/plant-accd-heat-trial1.webp" alt=""></a><div class="ft"><b>Soil heat, trial 1</b><span class="dim">1600×775 · WEBP</span><a href="assets/figures/plant-accd-heat-trial1.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/plant-accd-heat-trial2.webp"><img loading="lazy" src="assets/figures/plant-accd-heat-trial2.webp" alt=""></a><div class="ft"><b>Soil heat, trial 2</b><span class="dim">1600×775 · WEBP</span><a href="assets/figures/plant-accd-heat-trial2.webp" download>Download ↓</a></div></div>
+      <div class="fig"><a class="ph" href="assets/figures/plant-accd-heat-pots.webp"><img loading="lazy" src="assets/figures/plant-accd-heat-pots.webp" alt=""></a><div class="ft"><b>Soil pots, both trials</b><span class="dim">1600×827 · WEBP</span><span class="en" style="color:var(--muted)">Use the charts, not the pots, in the film.</span><span class="zh" style="color:var(--muted)">影片裡請用圖表，不要用盆栽照。</span><a href="assets/figures/plant-accd-heat-pots.webp" download>Download ↓</a></div></div>
+    </div>
+
+    <p style="margin-top:22px;font-size:14.5px;color:var(--muted)">
+      <span class="en">Full inventory with pixel dimensions and resolution verdicts: <a href="assets/figures/MANIFEST.txt">MANIFEST.txt</a>. Section hero frames pulled from the footage are in <code>assets/shots/</code>.</span>
+      <span class="zh">含像素尺寸與解析度判定的完整清單：<a href="assets/figures/MANIFEST.txt">MANIFEST.txt</a>。從影片素材擷取的各段代表畫面在 <code>assets/shots/</code>。</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ SCRIPT ============ -->
+<section id="script">
+  <div class="wrap">
+    <h2><span class="en">The script</span><span class="zh">旁白稿</span></h2>
+    <p class="sub"><span class="en">Narration only, in order, for the booth. Expand a section to read it. Lines marked in red are the guardrail-sensitive ones — record them twice.</span><span class="zh">只有旁白，依序排列，給錄音間用。點開段落即可閱讀。標紅的句子是涉及資料界線的——請各錄兩次。</span></p>
+    <div class="scriptbox">
+      <details><summary><span class="en">1 · Cold open</span><span class="zh">1 · 冷開場</span><span class="tc2">0:00–0:35</span></summary><div class="dbody"><p><span class="en"><b>No narration.</b> Subtitles only over Ms Chen. Land on: <i>"Once I know that, I observe what happened so I can understand what to improve next time."</i></span><span class="zh"><b>沒有旁白。</b>陳女士的畫面上只有字幕。收在：<i>「知道之後，我就觀察發生了什麼，這樣下次才知道要改什麼。」</i></span></p></div></details>
+
+      <details><summary><span class="en">2 · The problem</span><span class="zh">2 · 問題</span><span class="tc2">0:35–1:10</span></summary><div class="dbody"><p><span class="en">"Taiwan's growers are not facing one bad year. They are facing a trend. Heat and drought stress crops before any disease arrives — and the plant's own distress signal, ethylene, makes it worse. The maps say where. Nobody has said <i>when</i>, to a single field, in time to act."</span><span class="zh">「台灣的農民面對的不是某一個壞年份，而是一個趨勢。在任何病害出現之前，高溫與乾旱就已經讓作物承受逆境——而植物自己的求救訊號乙烯，還會讓情況更糟。地圖說得出在哪裡，卻沒有人說得出，對某一塊田來說，是什麼時候，而且來得及行動。」</span></p></div></details>
+
+      <details><summary><span class="en">3 · Current solutions</span><span class="zh">3 · 現有方案</span><span class="tc2">1:10–1:40</span></summary><div class="dbody"><p><span class="en">"Inputs scaled worldwide by making one thing in one place and shipping it everywhere. That works for fertiliser. It does not work for a protein. Biologicals lose activity in transit, need cold chain, and arrive on a schedule that has nothing to do with the weather. The molecule is fine. The distance is the problem."</span><span class="zh">「農業投入品之所以能擴散到全世界，是因為在一個地方做好一樣東西，再運到各地。這對肥料行得通，對蛋白質卻行不通。生物製劑在運送中會失去活性，需要冷鏈，而且抵達的時程跟天氣毫無關係。分子沒有問題，問題是距離。」</span></p></div></details>
+
+      <details><summary><span class="en">4 · Whole system</span><span class="zh">4 · 整體系統</span><span class="tc2">1:40–2:15</span></summary><div class="dbody"><p><span class="en">"ReLEAF is one box beside the field. A stress forecast turns on green light at 520 nanometres. Our engineered <i>Bacillus subtilis</i> reads that light and makes a plant protectant. A 0.2-micron hollow-fibre membrane holds the cells inside while the protein flows out. Red light at 660 switches it off. On-site, on-demand, no cold chain."</span><span class="zh">「ReLEAF 就是放在田邊的一個箱子。逆境預報會打開 520 奈米的綠光。我們改造的枯草桿菌讀到這個光，就製造植物保護劑。0.2 微米的中空纖維膜把細胞留在裡面，讓蛋白質流出去。660 奈米的紅光則把它關掉。現地、隨需、不需冷鏈。」</span></p></div></details>
+
+      <details><summary><span class="en">5 · Synthetic biology</span><span class="zh">5 · 合成生物學</span><span class="tc2">2:15–5:30</span></summary><div class="dbody">
+        <p><span class="en"><b>Modules:</b> "Three modules. <i>Bacillus</i> doesn't make the pigment the sensor needs, so we gave it one. CcaS reads green light. CcaR carries the signal to the promoter. Downstream, a swappable cassette — ACC deaminase, LEA14, or BoPEP4, each His-tagged."</span><span class="zh"><b>模組：</b>「三個模組。枯草桿菌本身不會製造感測器需要的色素，所以我們給了它一個。CcaS 讀取綠光。CcaR 把訊號帶到啟動子。下游是一個可替換的卡匣——ACC 去胺酶、LEA14 或 BoPEP4，每一個都帶 His 標籤。」</span></p>
+        <p><span class="en"><b>Cloning:</b> "Every construct was verified by colony PCR and junction sequencing — twenty-three of twenty-three, nine of nine. <span style="background:#fdecea">We have not yet sequenced a Level 2 construct end to end.</span>"</span><span class="zh"><b>選殖：</b>「每一個構築都用菌落 PCR 與接點定序驗證過——23 比 23，9 比 9。<span style="background:#fdecea">我們還沒有對任何一個 Level 2 構築做過端到端定序。</span>」</span></p>
+        <p><span class="en"><b>Activity:</b> "<span style="background:#fdecea">The proof that we make working enzyme is the reactor permeate. This is cell-free liquid from the far side of the membrane, so it cannot be host background.</span> Activity is under one unit per milligram at six and twelve hours, reaches <b>six point three at eighteen</b>, and holds between five and eight to seventy-two hours."</span><span class="zh"><b>活性：</b>「<span style="background:#fdecea">我們能做出有功能酵素的證據，是反應器的透過液。這是膜另一側、不含細胞的液體，所以不可能是宿主背景。</span>活性在 6 與 12 小時低於每毫克 1 單位，在 <b>18 小時達到 6.3</b>，並維持在 5 到 8 之間直到 72 小時。」</span></p>
+        <p><span class="en"><b>Maturation:</b> "Protein peaks at twelve hours; activity peaks at eighteen. <span style="background:#fdecea">We think the enzyme needs time to mature. That is a hypothesis, not a result.</span>"</span><span class="zh"><b>成熟：</b>「蛋白在 12 小時達峰，活性在 18 小時達峰。<span style="background:#fdecea">我們認為酵素需要時間成熟。這是一個假說，不是結果。</span>」</span></p>
+        <p><span class="en"><b>The switch:</b> "<span style="background:#fdecea">Our light switch is the part that is not finished. Protein concentration doesn't change between green and red. Activity does — fourteen-fold at thirteen hours — but it inverts three hours later. We cannot say the switch works yet.</span>"</span><span class="zh"><b>開關：</b>「<span style="background:#fdecea">光開關是還沒完成的那一塊。綠光與紅光之間，蛋白濃度沒有改變。活性有——13 小時相差 14 倍——但三小時後就反轉了。我們還不能說這個開關有效。</span>」</span></p>
+      </div></details>
+
+      <details><summary><span class="en">6 · Hardware</span><span class="zh">6 · 硬體</span><span class="tc2">5:30–7:35</span></summary><div class="dbody"><p><span class="en">"The culture loop runs at eighty-four millilitres a minute through a pinch valve. The hollow-fibre membrane has a nominal pore of zero-point-two microns; our cells are zero-point-eight to two microns wide. <span style="background:#fdecea">We plated both sides: the loop grew, the output side stayed clean. That is preliminary evidence of retention — two plates, no replicates. It is not a validated containment efficiency.</span> The photometer measures OD600 in-line with a ninety-ten beam splitter, so a reference beam corrects for lamp drift — it held for a hundred and ninety-four hours."</span><span class="zh">「培養迴路以每分鐘 84 毫升通過夾管閥。中空纖維膜的標稱孔徑是 0.2 微米；我們的細胞寬 0.8 到 2 微米。<span style="background:#fdecea">我們兩側都做了塗盤：迴路內長菌，出口端保持乾淨。那是截留的初步證據——兩塊盤、沒有重複。它不是一個已驗證的圍阻效率。</span>光度計以 90:10 分光鏡在線量測 OD600，參考光束可校正光源漂移——它穩定維持了 194 小時。」</span></p></div></details>
+
+      <details><summary><span class="en">7 · Software + model</span><span class="zh">7 · 軟體與模型</span><span class="tc2">7:35–8:30</span></summary><div class="dbody"><p><span class="en">"The software pulls a weather forecast, converts it to a stress index, and schedules a run. The model turns that index into a dose and asks whether the dose pays for itself at the farm gate. <span style="background:#fdecea">We want to be clear: a forecast has never yet driven a light in our reactor end to end. Every subsystem works. The loop between them is the next build.</span>"</span><span class="zh">「軟體抓取氣象預報，轉換成逆境指數，並排定一次運轉。模型把這個指數換算成劑量，再問這個劑量在田邊的經濟上划不划得來。<span style="background:#fdecea">我們要講清楚：到目前為止，從來沒有一次預報端到端地驅動過我們反應器裡的燈。每一個子系統都能運作，但它們之間的迴路，是下一步要做的。</span>」</span></p></div></details>
+
+      <details><summary><span class="en">8 · Plant validation</span><span class="zh">8 · 植物驗證</span><span class="tc2">8:30–10:30</span></summary><div class="dbody"><p><span class="en">"Three protectants, one question: does the plant notice? <span style="background:#fdecea">The hydroponic BoPEP4 run at one-in-forty is our only trial with a strain-matched control — plain WB800, no protectant. It is a proof of concept: one run, one box per condition.</span> On agar we compared pre-, co- and post-treatment with ACC deaminase. <span style="background:#fdecea">These bars are three reads of one pooled extract from one plate — we are showing a direction, not a statistic.</span> In soil, across two trials, the post-treatment plants came out <i>below</i> the heat-stressed control. Treating too late was worse than not treating. That is the argument for forecasting, written by our own failure. <span style="background:#fdecea">And we have not yet tied any plant run to an activity measurement of the batch we sprayed.</span>"</span><span class="zh">「三種保護劑，一個問題：植物感覺得到嗎？<span style="background:#fdecea">水耕 1/40 的 BoPEP4 是我們唯一帶有對等菌株對照的試驗——就是不含保護劑的 WB800。它是一個概念驗證：單次運轉，每個條件一盒。</span>在 agar 上，我們比較了 ACC 去胺酶的前處理、共處理與後處理。<span style="background:#fdecea">這些長條是同一盤、同一管混合萃取液的三次讀值——我們呈現的是一個方向，不是一個統計量。</span>在土壤中，兩次試驗裡，後處理的植株都落在熱逆境對照<i>之下</i>。太晚處理比不處理更糟。那就是『要預報』的論據，而且是我們自己的失敗寫出來的。<span style="background:#fdecea">另外，我們還沒有把任何一次植物試驗，連結到實際噴灑那批材料的活性測定。</span>」</span></p></div></details>
+
+      <details><summary><span class="en">9 · Human practices</span><span class="zh">9 · 人類實踐</span><span class="tc2">10:30–12:45</span></summary><div class="dbody"><p><span class="en">Open on Ms Chen: "We did not design a reactor and then look for a farmer." Then the stakeholder map, then three concrete changes — each with a named person, a sentence of what they said, and the thing you altered because of it. Then the business positioning. <b>Use Version B of the master doc</b> (nine months, 31+ stakeholders, United States / Thailand / Philippines, CH Biotech, biostimulant positioning).</span><span class="zh">從陳女士開場：「我們不是先設計了一台反應器，再去找農民。」接著是利害關係人地圖，然後三項具體改動——每一項都要有具名的人、他們說的一句話，以及你們因此修改了什麼。再接商業定位。<b>請採用主文件的版本 B</b>（九個月、31 位以上、美國／泰國／菲律賓、CH Biotech、生物刺激素定位）。</span></p></div></details>
+
+      <details><summary><span class="en">10 · Limits and vision</span><span class="zh">10 · 限制與願景</span><span class="tc2">12:45–14:05</span></summary><div class="dbody"><p><span class="en">"What we have: a verified circuit, a reactor that retains its cells, enzyme activity measured on the far side of the membrane, and one plant run that worked. What we don't: a closed forecast-to-light loop, an activity number attached to a sprayed batch, and a sequenced Level 2 construct. <span style="background:#fdecea">The field unit you're looking at is a render — we have not built it.</span> What we're aiming at is the same box beside a rice field in Thailand, the Philippines, or California, making the protein that field needs, the week it needs it."</span><span class="zh">「我們有的：一組已驗證的線路、一台能留住細胞的反應器、在膜另一側量到的酵素活性，以及一次成功的植物試驗。我們沒有的：接通的預報到光的迴路、與實際噴灑批次對應的活性數字，以及一個完成端到端定序的 Level 2 構築。<span style="background:#fdecea">你現在看到的田間機組是算圖——我們還沒有造出來。</span>我們要做到的，是同樣一個箱子，放在泰國、菲律賓或加州的稻田旁邊，在那塊田需要的那一週，製造它需要的那個蛋白。」</span></p>
+      <p><span class="en"><b>The team's own closing line, worth keeping:</b> "Our vision is simple: make biological protection more local, more responsive, and more accessible — so that every farmer can become a biomanufacturer."</span><span class="zh"><b>團隊自己寫的收尾句，值得保留：</b>「我們的願景很簡單：讓生物性保護更在地、更即時、更容易取得——讓每一位農民都能成為生物製造者。」</span></p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IF YOU OVERRUN / RISKS ============ -->
+<section id="risks">
+  <div class="wrap">
+    <h2><span class="en">If you overrun, and what could go wrong</span><span class="zh">超長怎麼辦，以及可能出什麼錯</span></h2>
+
+    <h3><span class="en">Cut in this order — recovers 50 s, lands 13:35</span><span class="zh">照這個順序刪——可省下 50 秒，收在 13:35</span></h3>
+    <div class="tblwrap"><table>
+      <thead><tr><th>#</th><th><span class="en">Cut</span><span class="zh">刪除</span></th><th><span class="en">Saves</span><span class="zh">節省</span></th><th><span class="en">Why it's safe</span><span class="zh">為何可以刪</span></th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>9.10 <span class="en">ring-toss</span><span class="zh">套圈遊戲</span></td><td class="tc">6s</td><td><span class="en">Charming, zero evidentiary weight</span><span class="zh">可愛，但沒有任何證據價值</span></td></tr>
+        <tr><td>2</td><td>7.4 <span class="en">growth chamber</span><span class="zh">生長箱</span></td><td class="tc">7s</td><td><span class="en">Decorative; 7.2 and 7.3 carry the model</span><span class="zh">裝飾性；模型由 7.2 與 7.3 承擔</span></td></tr>
+        <tr><td>3</td><td>8.6 <span class="en">agar pipetting</span><span class="zh">agar 移液</span></td><td class="tc">12s</td><td><span class="en">You already have three lab-hands shots</span><span class="zh">已經有三顆實驗室手部鏡頭了</span></td></tr>
+        <tr><td>4</td><td>2.5 <span class="en">Ms Chen reprise</span><span class="zh">陳女士重現</span></td><td class="tc">6s</td><td><span class="en">Nice rhyme, not load-bearing</span><span class="zh">呼應得好，但不是承重結構</span></td></tr>
+        <tr><td>5</td><td>10.6 <span class="en">stage line-up</span><span class="zh">舞台排排站</span></td><td class="tc">5s</td><td><span class="en">10.7 is the better team shot</span><span class="zh">10.7 是更好的團體鏡</span></td></tr>
+        <tr><td>6</td><td><span class="en">6.6 trimmed to 14s</span><span class="zh">6.6 修到 14 秒</span></td><td class="tc">6s</td><td><span class="en">Optical path survives; the beauty pass doesn't</span><span class="zh">光路保留，外觀展示刪掉</span></td></tr>
+        <tr><td>7</td><td><span class="en">5.2 trimmed to 30s</span><span class="zh">5.2 修到 30 秒</span></td><td class="tc">8s</td><td><span class="en">The CcaR dimer holds longer than it needs to</span><span class="zh">CcaR 雙體停留得比需要的久</span></td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:15px"><span class="en"><b>Do not cut any BUILD card.</b> Every one of them exists to stop an overclaim.</span><span class="zh"><b>任何一張 BUILD 卡都不要刪。</b>它們每一張的存在，都是為了擋下一個過度宣稱。</span></p>
+
+    <h3><span class="en">Top five risks</span><span class="zh">五大風險</span></h3>
+    <div class="callout c-red" style="margin-top:14px">
+      <ul style="margin:0">
+        <li><span class="en"><b>The placeholder chart ships.</b> Cut <code>section3.mp4</code> at 28 s, marker on the clip, second person verifies at lock.</span><span class="zh"><b>placeholder 圖表被送出去。</b><code>section3.mp4</code> 在 28 秒切掉、在素材上標記、鎖檔時由第二人複查。</span></li>
+        <li><span class="en"><b>The voiceover drifts above the data.</b> Mark every red line, record twice, put the person who wrote the wiki Results page in the booth. No improvisation on a flagged line.</span><span class="zh"><b>旁白講得比資料大。</b>把每一條紅線標出來、各錄兩次、讓寫 wiki Results 頁的人坐在錄音間。標記過的句子不准即興。</span></li>
+        <li><span class="en"><b>The HP numbers contradict the wiki.</b> Pick Version B before VO record and amend the wiki the same day. A one-hour fix that becomes unfixable later.</span><span class="zh"><b>HP 數字與 wiki 互相矛盾。</b>錄旁白前選定版本 B，並在同一天修正 wiki。這是一小時能解決的事，拖下去就補不回來。</span></li>
+        <li><span class="en"><b>The build queue doesn't finish.</b> ~15 hours across 13 items. Split by section across three people tonight; the supply-chain animation and the permeate activity chart are the two that cannot slip.</span><span class="zh"><b>製作清單做不完。</b>13 個項目約 15 小時。今晚就按段落分給三個人；供應鏈動畫與透過液活性圖是兩個不能延的。</span></li>
+        <li><span class="en"><b>Three visual grammars collide.</b> One LUT across all live action, one palette for every card pulled from the hardware animations, and confine the scrapbook style to shot 8.1 so it reads as a deliberate aside.</span><span class="zh"><b>三種視覺語言打架。</b>所有實拍套同一組 LUT，所有卡片用同一組取自硬體動畫的色票，並把剪貼風格限制在 8.1 這一顆，讓它看起來像刻意的插敘。</span></li>
+      </ul>
+    </div>
+
+    <h3><span class="en">Consent and privacy — check before publishing</span><span class="zh">同意與隱私 — 發布前確認</span></h3>
+    <ul>
+      <li><span class="en"><b>Ms Chen appears in six clips and is fully identifiable.</b> She is the face of your HP story — make sure you have her written consent.</span><span class="zh"><b>陳女士出現在六支素材中且完全可辨識。</b>她是你們 HP 故事的門面——請確認拿到她的書面同意。</span></li>
+      <li><span class="en"><b>The IHP montages and <code>1015 (1).mov</code> contain a Zoom grid with external adults' faces</b> at readable size. Clear this before publishing.</span><span class="zh"><b>IHP 剪輯與 <code>1015 (1).mov</code> 裡有 Zoom 會議格線，外部成人的臉清晰可辨。</b>發布前請先取得同意。</span></li>
+      <li><span class="en"><b>The expo presenter wears a visible name badge.</b> Blur it if you have no permission.</span><span class="zh"><b>展場講者戴著清晰可見的名牌。</b>沒有授權就打模糊。</span></li>
+      <li><span class="en"><b>Members of the public in close shot</b> at the outreach stall, including an elderly man and a child. Favour wide or over-the-shoulder framings, or get a blanket release.</span><span class="zh"><b>推廣攤位上有民眾的近景</b>，包括一位長者與一名孩童。請優先使用廣角或過肩構圖，或取得概括同意書。</span></li>
+      <li><span class="en"><b>Do not use</b> <code>(Not usable).MP4</code> (close-up of a masked woman, clearly unaware) or <code>Bird patting_.MP4</code> (a stranger, no project relevance).</span><span class="zh"><b>不要使用</b> <code>(Not usable).MP4</code>（戴口罩女性的特寫，明顯不知情）或 <code>Bird patting_.MP4</code>（陌生人，與專案無關）。</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>
+      <span class="en">Built 24 October 2026 for Ryan. Sources: the team's master doc; 118 clips plus a 6.6-minute farmer interview and a 20-minute presentation recording, reviewed frame by frame; Gabriel's <em>DNPH and ELISA v2.pptx</em>; and the frozen wiki at <a href="https://2026.igem.wiki/gems-taiwan/">2026.igem.wiki/gems-taiwan</a>. Companion pages: <a href="index.html">the gap audit</a> and <a href="evidence.html">the evidence pack</a>.</span>
+      <span class="zh">2026 年 10 月 24 日為 Ryan 製作。資料來源：團隊主文件；118 支素材，加上一段 6.6 分鐘的農民訪談與一段 20 分鐘的簡報錄影，全部逐格檢視；Gabriel 的 <em>DNPH and ELISA v2.pptx</em>；以及已凍結的 wiki：<a href="https://2026.igem.wiki/gems-taiwan/">2026.igem.wiki/gems-taiwan</a>。另外兩頁：<a href="index.html">缺口盤點</a>與<a href="evidence.html">素材包</a>。</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // language
+  var b=document.body,en=document.getElementById('b-en'),zh=document.getElementById('b-zh');
+  function set(l){
+    b.setAttribute('data-lang',l);
+    document.documentElement.lang=(l==='zh'?'zh-Hant':'en');
+    en.setAttribute('aria-pressed',l==='en'); zh.setAttribute('aria-pressed',l==='zh');
+    try{localStorage.setItem('releaf-gaps-lang',l)}catch(e){}
+  }
+  en.onclick=function(){set('en')}; zh.onclick=function(){set('zh')};
+  try{var s=localStorage.getItem('releaf-gaps-lang'); if(s) set(s);}catch(e){}
+
+  // checklist persistence
+  try{
+    var saved=JSON.parse(localStorage.getItem('releaf-director-checks')||'{}');
+    document.querySelectorAll('.chk input[type=checkbox]').forEach(function(c){
+      if(saved[c.dataset.k]) c.checked=true;
+      c.addEventListener('change',function(){
+        saved[c.dataset.k]=c.checked;
+        try{localStorage.setItem('releaf-director-checks',JSON.stringify(saved))}catch(e){}
+      });
+    });
+  }catch(e){}
+
+  // timeline
+  var SEC=[
+    {s:0,   e:35,  t:"Cold open",      zt:"冷開場",     m:"The farmer already knows", zm:"農民早就知道", c:"#3a6ea5", b:null},
+    {s:35,  e:70,  t:"The problem",    zt:"問題",       m:"Mapped, not hypothetical", zm:"有圖可查，不是假設", c:"#4a7fb5", b:"GIS card"},
+    {s:70,  e:100, t:"Current solutions", zt:"現有方案", m:"Distance, not chemistry", zm:"問題是距離", c:"#5a8fc5", b:"animation"},
+    {s:100, e:135, t:"Whole system",   zt:"整體系統",   m:"Predict → light → protein → membrane", zm:"預報→光→蛋白→膜", c:"#1d7a46", b:null},
+    {s:135, e:330, t:"Synthetic biology", zt:"合成生物學", m:"Circuit verified; permeate proves working enzyme", zm:"線路已驗證；透過液證明酵素有功能", c:"#176b3d", b:"4 cards"},
+    {s:330, e:455, t:"Hardware",       zt:"硬體",       m:"Built, instrumented, running for days", zm:"已建成、有感測、連續運轉", c:"#1d7a46", b:"hard out 28s"},
+    {s:455, e:510, t:"Software + model", zt:"軟體與模型", m:"Decides when — loop not yet closed", zm:"決定何時 — 迴路尚未接通", c:"#2a8a52", b:"2 cards"},
+    {s:510, e:630, t:"Plant validation", zt:"植物驗證",  m:"One matched run; late is worse than nothing", zm:"一次對照試驗；太晚比不做更糟", c:"#176b3d", b:"3 cards"},
+    {s:630, e:765, t:"Human practices", zt:"人類實踐",  m:"Who we asked, what changed", zm:"問了誰，改了什麼", c:"#9a6400", b:"3 builds"},
+    {s:765, e:845, t:"Limits + vision", zt:"限制與願景", m:"What's unfinished, what it becomes", zm:"還沒完成的，與將成為的", c:"#a8712a", b:"1 card"},
+    {s:845, e:865, t:"Credits",        zt:"片尾",       m:"", zm:"", c:"#6e6e73", b:null}
+  ];
+  var PX=2.6, tl=document.getElementById('tl');
+  if(tl){
+    tl.style.minWidth=(865*PX+40)+'px';
+    var ruler=document.createElement('div'); ruler.className='ruler'; tl.appendChild(ruler);
+    for(var m=0;m<=14;m++){
+      var d=document.createElement('div'); d.className='tick';
+      d.style.left=(m*60*PX)+'px'; d.textContent=m+':00';
+      ruler.appendChild(d);
+    }
+    SEC.forEach(function(x){
+      var el=document.createElement('div'); el.className='blk';
+      el.style.left=(x.s*PX)+'px'; el.style.width=((x.e-x.s)*PX-4)+'px';
+      el.style.background=x.c;
+      function fmt(v){var mm=Math.floor(v/60),ss=v%60;return mm+':'+(ss<10?'0':'')+ss;}
+      var en_='<b>'+x.t+'</b><span class="d">'+fmt(x.s)+'–'+fmt(x.e)+' · '+(x.e-x.s)+'s</span>'+(x.m?'<span class="m">'+x.m+'</span>':'');
+      var zh_='<b>'+x.zt+'</b><span class="d">'+fmt(x.s)+'–'+fmt(x.e)+' · '+(x.e-x.s)+'s</span>'+(x.zm?'<span class="m">'+x.zm+'</span>':'');
+      el.innerHTML='<span class="en">'+en_+'</span><span class="zh">'+zh_+'</span>'+(x.b?'<span class="bld">'+x.b+'</span>':'');
+      tl.appendChild(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>
