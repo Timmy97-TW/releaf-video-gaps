@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif">
 <defs>
   <linearGradient id="vg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#0b0d10"/>
-    <stop offset="100%" stop-color="#101a14"/>
+    <stop offset="0%" stop-color="#ffffff"/>
+    <stop offset="100%" stop-color="#f7fbf8"/>
   </linearGradient>
   <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-    <stop offset="0%" stop-color="#5fd38d" stop-opacity="0.22"/>
-    <stop offset="100%" stop-color="#5fd38d" stop-opacity="0"/>
+    <stop offset="0%" stop-color="#1d7a46" stop-opacity="0.09"/>
+    <stop offset="100%" stop-color="#1d7a46" stop-opacity="0"/>
   </radialGradient>
 </defs>
 
 <rect width="1920" height="1080" fill="url(#vg)"/>
 <ellipse cx="960" cy="560" rx="760" ry="420" fill="url(#glow)"/>
 
-<text x="960" y="300" fill="#5fd38d" font-size="26" font-weight="700" letter-spacing="3.4" text-anchor="middle">OUR VISION</text>
+<text x="960" y="300" fill="#1d7a46" font-size="26" font-weight="700" letter-spacing="3.4" text-anchor="middle">OUR VISION</text>
 
-<text x="960" y="430" fill="#f5f5f7" font-size="62" font-weight="500" letter-spacing="-1.4" text-anchor="middle">Make biological protection more local,</text>
-<text x="960" y="508" fill="#f5f5f7" font-size="62" font-weight="500" letter-spacing="-1.4" text-anchor="middle">more responsive, and more accessible —</text>
+<text x="960" y="430" fill="#1d1d1f" font-size="62" font-weight="500" letter-spacing="-1.4" text-anchor="middle">Make biological protection more local,</text>
+<text x="960" y="508" fill="#1d1d1f" font-size="62" font-weight="500" letter-spacing="-1.4" text-anchor="middle">more responsive, and more accessible —</text>
 
-<text x="960" y="650" fill="#5fd38d" font-size="82" font-weight="700" letter-spacing="-2.4" text-anchor="middle">so that every farmer</text>
-<text x="960" y="748" fill="#5fd38d" font-size="82" font-weight="700" letter-spacing="-2.4" text-anchor="middle">can become a biomanufacturer.</text>
+<text x="960" y="650" fill="#1d7a46" font-size="82" font-weight="700" letter-spacing="-2.4" text-anchor="middle">so that every farmer</text>
+<text x="960" y="748" fill="#1d7a46" font-size="82" font-weight="700" letter-spacing="-2.4" text-anchor="middle">can become a biomanufacturer.</text>
 
 <line x1="760" y1="846" x2="1160" y2="846" stroke="#1d7a46" stroke-width="2"/>
-<text x="960" y="906" fill="#9aa0a8" font-size="27" text-anchor="middle">GEMS Taiwan · ReLEAF · iGEM 2026</text>
+<text x="960" y="906" fill="#6e6e73" font-size="27" text-anchor="middle">GEMS Taiwan · ReLEAF · iGEM 2026</text>
 </svg>
